@@ -19,12 +19,7 @@ Before you can begin integrating your data, you'll need to submit a request to c
 ## Add your datasource
 Your confirmation email will list the Property and Entity Types we created for you. Once you receive this information, go to the **Datasources** tab and create your datasource using the details in the email.
 
-<div class="flex-container">
-  <div class="item">
-  <div class="caption">Create datasource in Loom</div>
-  <img src="/assets/guides/integrations-create-datasource.png" alt="Create datasource in Loom">
-  </div>
-</div>
+{% include image.html caption="Create datasource in Loom" path="guides/integrations-create-datasource.png" %}
 
 ## Create an integration account
 
@@ -32,30 +27,15 @@ Next, you'll need to give an account write-access to the datasource you created 
 
 Log out and create a separate Loom account for your organization. *This organization account will be used to integrate your data. Save the credentials for this account in a safe place.*
 
-<div class="flex-container">
-  <div class="item">
-  <div class="caption">Create an integration account</div>
-  <img src="/assets/guides/integrations-login.png" alt="Create an integration account">
-  </div>
-</div>
+{% include image.html caption="Create an integration account" path="guides/integrations-login.png" %}
 
 Once you have login credentials for your organization, log back into your individual account and go to the **Catalog tab**. Browse for your Entity Set by selecting its Entity Type.
 
-<div class="flex-container">
-  <div class="item">
-  <div class="caption">Search by Entity Type</div>
-  <img src="/assets/guides/integrations-search-entity-type.png" alt="Search by Entity Type">
-  </div>
-</div>
+{% include image.html caption="Search by Entity Type" path="guides/integrations-search-entity-type.png" %}
 
 Then, go to **Actions > View Details > Manage Permissions > EMAILS** and search for your organization account's email address, and grant it **WRITE** permissions to your datasource.
 
-<div class="flex-container">
-  <div class="item">
-  <div class="caption">Manage Permissions for Integration account</div>
-  <img src="/assets/guides/integrations-write-permission.png" alt="Manage Permissions for Integration account">
-  </div>
-</div>
+{% include image.html caption="Manage Permissions for Integration account" path="guides/integrations-write-permission.png" %}
 
 ## Customize template directory
 
