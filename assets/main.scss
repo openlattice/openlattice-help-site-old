@@ -156,6 +156,14 @@ blockquote {
   font-size: $base-font-size;
 }
 
+.construction {
+  padding: 10px;
+  background: $grey-color-light;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
 // change to 1 column layout for small screens
 @include media-query($on-palm) {
     .flex-container {
