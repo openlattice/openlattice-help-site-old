@@ -134,7 +134,7 @@ run.args = ["crime_index.csv","test@example.com","examplepassword"]
 rootProject.name='template'
 ```
 
-## Define your Integration
+### Define your Integration
 
 The code in `ExampleOrg.java` will define your data integration. Start by changing the package name at the top of the file, so it matches with the location of ExampleOrg.java:
 
@@ -153,7 +153,7 @@ private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class )
 public static String ENTITY_SET_NAME = "crimeindex";
 ```
 
-### Flight & Shuttle APIs
+### Using the Flight & Shuttle APIs
 
 The **Flight API** defines the Property and Entity Set mappings, and the **Shuttle API** pushes your data to Loom's servers. Create a new `Flight`, add your Entity Set, and specify your primary key.
 
