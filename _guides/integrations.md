@@ -1,11 +1,9 @@
 ---
 layout: page
-title: How to integrate your data
-description: Get started integrating your data in Loom.
+title: Data Integrations
+description: Get started and integrate your data with Loom.
 ---
-**This guide is under construction. Please email [{{site.email}}](mailto:{{site.email}}) with any questions or feedback.**
-
-<hr><br>
+{% include construction.html %}
 
 1. TOC
 {:toc}
