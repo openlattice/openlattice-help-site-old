@@ -218,7 +218,7 @@ Flight flight = Flight.newFlight()
   .ok()
   .done();
 ```
-### Optional: Create custom functions
+## Optional: Create custom functions
 
 Sometimes, your data might need custom functions to parse data in your dataset. For example, if your data had a **Name** column, but you wanted to split **Name** into **firstname** and **lastname**, you could write custom functions to extract that data.
 
@@ -239,3 +239,13 @@ public static String getLastName( Object obj ) {
     return names[ 0 ].trim();
 }
 ```
+
+## Run your Integration
+
+TODO: With IntelliJ
+
+## Set/Request permissions
+
+Congratulations! Once you've completed the integration, you can go ahead and set the permissions, so only accepted members can view the data.
+
+TODO: instructions for setting permissions (link to new tutorial)
