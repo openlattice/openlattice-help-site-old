@@ -14,11 +14,9 @@ description: Get started integrating your data in Loom.
 
 ## Request Entity and Property Types
 
-First, submit a request to create Property and Entity Types in Loom that match your dataset schema.
+Before you can begin integrating your data, you'll need to submit a request to create Property and Entity Types in Loom that match your dataset schema.
 
-List your data header types in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}) and an administrator will create your Property and Entity Types for you.
-
-**We will send you a confirmation email within 24 hours once the types have been created, along with further instructions.**
+> **How do I do this?** List your data header types in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). An administrator will create your Property and Entity Types for you and send you a confirmation email within 24 hours, along with further instructions.
 
 ## Add your datasource
 Your confirmation email will list the Property and Entity Types we created for you. Once you receive this information, go to the **Datasources** tab and create your datasource using the details in the email.
@@ -43,7 +41,7 @@ Log out and create a separate Loom account for your organization. *This organiza
   </div>
 </div>
 
-Once you have login credentials for your organization, log back into your individual account and go to the **Catalog tab. Browse for your Entity Set by selecting its Entity Type**.
+Once you have login credentials for your organization, log back into your individual account and go to the **Catalog tab**. Browse for your Entity Set by selecting its Entity Type.
 
 <div class="flex-container">
   <div class="item">
@@ -68,31 +66,27 @@ The integration file will be written in **Java**. You will need Java and a Java 
 * [Install Java](https://java.com/en/download/help/index_installing.xml)
 * [Install IntelliJ](https://www.jetbrains.com/idea/download/)
 
-Next, download and unzip the [template integration project](http://google.com/):
+Next, download and unzip the [template integration project](/files/template.zip):
 
 ```text
 build.gradle
 gradle/wrapper
-	gradle-wrapper.jar
-	gradle-wrapper.properties
+    gradle-wrapper.jar
+    gradle-wrapper.properties
 gradlew
 gradlew.bat
 run.sh
 settings.gradle
 src/main/java/com/dataloom/integrations/exampleorg
-	ExampleOrg.java
+    ExampleOrg.java
 src/main/java/resources
-	jetty.yaml
-	log4j.properties
-	log4j2.properties
-	rhizome.yaml
+    jetty.yaml
+    log4j.properties
+    log4j2.properties
+    rhizome.yaml
 ```
 
 The template project contains integration code for an example organization (**exampleorg**) to integrate a CSV of crime index ranking data. Feel free to change all instances of `exampleorg` to your organization name, but this step is not necessary.
-
-<div class="caption">
-Optional: Rename example organization to custom name
-</div>
 
 | Template File     | Your File       |
 |-------------------|-----------------|
@@ -100,7 +94,7 @@ Optional: Rename example organization to custom name
 | `/exampleorg`     | `/dataloom`     |
 
 <br>
-Go ahead and **import the template project into IntelliJ**.
+Once you're ready, **import the template project into IntelliJ** and let's begin editing the gradle files to build and run this integration.
 
 ### Gradle
 Gradle is a build tool that you need to configure for your project. You will need to make changes to the following files:
@@ -122,15 +116,15 @@ run.args = ["crime_index.csv","test@example.com","examplepassword"]
 ```
 
 #### run.sh
-```
-// Add the name of your csv file and organization account's login credentials
+```shell
+# Add the name of your csv file and organization account's login credentials
 ./exampleorg-v0.0.1/bin/exampleorg ./crime_index.csv test@example.com examplepassword
 ```
 
 #### settings.gradle
-```
-// Optional: Change to match the name of your project's root directory
-// If you didn't change this, it should still be called template
+```shell
+# Optional: Change to match the name of your project's root directory
+# If you didn't change this, it should still be called template
 rootProject.name='template'
 ```
 
@@ -147,15 +141,18 @@ Modify `ExampleOrg.class` if needed, and set the `ENTITY_SET_NAME` to the Entity
 
 ```java
 // Change ExampleOrg.class if you changed the organization name
-private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class );
+public class ExampleOrg {
+  private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class );
+```
 
+```java
 // Set to Entity Set Name given in your confirmation email
 public static String ENTITY_SET_NAME = "crimeindex";
 ```
 
 ### Using the Flight & Shuttle APIs
 
-The **Flight API** defines the Property and Entity Set mappings, and the **Shuttle API** pushes your data to Loom's servers. Create a new `Flight`, add your Entity Set, and specify your primary key.
+The **Flight API** defines the Property and Entity Set mappings, and the **Shuttle API** pushes your data to our servers. Create a new `Flight`, add your Entity Set, and specify your primary key.
 
 If your dataset had a primary key defined, specify the name of the Property that corresponds to the primary key.
 
@@ -227,16 +224,16 @@ Example: Custom functions for parsing Name column
 </div>
 
 ```java
-    public static String getFirstName( Object obj ) {
-    String name = obj.toString();
-    String[] names = name.split( "," );
-    return names[ 1 ].trim();
-}
+public static String getFirstName( Object obj ) {
+  String name = obj.toString();
+  String[] names = name.split( "," );
+  return names[ 1 ].trim();
+  }
 
 public static String getLastName( Object obj ) {
-    String name = obj.toString();
-    String[] names = name.split( "," );
-    return names[ 0 ].trim();
+  String name = obj.toString();
+  String[] names = name.split( "," );
+  return names[ 0 ].trim();
 }
 ```
 
