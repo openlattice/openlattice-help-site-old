@@ -73,15 +73,16 @@ h2 {
 
 .flex-container {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .item {
   flex-grow: 1;
   flex: 1;
   text-align: center;
-  border-radius: 5px;
   margin: 5px;
   padding: 20px;
+  flex-basis: 25%;
 }
 
 .item {
