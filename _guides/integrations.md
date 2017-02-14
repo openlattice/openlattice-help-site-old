@@ -152,3 +152,69 @@ private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class )
 // Set to Entity Set Name given in your confirmation email
 public static String ENTITY_SET_NAME = "crimeindex";
 ```
+
+### Flight & Shuttle APIs
+
+The **Flight API** defines the Property and Entity Set mappings, and the **Shuttle API** pushes your data to Loom's servers. Create a new `Flight`, add your Entity Set, and specify your primary key.
+
+If your dataset had a primary key defined, specify the name of the Property that corresponds to the primary key.
+
+```java
+Flight flight = Flight.newFlight()
+  .addEntity().to( ENTITY_SET_NAME )
+  .as( new FullQualifiedName( "publicsafety.crimeindex" ) )
+  .key( new FullQualifiedName( "general.city" ) )
+
+// ... add properties below
+```
+
+If your dataset did not originally have a primary key defined, use **GUID** as your key.
+
+```java
+Flight flight = Flight.newFlight()
+  .addEntity().to( ENTITY_SET_NAME )
+  .as( new FullQualifiedName( "publicsafety.crimeindex" ) )
+  .key( new FullQualifiedName( "general.guid" ) )
+
+//... add properties below
+```
+
+Replace the Property names in the template code with the Property names given in your confirmation email:
+
+```java
+// Adds a property and sets the value of the property to a function that
+// takes in a row and gets the value of "Rate" for that row
+.addProperty()
+.value( row -> row.getAs( "Rate" ) )
+.as( new FullQualifiedName( "publicsafety.rate" ) )
+.ok()
+```
+
+<div class="caption">
+Example: Full Flight code for crime index entity set and its properties
+</div>
+
+```java
+Flight flight = Flight.newFlight()
+  .addEntity().to( ENTITY_SET_NAME )
+  .as( new FullQualifiedName( "publicsafety.crimeindex" ) )
+  .key( new FullQualifiedName( "general.city" ) )
+  .addProperty()
+  .value( row -> row.getAs( "Year") )
+  .as( new FullQualifiedName( "general.year" ) )
+  .ok()
+  .addProperty()
+  .value( row -> row.getAs( "Crime Index Ranking" ) )
+  .as( new FullQualifiedName( "publicsafety.crimeindexranking" ) )
+  .ok()
+  .addProperty()
+  .value( row -> row.getAs( "City" ) )
+  .as( new FullQualifiedName( "general.city" ) )
+  .ok()
+  .addProperty()
+  .value( row -> row.getAs( "Rate" ) )
+  .as( new FullQualifiedName( "publicsafety.rate" ) )
+  .ok()
+  .ok()
+  .done();
+```
