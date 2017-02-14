@@ -124,7 +124,7 @@ h2 {
 
 // table styling
 table, th, td {
-  border: 1px solid $grey-color;
+  border: 1px solid $grey-color-light;
   border-collapse: collapse;
 }
 
@@ -132,10 +132,11 @@ table {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  min-width: 75%;
 }
 
 td {
-  padding: 10px;
+  padding: 15px;
 }
 
 @include media-query($on-palm) {
