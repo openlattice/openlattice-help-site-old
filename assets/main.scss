@@ -67,7 +67,8 @@ h1, h2, .post-title {
 }
 
 h2 {
-  font-size: $medium-font-size * 0.85 !important;
+  font-size: $medium-font-size !important;
+  color: $loom-link-visited
 }
 
 .flex-container {
