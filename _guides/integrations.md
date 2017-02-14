@@ -218,3 +218,24 @@ Flight flight = Flight.newFlight()
   .ok()
   .done();
 ```
+### Optional: Create custom functions
+
+Sometimes, your data might need custom functions to parse data in your dataset. For example, if your data had a **Name** column, but you wanted to split **Name** into **firstname** and **lastname**, you could write custom functions to extract that data.
+
+<div class="caption">
+Example: Custom functions for parsing Name column
+</div>
+
+```java
+    public static String getFirstName( Object obj ) {
+    String name = obj.toString();
+    String[] names = name.split( "," );
+    return names[ 1 ].trim();
+}
+
+public static String getLastName( Object obj ) {
+    String name = obj.toString();
+    String[] names = name.split( "," );
+    return names[ 0 ].trim();
+}
+```
