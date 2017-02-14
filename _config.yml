@@ -1,0 +1,19 @@
+title: Loom Help
+email: julia@thedataloom.com
+description: > # Welcome to Loom. These are the support resources to help you use the Loom platform.
+# baseurl: "" # the subpath of your site, e.g. /blog
+# url: "" # the base hostname & protocol for your site, e.g. http://example.com
+logo: kryptnostic-logo-big.549269b5.png
+
+# Build settings
+markdown: kramdown
+theme: minima
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+collections:
+  guides:
+    output: true
+    permalink: /guides/:path/
+    title: :title
