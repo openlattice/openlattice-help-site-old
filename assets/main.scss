@@ -64,7 +64,6 @@ h1, h2, .post-title {
   font-weight: bold;
   text-align: center;
   letter-spacing: 1px;
-
 }
 
 h2 {
@@ -76,17 +75,26 @@ h2 {
   flex-flow: row wrap;
 }
 
+.flex-container img {
+  border: 1px solid $grey-color-light;
+  border-radius: 5px;
+  flex-basis: 60%;
+}
+
+.caption {
+  font-weight: bold;
+  font-size: $small-font-size;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
 .item {
+  color: $grey-color-dark !important;
   flex-grow: 1;
   flex: 1;
   text-align: center;
   margin: 5px;
   padding: 20px;
-  flex-basis: 25%;
-}
-
-.item {
-  color: $grey-color-dark !important;
   .large {
     font-size: $base-font-size * 1.5;
     color: $text-color;
@@ -111,6 +119,22 @@ h2 {
 
 .site-header {
   border-top: none;
+}
+
+// table styling
+table, th, td {
+  border: 1px solid $grey-color;
+  border-collapse: collapse;
+}
+
+table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  padding: 10px;
 }
 
 @include media-query($on-palm) {
