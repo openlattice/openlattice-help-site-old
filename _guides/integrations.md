@@ -88,7 +88,7 @@ src/main/java/resources
 	rhizome.yaml
 ```
 
-The template project contains integration code for an example organization (**exampleorg**) to integrate a CSV of crime index ranking data. Feel free to change all instances of exampleorg to your organization name, but this step is not necessary.
+The template project contains integration code for an example organization (**exampleorg**) to integrate a CSV of crime index ranking data. Feel free to change all instances of `exampleorg` to your organization name, but this step is not necessary.
 
 <div class="caption">
 Optional: Rename example organization to custom name
@@ -132,4 +132,23 @@ run.args = ["crime_index.csv","test@example.com","examplepassword"]
 // Optional: Change to match the name of your project's root directory
 // If you didn't change this, it should still be called template
 rootProject.name='template'
+```
+
+## Define your Integration
+
+The code in `ExampleOrg.java` will define your data integration. Start by changing the package name at the top of the file, so it matches with the location of ExampleOrg.java:
+
+```java
+// This should match file location of ExampleOrg.java file
+package com.dataloom.integrations.exampleorg;
+```
+
+Modify `ExampleOrg.class` if needed, and set the `ENTITY_SET_NAME` to the Entity Set name from your confirmation email. Loom uses `Logger` and `LoggerFactory` to output useful log messages during the integration.
+
+```java
+// Change ExampleOrg.class if you changed the organization name
+private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class );
+
+// Set to Entity Set Name given in your confirmation email
+public static String ENTITY_SET_NAME = "crimeindex";
 ```
