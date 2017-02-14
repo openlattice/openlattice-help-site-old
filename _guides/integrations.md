@@ -101,3 +101,35 @@ Optional: Rename example organization to custom name
 
 <br>
 Go ahead and **import the template project into IntelliJ**.
+
+### Gradle
+Gradle is a build tool that you need to configure for your project. You will need to make changes to the following files:
+* `build.gradle`
+* `settings.gradle`
+* `run.sh`
+
+#### build.gradle
+
+```java
+// Change the description for your Entity Set
+description = "Crime Index Data for Nation's Largest Cities"
+
+// Modify mainClassName (if you renamed exampleorg)
+mainClassName = "com.dataloom.integrations.exampleorg.ExampleOrg"
+
+// Add the name of your csv file and organization account's login credentials
+run.args = ["crime_index.csv","test@example.com","examplepassword"]
+```
+
+#### run.sh
+```
+// Add the name of your csv file and organization account's login credentials
+./exampleorg-v0.0.1/bin/exampleorg ./crime_index.csv test@example.com examplepassword
+```
+
+#### settings.gradle
+```
+// Optional: Change to match the name of your project's root directory
+// If you didn't change this, it should still be called template
+rootProject.name='template'
+```
