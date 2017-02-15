@@ -168,6 +168,32 @@ blockquote {
   text-align: center;
 }
 
+// search styling
+.result {
+  margin-top: 20px;
+}
+
+input[type="submit"] {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: $loom-link-visited;
+  border: 1px solid $loom-link-visited;
+  color: white;
+  font-size: $base-font-size;
+}
+
+input[type="text"] {
+  width: 98%;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: $base-font-size;
+}
+
+label {
+  font-weight: bold;
+}
+
 // change to 1 column layout for small screens
 @include media-query($on-palm) {
     .flex-container {
