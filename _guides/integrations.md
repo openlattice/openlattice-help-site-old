@@ -223,4 +223,4 @@ TODO: With IntelliJ
 
 Congratulations! Once you've completed the integration, you can go ahead and set the permissions, so only accepted members can view the data.
 
-TODO: instructions for setting permissions (link to new tutorial)
+* [Learn how to set and request permissions in Loom](/guides/permissions/)
