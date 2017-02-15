@@ -22,6 +22,9 @@ Loom infrastructure is HIPAA and CJIS compliant and we are capable of signing HI
 
 Yes, you can choose to set permissions per entity set and per property for any dataset you own. Individuals can request access to read your datasets, or may be automatically granted access if assigned a role with permissions. We also support de-identification so you can share with outside organizations and researchers, while still retaining access to the full data.
 
+## Is it possible to disable the "download as" feature?
+Yes, this setting can be disabled.
+
 ## How much does Loom cost?
 All of Loom's baseline services used for Data Driven Justice are **free**. This includes:
 * Making datasets available for download
