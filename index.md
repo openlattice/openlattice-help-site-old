@@ -1,7 +1,7 @@
 ---
 layout: home
 ---
-# Welcome to Loom's Help Center
+# Welcome
 
 <center>We want to make sure that you have all the tools you need to successfully tackle your data challenges.</center>
 
