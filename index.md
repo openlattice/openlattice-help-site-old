@@ -25,34 +25,7 @@ layout: home
 
 <div id="search-results"></div>
 
-<script>
-  window.store = {
-    {% for page in site.pages %}
-      "{{ page.url | slugify }}": {
-        "title": "{{ page.title | xml_escape }}",
-        "content": {{ page.content | strip_html | strip_newlines | jsonify }},
-        "url": "{{ page.url | xml_escape }}"
-      }
-      {% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  };
+{% include generate_json.html }
 
-  {% for guide in site.guides %}
-    window.store["{{guide.url | slugify}}"] = {
-      "title": "{{ guide.title | xml_escape }}",
-      "content": {{ guide.content | strip_html | strip_newlines | jsonify }},
-      "url": "{{ guide.url | xml_escape }}"
-    }
-  {% endfor %}
-
-  {% for doc in site.info %}
-    window.store["{{doc.url | slugify}}"] = {
-      "title": "{{ doc.title | xml_escape }}",
-      "content": {{ doc.content | strip_html | strip_newlines | jsonify }},
-      "url": "{{ doc.url | xml_escape }}"
-    }
-  {% endfor %}
-
-</script>
 <script src="/js/lunr.min.js"></script>
 <script src="/js/search.js"></script>
