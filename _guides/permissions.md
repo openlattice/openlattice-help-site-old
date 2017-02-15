@@ -6,7 +6,7 @@ description: Learn how to request, grant, and revoke user permissions to your da
 
 {% include construction.html %}
 
-1. TOC
+* TOC
 {:toc}
 
 ## Requesting permissions
