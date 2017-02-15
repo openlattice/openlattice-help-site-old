@@ -25,6 +25,6 @@ Loom's infrastructure is built on HIPAA and CJIS compliant Amazon services such 
 
 TODO
 
-### Disaster Recovery
+## Disaster Recovery
 
 We store periodic snapshots of the state of the Cassandra database clusters, so the information can be used to recover the system in the event of a system failure.
