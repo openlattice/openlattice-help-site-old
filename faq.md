@@ -30,8 +30,8 @@ All of Loom's core services are **free**. This includes:
 * Linking and Merging across multiple datasets
 * Creating Timelines and Visualizations
 
-If you need additional services outside of our core functionality, [please email us]({{site.email}}) and we'll see what we can do to help.
+If you need additional services outside of our core functionality, [please email us](mailto:{{site.email}}) and we'll see what we can do to help.
 
 ## How can I schedule a demo?
 
-Feel free to [reach out to our Customer Success Manager]({{site.email}}) if you're interested in scheduling a phone call or webinar for your team.
+Feel free to [reach out to our Customer Success Manager](mailto:{{site.email}}) if you're interested in scheduling a phone call or webinar for your team.
