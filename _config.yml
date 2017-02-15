@@ -17,3 +17,7 @@ collections:
     output: true
     permalink: /guides/:path/
     title: :title
+  info:
+    output: true
+    permalink: /info/:path/
+    title: :title
