@@ -21,6 +21,9 @@ Users can control access to Entity Sets they own by assigning and revoking user 
 
 Loom's infrastructure is built on HIPAA and CJIS compliant Amazon services such as Amazon EBS (Elastic Block Storage), which uses virtual hard drives encrypted with Amazon KMS (Key Management System). All data is stored securely at rest encrypted with AES-256.
 
+* [Amazon Web Services (AWS) HIPAA Compliance](https://aws.amazon.com/compliance/hipaa-compliance/)
+* [Amazon Web Services (AWS) CJIS Compliance](https://aws.amazon.com/compliance/cjis/)
+
 ### Audit Controls
 
 We have tamper resistant audit logs that record every time someone reads or accesses your data.
