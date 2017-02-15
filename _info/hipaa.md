@@ -23,7 +23,7 @@ Loom's infrastructure is built on HIPAA and CJIS compliant Amazon services such 
 
 ### Audit Controls
 
-TODO
+We have tamper resistant audit logs that record every time someone reads or accesses your data.
 
 ### Disaster Recovery
 
