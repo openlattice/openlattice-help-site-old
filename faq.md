@@ -35,5 +35,3 @@ If you need additional services outside of our core functionality, [please email
 ## How can I schedule a demo?
 
 Feel free to [reach out to our Customer Success Manager]({{site.email}}) if you're interested in scheduling a phone call or webinar for your team.
-
-{% include construction.html %}

@@ -25,7 +25,7 @@ layout: home
 
 <div id="search-results"></div>
 
-{% include generate_json.html }
+{% include generate_json.html %}
 
 <script src="/js/lunr.min.js"></script>
 <script src="/js/search.js"></script>

@@ -36,10 +36,8 @@ Accepting the permissions request will give read access to the user requesting t
 
 ## Revoking permissions
 
-TODO: Revoke permissions guide
+{% include construction.html %}
 
 ## Using Roles
-
-TODO: Add roles guide
 
 {% include construction.html %}

@@ -216,12 +216,10 @@ public static String getLastName( Object obj ) {
 
 ## Run your Integration
 
-TODO: With IntelliJ
+{% include construction.html %}
 
 ## Set/Request permissions
 
 Congratulations! Once you've completed the integration, you can go ahead and set the permissions, so only accepted members can view the data.
 
 * [Learn how to set and request permissions in Loom](/guides/permissions/)
-
-{% include construction.html %}
