@@ -3,7 +3,6 @@ layout: page
 title: Data Integrations
 description: Get started and integrate your data with Loom.
 ---
-{% include construction.html %}
 
 1. TOC
 {:toc}
@@ -224,3 +223,5 @@ TODO: With IntelliJ
 Congratulations! Once you've completed the integration, you can go ahead and set the permissions, so only accepted members can view the data.
 
 * [Learn how to set and request permissions in Loom](/guides/permissions/)
+
+{% include construction.html %}

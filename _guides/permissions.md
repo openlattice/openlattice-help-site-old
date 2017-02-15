@@ -4,8 +4,6 @@ title: Permissions
 description: Learn how to request, grant, and revoke user permissions to your dataset. Simplify user permissions with roles.
 ---
 
-{% include construction.html %}
-
 * TOC
 {:toc}
 
@@ -43,3 +41,5 @@ TODO: Revoke permissions guide
 ## Using Roles
 
 TODO: Add roles guide
+
+{% include construction.html %}
