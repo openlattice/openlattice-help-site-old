@@ -13,7 +13,7 @@ menu: true
 
 Loom infrastructure is compliant with the Health Insurance Portability and Accountability Act (HIPAA) and Criminal Justice Information Services (CJIS). We are also capable of signing HIPAA Business Associate Agreements (BAAs) for storing data. We comply with HIPAA Security Rule by ensuring PHI is encrypted in transit and at rest with industry-standard standard encryption. We also support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
 
-* [Read more about our HIPAA Compliance Details](/info/hipaa/)
+* [Read more about our HIPAA Compliance Technical Details](/info/hipaa/)
 * [Read more about Data Driven Justice and HIPAA (pdf)](http://www.naco.org/sites/default/files/documents/DDJ%20HIPPA%20FAQs.pdf)
 
 ## Can I control what data I share?
@@ -34,4 +34,4 @@ If you need additional services outside of our core functionality, [please email
 
 ## How can I schedule a demo?
 
-Feel free to [reach out to our Customer Success Manager](mailto:{{site.email}}) if you're interested in scheduling a phone call or webinar for your team.
+Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team.
