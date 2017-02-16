@@ -1,6 +1,6 @@
 ---
 layout: page
-title: HIPAA Compliance Details
+title: HIPAA Compliance Technical Details
 description: Learn how to request, grant, and revoke user permissions to your dataset. Simplify user permissions with roles.
 ---
 
