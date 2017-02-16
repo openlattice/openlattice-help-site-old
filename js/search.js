@@ -3,7 +3,6 @@
     var searchResults = document.getElementById('search-results');
 
     if (results.length) { // Are there any results?
-      console.log(results)
       var appendString = '';
 
       for (var i = 0; i < results.length; i++) {  // Iterate over the results
@@ -45,13 +44,13 @@
     });
 
     for (var key in window.store) { // Add the data to lunr
-      console.log(window.store)
-      idx.add({
-        'id': key,
-        'title': window.store[key].title,
-        'content': window.store[key].content
-      });
-
+      if (key !== 'assets-main-css') {
+        idx.add({
+          'id': key,
+          'title': window.store[key].title,
+          'content': window.store[key].content
+        });
+      }
       var results = idx.search(searchTerm); // Get lunr to perform a search
       displaySearchResults(results, window.store); // We'll write this in the next section
     }
