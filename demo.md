@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Demo
+permalink: /demo/
 description: Watch our Data Driven Justice presentation and Loom demo videos.
 menu: true
 ---
