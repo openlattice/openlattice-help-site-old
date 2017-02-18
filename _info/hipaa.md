@@ -1,7 +1,7 @@
 ---
 layout: page
 title: HIPAA Compliance Technical Details
-description: Learn how to request, grant, and revoke user permissions to your dataset. Simplify user permissions with roles.
+description: Loom technical specifications for HIPAA compliance.
 ---
 
 * TOC

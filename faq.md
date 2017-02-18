@@ -2,7 +2,7 @@
 layout: page
 title: FAQ
 permalink: /faq/
-description: For answers to questions on HIPAA compliance, permissions, pricing, and other commonly asked questions.
+description: Get answers about HIPAA compliance, permissions, pricing, and other commonly asked questions.
 menu: true
 ---
 
