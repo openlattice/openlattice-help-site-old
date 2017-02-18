@@ -4,16 +4,16 @@ title: Linking Entity Sets
 description: Link and merge data across your Entity Sets.
 ---
 
-* TOC
+1. TOC
 {:toc}
 
-## Step 1: Choose entity sets to link
+## Choose entity sets to link
 
 In the dropdown menu, select the two (or more) entity sets you want to link.
 
 > **Note:** Existing linked datasets can appear in the menu, since once you link a dataset, you can continue to link it with other datasets.
 
-## Step 2: Choose property types to link
+## Choose property types to link
 
 Select the properties you want to use for the linking. For example, you may want to link two datasets by matching First and Last Names.
 
@@ -21,7 +21,7 @@ Select the property, and then choose at least 2 entity sets you want to link wit
 
 > **Note:** If some of your chosen entity sets are not appearing in the list, it means the property does not exist in that entity set.
 
-## Step 3: Define the linked entity type to create
+## Define the linked entity type to create
 
 Use the following naming conventions to define your entity type:
 
@@ -39,6 +39,10 @@ Check the boxes for the properties you want to output in the generated linked da
 
 Click "Create Linked Entity Type" to move onto the next step.
 
-## Step 4: Define your linked entity set
+## Define your linked entity set
 
 Using the same naming and description you listed in Step 3, fill out the Name, Title, and Description for your new Entity Set and click "Link" to create your Linked Entity Set.
+
+## Video Walkthrough
+
+{% include video.html id="mJjywiSf5Ak" %}
