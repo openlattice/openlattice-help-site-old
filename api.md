@@ -5,9 +5,9 @@ permalink: /api/
 description: Learn how to use Loom's APIs.
 menu: true
 ---
-<table>
+<table class="api-list">
   <th>API</th>
   <th>Description</th>
-  {% include api.html name="shuttle" description="Docs for Loom's Shuttle API. Used for pushing data integrations." %}
-  {% include api.html name="loom-api" description="Loom API" %}
+  {% include api.html name="shuttle" description="Docs for Loom's Shuttle API for pushing data integrations" %}
+  {% include api.html name="loom-api" description="Docs for Loom API" %}
 </table>
