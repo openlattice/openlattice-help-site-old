@@ -1,8 +1,12 @@
 ---
 layout: page
-title: API
+title: APIs
 permalink: /api/
 description: Learn how to use Loom's APIs.
 menu: true
 ---
-{% include construction.html %}
+<table>
+  <th>API</th>
+  <th>Description</th>
+  {% include api.html name="shuttle" description="Docs for Loom's Shuttle API. Used for pushing data integrations." %}
+</table>
