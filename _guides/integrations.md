@@ -38,12 +38,18 @@ Then, go to **Actions > View Details > Manage Permissions > EMAILS** and search 
 
 ## Customize template directory
 
-The integration file will be written in **Java**. You will need Java and a Java IDE such as **IntelliJ** installed.
+This integration project requires **Java** to be installed.
 
 * [Install Java](https://java.com/en/download/help/index_installing.xml)
-* [Install IntelliJ](https://www.jetbrains.com/idea/download/)
 
-Next, download and unzip the [template integration project](/files/template.zip):
+You can check to see if Java is installed on your system using the command line:
+
+```shell
+$ java -version
+java version "1.8.0_121"
+```
+
+Next, download and unzip the [template integration project](/files/template.zip) and open it using your chosen text editor:
 
 ```text
 build.gradle
@@ -71,8 +77,6 @@ The template project contains integration code for an example organization (**ex
 | `/exampleorg`     | `/dataloom`     |
 
 <br>
-Once you're ready, **import the template project into IntelliJ** and let's begin editing the gradle files to build and run this integration.
-
 ### Gradle
 Gradle is a build tool that you need to configure for your project. You will need to make changes to the following files:
 * `build.gradle`
@@ -217,6 +221,18 @@ public static String getLastName( Object obj ) {
 ## Run your Integration
 
 {% include construction.html %}
+
+Using the command line, navigate to the directory containing your `template` project, and type:
+
+**Mac/Linux:**
+```
+$ ./gradlew run
+```
+
+**Windows:**
+```
+$ .\gradlew.bat run
+```
 
 ## Set/Request permissions
 
