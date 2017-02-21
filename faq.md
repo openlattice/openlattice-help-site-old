@@ -18,7 +18,7 @@ Loom infrastructure is compliant with the Health Insurance Portability and Accou
 
 ## Can I control what data I share?
 
-Yes, you retain ownership of the data you upload and can set permissions on the data per property type. Individuals can request access to read your datasets, or you can automatically assign permissions using Roles you define in your organization. We also support de-identification so you can easily share data with outside stakeholders.
+Yes, you retain ownership of the data you upload and have full control over the permissions on the dataset and property types. Individuals can request access to read your datasets, or you can automatically assign permissions using Roles you define in your organization. We also support de-identification so you can easily share data with outside stakeholders.
 
 * [Read more about how to assign and revoke user permissions](/guides/permissions/)
 
