@@ -13,7 +13,7 @@ Loom complies with [HIPAA Security Rule](https://www.hhs.gov/sites/default/files
 
 ### Access Control and Emergency Access Procedure
 
-Users can control access to Entity Sets they own by assigning and revoking user permissions or by defining a user role. Loom supports de-identification by stripping PII fields from the Entity Set before sharing the data with outside stakeholders.
+Users can control access to Entity Sets they own by assigning and revoking user permissions or by defining a user role. Loom also allows the owner of the dataset to create a de-identified copy by stripping PII fields from the Entity Set before sharing the data with outside stakeholders.
 
 * [Tutorial: Permissions](/guides/permissions/)
 
