@@ -34,4 +34,4 @@ If you need additional services outside of our core functionality, [please email
 
 ## How can I schedule a demo?
 
-Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team.
+Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos online that you can [view here](/demos/).
