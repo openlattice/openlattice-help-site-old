@@ -22,9 +22,16 @@ Yes, you retain ownership of the data you upload and have full control over the 
 
 * [Read more about how to assign and revoke user permissions](/guides/permissions/)
 
+## What data formats can I integrate into Loom?
+
+We support any data format supported by Apache Spark: CSV, Parquet, Postgres, and any JDBC datasource.
+
+If you need to use a data format that's not on this list, please reach out to us at [{{site.email}}](mailto:{{site.email}}) and we'll see what we can do to help.
+
 ## How much does Loom cost?
 All of Loom's core services are **free**. This includes:
 
+* Unlimited number of data integrations
 * Making datasets available for download
 * Removing PII through de-identification
 * Linking and Merging across multiple datasets
@@ -34,4 +41,4 @@ If you need additional services outside of our core functionality, [please email
 
 ## How can I schedule a demo?
 
-Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos online that you can [view here](/demos/).
+Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos available online that you can [view here](/demos/).
