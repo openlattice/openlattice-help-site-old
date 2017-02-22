@@ -26,9 +26,9 @@ Next, you'll need login credentials to an account that has write access to your 
 
 > **Why do I need to make a separate account?** For security reasons, we recommend creating a separate Loom account for your organization, and only granting write-access to your organization's account, and not to individual accounts.
 
-Log out of your individual account and create a separate Loom account for your organization. *Save the credentials for this account in a safe place.*
+Log out of your individual account and create a separate Loom account for your organization. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
 
-{% include image.html caption="Create an integration account" path="guides/integrations-login.png" %}
+* [Related Guides: Sign Up for a New Account](/guides/signups/)
 
 ## Manage Permissions
 
@@ -43,6 +43,8 @@ Give your organization account write access through the **Manage Permissions** m
 Search for your organization account's email address and grant it **WRITE** permissions to your datasource.
 
 {% include image.html caption="Manage Permissions for Integration account" path="guides/integrations-write-permission.png" %}
+
+* [Related Guides: Permissions](/guides/permissions/)
 
 ## Install Java
 
@@ -227,8 +229,6 @@ $ ./gradlew run
 ```
 $ .\gradlew.bat run
 ```
-
-## Set/Request permissions
 
 Congratulations! Once you've completed the integration, you'll be able to view and search your dataset through the Loom platform.
 
