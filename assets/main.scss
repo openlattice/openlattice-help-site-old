@@ -219,6 +219,10 @@ label {
   text-align: left;
 }
 
+blockquote {
+  margin: 30px 0px;
+}
+
 // change to 1 column layout for small screens
 @include media-query($on-palm) {
     .flex-container {
