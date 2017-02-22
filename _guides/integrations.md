@@ -80,7 +80,7 @@ settings.gradle
 
 > **Note:** All instances of `exampleorg` refer to your organization name. Customizing this is not necessary, but if you choose to, make sure to match capitalization. For example: `ExampleOrg.java` would become `MyCustomName.java`
 
-### Gradle
+### Configure Gradle
 [Gradle](https://gradle.org/) is a build tool used to configure and run your project. You only need to modify the following files:
 * `build.gradle`
 * `settings.gradle`
