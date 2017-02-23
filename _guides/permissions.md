@@ -54,4 +54,10 @@ Permissions can be revoked by the dataset owner at anytime by navigating to your
 
 ## Using Roles
 
-{% include construction.html %}
+If you've created an organization, you can assign permissions to a **Role** and all the users with that assigned role will be able to access the dataset with those permissions.
+
+{% include image.html caption="Assign permissions to a role" path="guides/permissions-roles.gif" %}
+
+{% include related.html content="
+* [Learn how to create an organization and assign user roles](/guides/organizations/)
+" %}
