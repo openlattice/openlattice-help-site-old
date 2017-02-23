@@ -9,11 +9,13 @@ description: Learn how to request, grant, and revoke user permissions to your da
 
 ## Permission Types
 
-* **Hidden**: Dataset is not visible to anyone except you.
-* **Discover**: Reserved for future use. **(Do Not Use)**
-* **Read**: Allows user to read data in the dataset.
-* **Write**: Allows user to add new data to the dataset. *This permission should only be used by owners of the data who are completing data integrations.*
-* **Owner**: Allows a user full admin access to the dataset, including managing permissions for the dataset and data properties. By default, the user who integrates the data is classified as owner of the data.
+| Field    | Purpose                                                                                                                                                                                              |
+|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Hidden   | Dataset is not visible to anyone except you.                                                                                                                                                         |
+| Discover | Reserved for future use. **(Do Not Use)**                                                                                                                                                            |
+| Read     | Allows user to read data in the dataset.                                                                                                                                                             |
+| Write    | Allows user to add new data to the dataset. **(This permission should only be used by owners of the data who are completing data integrations.)**                                                        |
+| Owner    | Allows a user full admin access to the dataset, including managing permissions for the dataset and data properties. By default, the user who integrates the data is classified as owner of the data. |
 
 ## Requesting permissions
 
