@@ -15,14 +15,18 @@ Loom complies with [HIPAA Security Rule](https://www.hhs.gov/sites/default/files
 
 Users can control access to Entity Sets they own by assigning and revoking user permissions or by defining a user role. Loom also allows the owner of the dataset to create a de-identified copy by stripping PII fields from the Entity Set before sharing the data with outside stakeholders.
 
+{% include related.html content="
 * [Guide: Permissions](/guides/permissions/)
+" %}
 
 ### Encrypted Data and HIPAA Compliant infrastructure
 
 Loom's infrastructure is built on HIPAA and CJIS compliant Amazon services such as Amazon EBS (Elastic Block Storage), which uses virtual hard drives encrypted with Amazon KMS (Key Management System). All data is stored securely at rest encrypted with AES-256.
 
+{% include related.html content="
 * [Amazon Web Services (AWS) HIPAA Compliance](https://aws.amazon.com/compliance/hipaa-compliance/)
 * [Amazon Web Services (AWS) CJIS Compliance](https://aws.amazon.com/compliance/cjis/)
+" %}
 
 ### Audit Controls
 

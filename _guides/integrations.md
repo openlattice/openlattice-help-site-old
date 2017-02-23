@@ -28,7 +28,9 @@ Next, you'll need login credentials to an account that has write access to your 
 
 Log out of your individual account and create a separate Loom account for your organization. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
 
-* [Related Guides: Sign Up for a New Account](/guides/signups/)
+{% include related.html content="
+* [Sign Up for a New Account](/guides/signups/)
+" %}
 
 ## Manage Permissions
 
@@ -44,7 +46,9 @@ Search for your organization account's email address and grant it **WRITE** perm
 
 {% include image.html caption="Manage Permissions for Integration account" path="guides/integrations-write-permission.png" %}
 
-* [Related Guides: Permissions](/guides/permissions/)
+{% include related.html content="
+* [Setting and requesting permissions](/guides/permissions/)
+" %}
 
 ## Install Java
 
@@ -234,5 +238,7 @@ Congratulations! Once you've completed the integration, you'll be able to view a
 
 {% include image.html caption="Example: Search your dataset" path="/guides/integrations-search-screenshot.png" %}
 
-* [Learn how to set and request permissions in Loom](/guides/permissions/)
-* [Learn how to link datasets Loom](/guides/linking/)
+{% include related.html content="
+* [Setting and requesting permissions](/guides/permissions/)
+* [Linking datasets](/guides/linking/)
+" %}
