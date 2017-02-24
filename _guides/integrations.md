@@ -40,11 +40,7 @@ Log back into your individual account, go to **Catalog**, and browse for your En
 
 Give your integration account write access through the **Manage Permissions** menu for the Entity Set and each of its properties.
 
-{% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations-manage-permissions.png" %}
-
-Search for your integration account's email address and grant it **WRITE** permissions to your datasource.
-
-{% include image.html caption="Manage Permissions for Integration account" path="guides/integrations-write-permission.png" %}
+{% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations-manage-permissions.gif" %}
 
 {% include related.html content="
 * [Setting and requesting permissions](/guides/permissions/)
