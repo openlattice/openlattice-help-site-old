@@ -9,15 +9,15 @@ description: Create an organization, add members, and assign user roles.
 
 ## Create a new Organization
 
-Once you have an organization, you can create custom roles within your organization and assign permissions per role.
+Once you have an organization, you can create custom roles and assign permissions per role.
 
-To create an organization, go to **Organizations** and click **Create New Organization**. Fill in the name and description for your organization. You can also indicate whether you want your organization to be visible in search by marking it as **Public**.
+To create an organization, go to **Organizations** and click **Create New Organization**. Fill in the name and description for your organization. You can also set whether you want your organization to be visible in search by marking it as **Public**.
 
 {% include image.html caption="Create new organization" path="guides/organizations-create-new.gif" %}
 
 ## Specify Domains
 
-Adding **Domains** will automatically approve members who request to join your organization using those domains.
+You can add a **Domain** to automatically approve members who request to join with an approved email address. For example, adding `thedataloom.com` will automatically approve user requests from `user@thedataloom.com` email addresses.
 
 {% include image.html caption="Add domains to be automatically approved" path="guides/organizations-domains.gif" %}
 
@@ -29,7 +29,7 @@ You can add custom roles within your organization. These roles can be assigned t
 
 ## Add Members
 
-Simply search for members by name or email, and add them to your organization.
+Easily search for members to add to your organization by name or email.
 
 {% include image.html caption="Search and add members to your organization" path="guides/organizations-add-members.gif" %}
 

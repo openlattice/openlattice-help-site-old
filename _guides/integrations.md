@@ -29,7 +29,7 @@ Next, you'll need login credentials to an account that has write access to your 
 Log out of your individual account and create a separate Loom account for your integration. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
 
 {% include related.html content="
-* [Sign Up for a New Account](/guides/signups/)
+* [Learn how to sign up for a new account](/guides/signups/)
 " %}
 
 ## Manage Permissions
@@ -43,7 +43,7 @@ Give your integration account write access through the **Manage Permissions** me
 {% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations-manage-permissions.gif" %}
 
 {% include related.html content="
-* [Setting and requesting permissions](/guides/permissions/)
+* [Learn how to set, request, and grant/revoke permissions](/guides/permissions/)
 " %}
 
 ## Install Java
@@ -232,9 +232,15 @@ $ .\gradlew.bat run
 
 Congratulations! Once you've completed the integration, you'll be able to view and search your dataset through the Loom platform.
 
-{% include image.html caption="Example: Search your dataset" path="/guides/integrations-search-screenshot.png" %}
+{%
+  include image.html
+  caption="Example: Search your dataset" path="/guides/integrations-search.gif" 
+%}
 
-{% include related.html content="
+{%
+  include related.html
+  content="
 * [Setting and requesting permissions](/guides/permissions/)
 * [Linking datasets](/guides/linking/)
-" %}
+"
+%}
