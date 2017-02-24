@@ -18,7 +18,7 @@ Before you can begin integrating your data, you'll need to submit a request to a
 ## Add your datasource
 The confirmation you receive will list the new Property and Entity Types created for your dataset. Once you receive this information, go to the **Datasources** tab and create your datasource using the email instructions.
 
-{% include image.html caption="Create datasource in Loom" path="guides/integrations-create-datasource.png" %}
+{% include image.html caption="Create datasource in Loom" path="guides/integrations/create-datasource.png" %}
 
 ## Create an integration account
 
@@ -36,11 +36,11 @@ Log out of your individual account and create a separate Loom account for your i
 
 Log back into your individual account, go to **Catalog**, and browse for your Entity Set. Select **View Details** in the **Actions** menu.
 
-{% include image.html caption="View Details Action Menu" path="guides/integrations-view-details.png" %}
+{% include image.html caption="View Details Action Menu" path="guides/integrations/view-details.png" %}
 
 Give your integration account write access through the **Manage Permissions** menu for the Entity Set and each of its properties.
 
-{% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations-manage-permissions.gif" %}
+{% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations/manage-permissions.gif" %}
 
 {% include related.html content="
 * [Learn how to set, request, and grant/revoke permissions](/guides/permissions/)
@@ -234,7 +234,7 @@ Congratulations! Once you've completed the integration, you'll be able to view a
 
 {%
   include image.html
-  caption="Example: Search your dataset" path="/guides/integrations-search.gif" 
+  caption="Example: Search your dataset" path="/guides/integrations/search.gif"
 %}
 
 {%

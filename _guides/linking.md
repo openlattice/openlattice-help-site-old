@@ -20,7 +20,7 @@ In the dropdown menu, select the two (or more) entity sets you want to link and 
 {%
   include image.html
   caption="Choose entity sets to link"
-  path="/guides/linking-step1.gif"
+  path="/guides/linking/step1.gif"
 %}
 
 > **Note:** Existing linked datasets can appear in the menu, since once you link a dataset, you can continue to link it with other datasets.
@@ -32,7 +32,7 @@ Select the properties you want to use for the linking. For example, you may want
 {%
   include image.html
   caption="Choose entity sets to link"
-  path="/guides/linking-step2.gif"
+  path="/guides/linking/step2.gif"
 %}
 
 > **Note:** If some of your chosen entity sets are not appearing in the list, it means the property does not exist in that entity set.
@@ -44,7 +44,7 @@ If you want to only include de-identified properties in the output, select **Dei
 {%
   include image.html
   caption="Define the linked entity type"
-  path="/guides/linking-example.png"
+  path="/guides/linking/example.png"
 %}
 
 Use the following naming conventions when you are defining your new linked entity type.
@@ -67,5 +67,5 @@ Using the same naming and description from Step 3, fill out the Name, Title, and
 {%
   include image.html
   caption="Create the linked entity set"
-  path="/guides/linking-step4.png"
+  path="/guides/linking/step4.png"
 %}

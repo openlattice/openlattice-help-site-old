@@ -28,7 +28,7 @@ your request. The owner can also revoke access at any time.
 {%
   include image.html
   caption="Requesting permission to view properties"
-  path="guides/permissions-request.gif"
+  path="guides/permissions/request.gif"
 %}
 
 ## Granting permissions
@@ -42,7 +42,7 @@ allow permission.
 {%
   include image.html
   caption="Granting permission to a user"
-  path="guides/permissions-allow-deny.gif"
+  path="guides/permissions/allow-deny.gif"
 %}
 
 ## Revoking permissions
@@ -54,7 +54,7 @@ on a per-dataset or per-property basis.
 {%
   include image.html
   caption="Revoke permissions from individual"
-  path="guides/permissions-revoke.png"
+  path="guides/permissions/revoke.png"
 %}
 
 ## Using Roles
@@ -66,7 +66,7 @@ those permissions.
 {%
   include image.html
   caption="Assign permissions to a role"
-  path="guides/permissions-roles.gif"
+  path="guides/permissions/roles.gif"
 %}
 
 {%
