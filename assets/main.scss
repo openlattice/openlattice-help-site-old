@@ -72,9 +72,10 @@ a {
 }
 
 .caption {
-  font-weight: bold;
+  font-style: italic;
+  color: $grey-color;
   font-size: $small-font-size;
-  margin-bottom: 5px;
+  margin: 5px 0px 20px 0px;
   text-align: center;
 }
 
@@ -85,7 +86,6 @@ a {
   flex-basis: 40%;
   text-align: center;
   margin: 5px;
-  padding: 20px;
   .large {
     font-size: $base-font-size * 1.5;
     color: $text-color;
