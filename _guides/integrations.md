@@ -7,7 +7,7 @@ description: Get started and integrate your data with Loom.
 1. TOC
 {:toc}
 
-**Data integrations** take your data and map it to Loom's data model. Once you have completed this process, you'll be able to start linking and sharing your data with other members in your organization.
+**Data integrations** take your data and map it to Loom's data model. Once you have completed this process, you'll be able to start linking and sharing your data with other users.
 
 ## Request Entity and Property Types
 
@@ -24,9 +24,9 @@ The confirmation you receive will list the new Property and Entity Types created
 
 Next, you'll need login credentials to an account that has write access to your dataset. To do this, we recommend creating a new Loom account (only to be used for data integrations) and use these account credentials to perform the integration.
 
-> **Why do I need to make a separate account?** For security reasons, we recommend creating a separate Loom account for your organization, and only granting write-access to your organization's account, and not to individual accounts.
+> **Why do I need to make a separate account?** For security reasons, we recommend creating a separate Loom account for your integration, and only granting write-access to your integration account, and not to individual accounts.
 
-Log out of your individual account and create a separate Loom account for your organization. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
+Log out of your individual account and create a separate Loom account for your integration. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
 
 {% include related.html content="
 * [Sign Up for a New Account](/guides/signups/)
@@ -38,11 +38,11 @@ Log back into your individual account, go to **Catalog**, and browse for your En
 
 {% include image.html caption="View Details Action Menu" path="guides/integrations-view-details.png" %}
 
-Give your organization account write access through the **Manage Permissions** menu for the Entity Set and each of its properties.
+Give your integration account write access through the **Manage Permissions** menu for the Entity Set and each of its properties.
 
 {% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations-manage-permissions.png" %}
 
-Search for your organization account's email address and grant it **WRITE** permissions to your datasource.
+Search for your integration account's email address and grant it **WRITE** permissions to your datasource.
 
 {% include image.html caption="Manage Permissions for Integration account" path="guides/integrations-write-permission.png" %}
 
