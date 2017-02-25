@@ -7,42 +7,69 @@ description: Get started and integrate your data with Loom.
 1. TOC
 {:toc}
 
-**Data integrations** take your data and map it to Loom's data model. Once you have completed this process, you'll be able to start linking and sharing your data with other users.
+<!-- **Data integrations** take your data and map it to Loom's data model. Once you have completed this process, you'll be able to start linking and sharing your data with other users. -->
 
 ## Request Entity and Property Types
 
-Before you can begin integrating your data, you'll need to submit a request to a Loom administrator to create Property and Entity Types that match your dataset schema.
+**Data integrations** take your data and map it to Loom's data model. Start by
+submitting a request to a Loom administrator to create Property and Entity
+Types that match your dataset schema.
 
-> **How do I do this?** List your header types and descriptions in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). A Loom administrator will complete this process and send you a confirmation email within 24 hours, along with further instructions.
+> **How do I submit a request?** List your column headers and descriptions in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). A Loom administrator will complete this process and send you a confirmation email within 24 hours, along with further instructions.
 
 ## Add your datasource
-The confirmation you receive will list the new Property and Entity Types created for your dataset. Once you receive this information, go to the **Datasources** tab and create your datasource using the email instructions.
+The confirmation you receive will list the new Property and Entity Types we've
+created for your dataset. Once you receive this information, go to the
+**Datasources** tab and create your datasource using the email instructions.
 
-{% include image.html caption="Create datasource in Loom" path="guides/integrations/create-datasource.png" %}
+{%
+  include image.html
+  caption="Example: Creating a datasource for crime index dataset"
+  path="guides/integrations/create-datasource.png"
+%}
 
 ## Create an integration account
 
-Next, you'll need login credentials to an account that has write access to your dataset. To do this, we recommend creating a new Loom account (only to be used for data integrations) and use these account credentials to perform the integration.
+Next, you'll need to grant write-access to an **integration account** (a Loom
+account you only use for data integrations) and use the login credentials for
+that account to run your integration. If this is your first time running a data
+integration, you will first need to create the integration account. If you've
+already integrated data using the Loom platform, you can use the same login
+credentials you used before.
 
-> **Why do I need to make a separate account?** For security reasons, we recommend creating a separate Loom account for your integration, and only granting write-access to your integration account, and not to individual accounts.
+Log out of your individual account and create a separate Loom account for your
+integration. *Save the credentials for this account in a safe place, since they
+will be used in your integration script.*
 
-Log out of your individual account and create a separate Loom account for your integration. *Save the credentials for this account in a safe place, since they will be used in your integration script.*
-
-{% include related.html content="
+{%
+  include related.html
+  content="
 * [Learn how to sign up for a new account](/guides/signups/)
 " %}
 
 ## Manage Permissions
 
-Log back into your individual account, go to **Catalog**, and browse for your Entity Set. Select **View Details** in the **Actions** menu.
+Once your integration account has been created, log back into your individual
+account, go to **Catalog**, and browse for your Entity Set. Select
+**View Details** in the **Actions** menu.
 
-{% include image.html caption="View Details Action Menu" path="guides/integrations/view-details.png" %}
+{%
+  include image.html
+  caption="View Details Action Menu"
+  path="guides/integrations/view-details.png"
+%}
 
-Give your integration account write access through the **Manage Permissions** menu for the Entity Set and each of its properties.
+Under **Manage Permissions**, give your integration account **Write** permissions
+for the Entity Set and each of its properties.
 
-{% include image.html caption="Manage permissions for Entity Set and Properties" path="guides/integrations/manage-permissions.gif" %}
+{%
+  include image.html
+  caption="Manage permissions for Entity Set and Properties" path="guides/integrations/manage-permissions.gif"
+%}
 
-{% include related.html content="
+{%
+  include related.html
+  content="
 * [Learn how to set, request, and grant/revoke permissions](/guides/permissions/)
 " %}
 
@@ -153,7 +180,9 @@ public static FullQualifiedName PT_RATE = new FullQualifiedName( "publicsafety.c
 
 ### Using the Shuttle API
 
-[Loom's Shuttle API](/api/) maps the columns in your CSV to their corresponding Loom property types and pushes the data to our servers. Your `Flight` code should be started for you, since you already defined your values at the top of the script:
+[Loom's Shuttle API](/api/) will complete the mapping and push your data to
+Loom's servers. Your `Flight` code should be started for you, since you already
+defined your values at the top of the script:
 
 ```java
 Flight flight = Flight.newFlight()
@@ -165,17 +194,16 @@ Flight flight = Flight.newFlight()
 .done();
 ```
 
-Finally, replace the column and Property names in the template code with the  names given in your confirmation email:
+Properties are defined using the following format:
 
 ```java
-// "Year" is the column header from your CSV
-.addProperty( PT_YEAR )
-    .value(row -> row.getAs( "Year" )).ok()
+// Example: PT_YEAR and "Year"
+.addProperty( PT_COLUMN_NAME )
+    .value(row -> row.getAs( "Column Name from CSV" )).ok()
 ```
 
-<div class="caption">
-Example: Full Flight code for crime index entity set and its properties
-</div>
+Here is an example of the full `Flight` code for crime index entity set
+and its properties
 
 ```java
 Flight flight = Flight.newFlight()
@@ -195,11 +223,13 @@ Flight flight = Flight.newFlight()
 ```
 ## Optional: Create custom functions
 
-Sometimes, your data might need custom functions to parse data in your dataset. For example, if your data had a `Name` column, but you wanted to split `Name` into `firstname` and `lastname`, you could write custom functions to extract that data.
+Sometimes, your data might need custom functions to parse data in your dataset.
+For example, if your data had a `Name` column, but you wanted to split `Name`
+into `firstname` and `lastname`, you could write custom functions to extract that
+data.
 
-<div class="caption">
-Example: Custom functions for parsing Name column
-</div>
+Here is an example of two custom functions used to parse a `Name` field into
+`firstname` and `lastname`.
 
 ```java
 // CUSTOM FUNCTIONS DEFINED BELOW
@@ -207,7 +237,7 @@ public static String getFirstName( Object obj ) {
   String name = obj.toString();
   String[] names = name.split( "," );
   return names[ 1 ].trim();
-  }
+}
 
 public static String getLastName( Object obj ) {
   String name = obj.toString();
@@ -230,12 +260,8 @@ $ ./gradlew run
 $ .\gradlew.bat run
 ```
 
-Congratulations! Once you've completed the integration, you'll be able to view and search your dataset through the Loom platform.
-
-{%
-  include image.html
-  caption="Example: Search your dataset" path="/guides/integrations/search.gif"
-%}
+Once the integration completes, you will be able to begin managing your dataset
+on Loom.
 
 {%
   include related.html
