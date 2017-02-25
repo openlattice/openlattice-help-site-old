@@ -4,14 +4,19 @@ title: Linking Entity Sets
 description: Link and merge data across your Entity Sets.
 ---
 
+{% include video.html id="mJjywiSf5Ak" %}
+
+{%
+  include caption.html
+  content="Loom's linking feature is currently located
+  [here](https://thedataloom.com/gallery/#/link). Please
+  reach out to us with any feedback or questions."
+%}
+
+<hr>
+
 1. TOC
 {:toc}
-
-## Where is Loom's linking feature?
-
-Loom's linking feature is currently located [here](https://thedataloom.com/gallery/#/link). Please let us know of any feedback you have on the linking workflow.
-
-{% include video.html id="mJjywiSf5Ak" %}
 
 ## Choose entity sets to link
 

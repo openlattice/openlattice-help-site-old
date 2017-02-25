@@ -110,13 +110,18 @@ a.item {
   text-align: center;
 }
 
-// Small purple bar under headings
+// dividers and line breaks
 .line-break {
   height: 4px;
   width: 25px;
   background: #4203c5;
   display: inline-block;
   margin: 15px 0;
+}
+
+hr {
+  border: 1px solid $grey-color-light;
+  margin: 20px 0px;
 }
 
 // Tables and videos
@@ -184,15 +189,6 @@ h4, h5, h6 {
   font-size: $medium-font-size * 0.75 !important;
   font-style: italic;
   text-decoration: none;
-}
-
-// Under construction box
-.construction {
-  padding: 10px;
-  background: $grey-color-light;
-  border-radius: 5px;
-  margin-bottom: 40px;
-  text-align: center;
 }
 
 // Search styling
