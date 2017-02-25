@@ -3,7 +3,7 @@ email: help@thedataloom.com
 description: > # Welcome to Loom. These are the support resources to help you use the Loom platform.
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-logo: kryptnostic-logo-big.549269b5.png
+logo: loom-logo-big.png
 loom: https://thedataloom.com/
 
 # Build settings
