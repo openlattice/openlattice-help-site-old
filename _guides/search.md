@@ -4,6 +4,10 @@ title: Searching Entity Sets
 description: Search for data in your Entity Sets.
 ---
 
+{% include video.html id="bwq7S7xmjK4" %}
+
+<hr>
+
 * TOC
 {:toc}
 
