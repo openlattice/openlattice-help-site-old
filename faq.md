@@ -48,6 +48,17 @@ All of Loom's core services are **free**. This includes:
 
 > **Contact Us:** If you need additional services outside of our core functionality, [please email us](mailto:{{site.email}}) and we'll see what we can do to help.
 
+## Are there any sample datasets that I can view?
+
+Yes! When you first log in, visit **Catalog** and search
+"sample" for example datasets you can view and search in our systems.
+
+{% include related.html
+  content="
+  * [Learn more about searching datasets in Loom](http://help.thedataloom.com/guides/search/)
+"%}
+
+
 ## How can I schedule a demo?
 
 Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos available online that you can [view here](/demos/).
