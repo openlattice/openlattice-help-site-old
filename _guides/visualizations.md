@@ -14,7 +14,7 @@ Currently, the supported visualization types are:
 * Line Chart
 * Map Visualization
 
-We are constantly working to develop new features and visualization types. [Please reach out to us]({{mailto:site.email}}) if there's a common visualization tool you need that we do not currently cover.
+We are constantly working to develop new features and visualization types. [Please reach out to us](mailto:{{site.email}}) if there's a common visualization tool you need that we do not currently cover.
 
 ## Scatter and Line Charts
 
