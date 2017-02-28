@@ -113,10 +113,8 @@ settings.gradle
 [Gradle](https://gradle.org/) is a build tool used to configure and run your project. You only need to modify the following files:
 * `build.gradle`
 * `settings.gradle`
-* `run.sh`
 
-#### build.gradle
-
+**build.gradle:** Change the Entity Set `description`, `mainClassName` and `run.args`.
 ```gradle
 // Change the description for your Entity Set
 description = "Crime Index Data for Nation's Largest Cities"
@@ -128,13 +126,7 @@ mainClassName = "com.dataloom.integrations.exampleorg.ExampleOrg"
 run.args = ["crime_index.csv","test@example.com","examplepassword"]
 ```
 
-#### run.sh
-```shell
-# Change to name of your csv file and organization account's login credentials
-./exampleorg-v0.0.1/bin/exampleorg ./crime_index.csv test@example.com examplepassword
-```
-
-#### settings.gradle
+**settings.gradle:** Change to match the name of your project's root directory. Default is `template`.
 ```gradle
 // Optional: Change to match the name of your project's root directory
 // If you didn't change this, it should still be called template
