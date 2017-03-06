@@ -4,7 +4,7 @@ title: Linking Entity Sets
 description: Link and merge data across your Entity Sets.
 ---
 
-{% include video.html id="mJjywiSf5Ak" %}
+{% include video.html id="lF_YOXu4ivg" %}
 
 {%
   include caption.html

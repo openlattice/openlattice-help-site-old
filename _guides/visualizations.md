@@ -4,6 +4,10 @@ title: Data Visualizations
 description: Learn how to use Loom's data visualization tools
 ---
 
+{% include video.html id="A1y1t8HwGlU" %}
+
+<hr>
+
 * TOC
 {:toc}
 

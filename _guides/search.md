@@ -4,14 +4,14 @@ title: Searching Entity Sets
 description: Search for data in your Entity Sets.
 ---
 
-{% include video.html id="bwq7S7xmjK4" %}
+{% include video.html id="Zot_hiKe_gM" %}
 
 <hr>
 
 * TOC
 {:toc}
 
-## Browsing the catalog
+## Browsing the Catalog
 
 You can search for datasets by keyword (Search Term) or you can search by
 Property or Entity Type if you know this information already. If you search

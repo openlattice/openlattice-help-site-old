@@ -4,12 +4,20 @@ title: Organizations
 description: Create an organization, add members, and assign user roles.
 ---
 
-1. TOC
+{% include video.html id="M4DymopABAg" %}
+
+<hr>
+
+* TOC
 {:toc}
 
-## Create a new Organization
+## Create a New Organization
 
-Once you have an organization, you can create custom roles and assign permissions per role.
+{% include video.html
+  id="4umDrr_23S8"
+%}
+
+Once you have created an organization, you can define custom roles and assign permissions per role.
 
 To create an organization, go to **Organizations** and click **Create New Organization**. Fill in the name and description for your organization. You can also set whether you want your organization to be visible in search by marking it as **Public**.
 
@@ -19,7 +27,7 @@ To create an organization, go to **Organizations** and click **Create New Organi
   path="guides/organizations/create-new.gif"
 %}
 
-## Specify Domains
+### Specify Domains
 
 You can add a **Domain** to automatically approve members who request to join with an approved email address. For example, adding `thedataloom.com` will automatically approve user requests from `user@thedataloom.com` email addresses.
 
@@ -29,7 +37,11 @@ You can add a **Domain** to automatically approve members who request to join wi
   path="guides/organizations/domains.gif"
 %}
 
-## Create Roles
+### Create Roles
+
+{% include video.html
+  id="DFM3yo33mcw"
+%}
 
 You can add custom roles within your organization. These roles can be assigned to users, so you can grant and revoke permissions on a per-role basis.
 
@@ -39,7 +51,7 @@ You can add custom roles within your organization. These roles can be assigned t
   path="guides/organizations/roles.gif"
 %}
 
-## Add Members
+### Add Members
 
 Easily search for members to add to your organization by name or email.
 
@@ -48,7 +60,7 @@ Easily search for members to add to your organization by name or email.
   caption="Search and add members to your organization" path="guides/organizations/add-members.gif"
 %}
 
-## Assign Roles
+### Assign Roles
 
 Once you've created roles and added members to your team, you can assign roles to individuals and use them to bulk add permissions to members in your organization.
 

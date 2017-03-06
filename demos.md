@@ -11,9 +11,11 @@ menu: true
 
 ## Suggested Topics
 
-| Topic                                   | Tutorial Description                                                                                                                                                               |
+<!-- | Topic                                   | Tutorial Description                                                                                                                                                               |
 |-----------------------------------------|--------------------------------------------------------|
 | [Search](/guides/search/)               | (Walkthrough and Video) Search for data in your datasets. |
 | [Linking](/guides/linking/)             | (Walkthrough and Video) Link and merge disparate datasets. |
 | [Organizations](/guides/organizations/) | (Walkthrough) Create organizations, add members, and assign user roles. |
-| [Permissions](/guides/permissions/)     | (Walkthrough) Request, grant, and revoke user permissions. |
+| [Permissions](/guides/permissions/)     | (Walkthrough) Request, grant, and revoke user permissions. | -->
+
+{% include guides-table.html %}
