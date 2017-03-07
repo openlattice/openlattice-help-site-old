@@ -1,11 +1,19 @@
 ---
 layout: home
 ---
-# Welcome
+# What can we help you with?
 
-<center>We want to make sure that you have all the tools you need to successfully tackle your data challenges.</center>
+<div class="tagline">We want to make sure that you have all the tools you need
+to successfully tackle your data challenges.</div>
 
-<div class="flex-container">
+<form action="/index.html" method="get">
+  <input type="text" id="search-box" name="query" placeholder="Search for a topic">
+  <input type="submit" value="Search">
+</form>
+
+<div id="search-results"></div>
+
+<div class="flex-container main-menu">
 {% for page in site.pages %}
   {% if page.menu == true %}
   <a href="{{ page.url | relative_url }}" class="item">
@@ -16,14 +24,6 @@ layout: home
   {% endif %}
 {% endfor %}
 </div>
-
-<form action="/index.html" method="get">
-  <label for="search-box">Search</label>
-  <input type="text" id="search-box" name="query">
-  <input type="submit" value="search">
-</form>
-
-<div id="search-results"></div>
 
 {% include generate_json.html %}
 

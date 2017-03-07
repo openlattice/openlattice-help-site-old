@@ -200,25 +200,28 @@ h4, h5, h6 {
   margin-top: $spacing-unit;
 }
 
+form {
+  width: 100%;
+}
+
 input[type="submit"] {
-  padding: 5px 10px;
+  padding: 8px 10px;
   margin-top: 10px;
   border-radius: 5px;
   background-color: $loom-link-visited;
   border: 1px solid $loom-link-visited;
   color: white;
   font-size: $base-font-size;
+  width: 100px;
 }
 
 input[type="text"] {
-  width: 98%;
-  padding: 5px;
-  margin-top: 5px;
+  width: calc(100% - 131px);
+  border-radius: 5px;
+  border: 1px solid $loom-link-visited;
+  padding: 10px;
+  margin-right: 5px;
   font-size: $base-font-size;
-}
-
-label {
-  font-weight: bold;
 }
 
 // Callouts and blockquotes
@@ -235,6 +238,12 @@ blockquote {
   padding: 15px 15px 0px 15px;
   margin-bottom: 10px;
   background-color: $grey-color-light;
+}
+
+.tagline {
+  text-align: center;
+  padding-bottom: 20px;
+  color: $grey-color;
 }
 
 // change to 1 column layout for small screens
