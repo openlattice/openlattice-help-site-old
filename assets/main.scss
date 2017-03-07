@@ -262,6 +262,18 @@ blockquote {
   color: $grey-color;
 }
 
+#markdown-toc > li > a {
+  font-weight: bold;
+}
+
+#markdown-toc > li {
+  list-style-type: none;
+}
+
+#markdown-toc {
+  margin-left: 0px;
+}
+
 // change to 1 column layout for small screens
 @include media-query($on-palm) {
     .flex-container {
