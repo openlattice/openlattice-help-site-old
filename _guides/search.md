@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Searching Entity Sets
-description: Search for data in your Entity Sets.
+title: How to search for data in your datasets
+description: Find datasets through the Catalog and search for data in your datasets.
 ---
 
 {% include video.html id="Zot_hiKe_gM" %}

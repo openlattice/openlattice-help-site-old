@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Permissions
-description: Learn how to request, grant, and revoke user permissions to your dataset. Simplify user permissions with roles.
+title: How to manage permissions on your datasets
+description: Request, grant, and revoke user permissions to your dataset. Use roles to assign permissions to a group of members in your organization.
 ---
 
 * TOC

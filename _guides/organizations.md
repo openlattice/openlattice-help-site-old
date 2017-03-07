@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Organizations
-description: Create an organization, add members, and assign user roles.
+title: How to create a profile for your Organization
+description: Create an organization, add members by email or domain, and assign user roles.
 ---
 
 {% include video.html id="M4DymopABAg" %}

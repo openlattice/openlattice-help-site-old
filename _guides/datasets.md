@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Finding Datasets You Own
-description: Learn where to find all datasets you own on the Loom platform.
+title: How to find and create datasets you own
+description: Easily access any dataset you own, or create new datasets, through the Datasets tab.
 ---
 
 {% include video.html id="agRG6Ji_1tc" %}

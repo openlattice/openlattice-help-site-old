@@ -5,12 +5,12 @@ permalink: /guides/
 description: Reference our step-by-step guides and tutorials on how to use Loom's platform.
 menu: true
 ---
-
-{% for guide in site.guides %}
+{% assign guides = site.guides | sort:"weight" | reverse %}
+{% for guide in guides %}
   <div>
     <a href="{{guide.url}}">
     <h2>{{ guide.title }}</h2>
     </a>
-    {{ guide.description }}
+    {{ guide.description | strip_html}} <a href="{{ guide.url }}">Learn More »</a>
   </div>
 {% endfor %}

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Data Visualizations
-description: Learn how to use Loom's data visualization tools
+title: How to visualize your data
+description: Discover patterns in your data through Loom's core graphing and mapping tools.
 ---
 
 {% include video.html id="A1y1t8HwGlU" %}

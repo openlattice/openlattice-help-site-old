@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Data Integrations
-description: Get started and integrate your data with Loom.
+title: How to integrate your data into Loom
+description: Create a dataset and integrate your existing data.
+weight: 1
 ---
 
 1. TOC

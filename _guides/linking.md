@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Linking Entity Sets
-description: Link and merge data across your Entity Sets.
+title: How to link your datasets and discover trends in your data
+description: Link datasets to find recurring data across separate entities.
 ---
 
 {% include video.html id="lF_YOXu4ivg" %}

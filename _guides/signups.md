@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Sign Up for a New Account
-description: Learn how to sign up for a new account on Loom.
+title: How to create a new Loom account
+description: Sign up for a new account on Loom. Loom is completely free and gives you access to all of its core features.
+weight: 100
 ---
 
 When you visit the [Loom homepage]({{site.loom}}), you can choose to either **Login** to an existing account, or create a new Loom account. To create a new Loom account, click **Sign up for Loom**.
