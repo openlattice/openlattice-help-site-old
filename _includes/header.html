@@ -15,6 +15,7 @@
       </span>
 
       <div class="trigger" onclick="void(0)">
+          <a class="page-link" href="{{site.loom}}" target="_blank">Loom Homepage</a>
         {% for my_page in site.pages %}
           {% if my_page.menu == true %}
           <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
