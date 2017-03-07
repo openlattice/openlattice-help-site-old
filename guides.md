@@ -2,7 +2,7 @@
 layout: page
 title: Guides
 permalink: /guides/
-description: For step-by-step guides and tutorials on how to use Loom's platform.
+description: Reference our step-by-step guides and tutorials on how to use Loom's platform.
 menu: true
 ---
 <div class="flex-container">

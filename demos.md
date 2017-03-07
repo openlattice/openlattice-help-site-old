@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Demos
+title: Presentations
 permalink: /demos/
-description: Watch our Data Driven Justice presentation and Loom demo videos.
+description: Watch our Data Driven Justice presentation and view our demo topics.
 menu: true
 ---
 
@@ -10,12 +10,5 @@ menu: true
 {% include video.html id="whCMuyC_XoE" %}
 
 ## Suggested Topics
-
-<!-- | Topic                                   | Tutorial Description                                                                                                                                                               |
-|-----------------------------------------|--------------------------------------------------------|
-| [Search](/guides/search/)               | (Walkthrough and Video) Search for data in your datasets. |
-| [Linking](/guides/linking/)             | (Walkthrough and Video) Link and merge disparate datasets. |
-| [Organizations](/guides/organizations/) | (Walkthrough) Create organizations, add members, and assign user roles. |
-| [Permissions](/guides/permissions/)     | (Walkthrough) Request, grant, and revoke user permissions. | -->
 
 {% include guides-table.html %}

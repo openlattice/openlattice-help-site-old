@@ -1,8 +1,8 @@
 ---
 layout: page
-title: FAQ
+title: FAQs
 permalink: /faq/
-description: Get answers about HIPAA compliance, permissions, pricing, and other commonly asked questions.
+description: Learn about Loom's HIPAA compliance, permissions, pricing, and more.
 menu: true
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: page
-title: APIs
+title: API Docs
 permalink: /api/
-description: Learn how to use Loom's APIs.
+description: Access Java documentation for data integrations and Loom API.
 menu: true
 ---
 <table class="api-list">
