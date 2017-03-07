@@ -180,13 +180,23 @@ h1, h2, h3, h4, h5, h6, .post-title {
 }
 
 h2 {
+  text-align: left;
   font-size: $medium-font-size !important;
-  color: $loom-link-visited
+  color: $loom-link-visited;
+  border-bottom: 1px solid $grey-color-light;
 }
 
 h3 {
+  text-align: left;
   font-size: $medium-font-size * 0.85 !important;
-  text-decoration: underline;
+  padding-top: 0px;
+  //text-decoration: underline;
+}
+
+.post-content h3::before {
+  content: "» ";
+  font-size: 18pt;
+  color: $loom-link-visited;
 }
 
 h4, h5, h6 {
