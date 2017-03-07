@@ -14,7 +14,7 @@
 
       searchResults.innerHTML = appendString;
     } else {
-      searchResults.innerHTML = '<div class="result">No results found</div>';
+      searchResults.innerHTML = '<div class="result no-results">Sorry, your search did not return any results. Please reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for assistance.</div>';
     }
   }
 
