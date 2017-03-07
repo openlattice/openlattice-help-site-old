@@ -1,4 +1,5 @@
 com.dataloom.authorization
+com.dataloom.authorization.paging
 com.dataloom.authorization.securable
 com.dataloom.client
 com.dataloom.client.serialization
