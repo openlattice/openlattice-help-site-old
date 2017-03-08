@@ -54,12 +54,7 @@ We support any data format supported by Apache Spark including:
 
 Yes, here are a few of them:
 
-* [Sample OpenFlights Airport Data](https://thedataloom.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d)
-* [Sample Stolen Cars](https://thedataloom.com/gallery/#/entitysets/b65b0068-5bf1-4e36-9c68-2e19afedd76b)
-* [Crime Index Data for Nation's Largest Cities (2009)](https://thedataloom.com/gallery/#/entitysets/4afe7e03-5dc0-4178-951f-affc47ab28de)
-* [Sample Jail Data](https://thedataloom.com/gallery/#/entitysets/e81e19dd-970e-4e8e-84e6-50c5afdb7bcf)
-* [Sample Health Data](https://thedataloom.com/gallery/#/entitysets/8e9638e3-f554-4d12-bf2f-c5b3502c0d4c)
-* [Sample Linked Jail and Health Data](https://thedataloom.com/gallery/#/entitysets/a55c1d21-52ec-4f3e-80ea-f21c64b7f4f0)
+{% include sampledata.html %}
 
 To access the sample datasets, visit **Catalog** and search
 "sample" for example datasets you can view and search in our systems. Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties. Feel free to use these datasets as you explore features of the platform.
