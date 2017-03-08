@@ -262,6 +262,18 @@ blockquote {
   color: $grey-color;
 }
 
+.bad {
+  color: red;
+  font-weight: 700;
+}
+
+.good {
+  color: green;
+  font-weight: 700;
+}
+
+// Table of contents
+
 #markdown-toc > li > a {
   font-weight: bold;
 }

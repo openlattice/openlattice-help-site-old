@@ -8,51 +8,44 @@ weight: 1
 1. TOC
 {:toc}
 
-<!-- **Data integrations** take your data and map it to Loom's data model. Once you have completed this process, you'll be able to start linking and sharing your data with other users. -->
+## Create Property and Entity Types
 
-## Request Entity and Property Types
+**Data integrations** take your data and map it to Loom's data model. At this time, you need a Loom administrator to create these for you.
 
-**Data integrations** take your data and map it to Loom's data model. Start by
-submitting a request to a Loom administrator to create Property and Entity
-Types that match your dataset schema.
+> **How do I submit a request?** List your column headers and descriptions in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). An administrator will reply within 24 hours with further instructions.
 
-> **How do I submit a request?** List your column headers and descriptions in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). A Loom administrator will complete this process and send you a confirmation email within 24 hours, along with further instructions.
-
-## Add your datasource
-The confirmation you receive will list the new Property and Entity Types we've
-created for your dataset. Once you receive this information, go to the
-**Datasources** tab and create your datasource using the email instructions.
+## Add a new Dataset
+Once you receive the property and entity types for your dataset, go to
+the **Datasets** tab and create the dataset with the information from your email.
 
 {%
   include image.html
-  caption="Example: Creating a datasource for crime index dataset"
+  caption="Example: Creating a dataset for crime index dataset"
   path="guides/integrations/create-datasource.png"
 %}
 
-## Create an integration account
+## Create an Integration account
 
-Next, you'll need to grant write-access to an **integration account** (a Loom
-account you only use for data integrations) and use the login credentials for
-that account to run your integration. If this is your first time running a data
-integration, you will first need to create the integration account. If you've
-already integrated data using the Loom platform, you can use the same login
-credentials you used before.
+You need an account with **write permissions** to add data to a dataset. At this
+time, there are a couple of ways you could do this:
 
-Log out of your individual account and create a separate Loom account for your
-integration. *Save the credentials for this account in a safe place, since they
-will be used in your integration script.*
+<span class="bad">Not Recommended:</span> _Dataset owners use their personal login_
 
-{%
-  include related.html
-  content="
-* [Learn how to sign up for a new account](/guides/signups/)
-" %}
+> Owners have write permissions by default, but can also manage user permissions for a dataset, change the dataset owner, and even delete a dataset. Dataset owners _can_ use their personal login credentials to perform a data integration, but this is not recommended.
 
-## Manage Permissions
+<span class="good">Recommended:</span> _Create a separate Integration Account_
 
-Once your integration account has been created, log back into your individual
-account, go to **Catalog**, and browse for your Entity Set. Select
-**View Details** in the **Actions** menu.
+> Create a new Loom account and use those credentials for your data integrations.
+Integration Accounts are no different
+than regular user accounts, except it will only be granted write permissions, not owner permissions, to your dataset. **Anyone with the login credentials to your Integration Account
+will have permissions to add data to your dataset, so it's important to keep these credentials in a safe place.**
+
+You can skip this step if you've performed a data integration and already have an
+integration account.
+
+## Grant your account Write permissions
+
+To grant your integration account write permissions, log into your dataset owner account and go to **Datasets**. From the **Actions** menu, click **View Details**.
 
 {%
   include image.html
@@ -60,18 +53,18 @@ account, go to **Catalog**, and browse for your Entity Set. Select
   path="guides/integrations/view-details.png"
 %}
 
-Under **Manage Permissions**, give your integration account **Write** permissions
-for the Entity Set and each of its properties.
+Under **Manage Permissions** for the dataset and each of its properties, go to **Emails**, select **Write** permissions, and search for your integration account email.
 
 {%
   include image.html
-  caption="Manage permissions for Entity Set and Properties" path="guides/integrations/manage-permissions.gif"
+  caption="Manage permissions for Dataset and Properties" path="guides/integrations/manage-permissions.gif"
 %}
 
 {%
   include related.html
   content="
-* [Learn how to set, request, and grant/revoke permissions](/guides/permissions/)
+* [How to set, request, and grant/revoke permissions](/guides/permissions/)
+* [How to sign up for a new account](/guides/signups/)
 " %}
 
 ## Install Java
@@ -83,24 +76,24 @@ $ java -version
 java version "1.8.0_121"
 ```
 
-## Customize template integration script
+## Download template integration script
 
-The template project contains code for integrating a CSV of crime index ranking data for the largest cities in 2009. You can use this template script as a starting point for your own data integrations.
+We have provided you with a template integration script to help get you started. This integration
+script was used to integrate the [Sample OpenFlights Airport Data](https://thedataloom.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d).
 
-Download and unzip the [template integration script](/files/template.zip). Go ahead and replace the demo csv with your own.
+Download and unzip the [tutorial integration script](/files/tutorial.zip). Replace the demo CSV with your own data.
 
 ```text
-crime_index.csv (DEMO CSV DATA)
+airports.csv (DEMO CSV DATA)
 build.gradle
 /gradle/wrapper
     gradle-wrapper.jar
     gradle-wrapper.properties
 gradlew
 gradlew.bat
-run.sh
 settings.gradle
-/src/main/java/com/dataloom/integrations/exampleorg
-    ExampleOrg.java
+/src/main/java/com/dataloom/integrations/dataintegration
+    DataIntegration.java
 /src/main/java/resources
     jetty.yaml
     log4j.properties
@@ -108,70 +101,38 @@ settings.gradle
     rhizome.yaml
 ```
 
-> **Note:** All instances of `exampleorg` refer to your organization name. Customizing this is not necessary, but if you choose to, make sure to match capitalization. For example: `ExampleOrg.java` would become `MyCustomName.java`
-
 ### Configure Gradle
 [Gradle](https://gradle.org/) is a build tool used to configure and run your project. You only need to modify the following files:
 * `build.gradle`
 * `settings.gradle`
 
-**build.gradle:** Change the Entity Set `description`, `mainClassName` and `run.args`.
+**build.gradle:** Change the Entity Set `description` and `run.args`.
 ```gradle
-// Change the description for your Entity Set
-description = "Crime Index Data for Nation's Largest Cities"
+// This should match the title of your dataset
+description = "Sample OpenFlights Airport Data"
 
-// Modify mainClassName (if you renamed exampleorg)
-mainClassName = "com.dataloom.integrations.exampleorg.ExampleOrg"
-
-// Change to name of your csv file and organization account's login credentials
-run.args = ["crime_index.csv","test@example.com","examplepassword"]
+// This should match your CSV data and Integration Account credentials
+run.args = ["airports.csv","test@example.com","examplepassword"]
 ```
 
-**settings.gradle:** Change to match the name of your project's root directory. Default is `template`.
+**settings.gradle:** Change to match the name of your project's root directory. Default is `tutorial`.
 ```gradle
-// Optional: Change to match the name of your project's root directory
-// If you didn't change this, it should still be called template
-rootProject.name='template'
+// This should match the name of your project's root directory
+// If you didn't change this, keep it as 'tutorial'
+rootProject.name='tutorial'
 ```
 
 ### Define your Integration
 
-Start by verifying the package name at the top of `ExampleOrg.java`:
-
+In `DataIntegration.java`, set the values of `ENTITY_SET_NAME`, `ENTITY_SET_TYPE`, and `ENTITY_SET_KEY`.
 ```java
-// This should match file location of ExampleOrg.java file
-// src/.../com/dataloom/integrations/exampleorg/ExampleOrg.java
-package com.dataloom.integrations.exampleorg;
+// Set your Entity Set Name, Type, and Primary Key
+public static String ENTITY_SET_NAME = "openflightsdata";
+public static FullQualifiedName ENTITY_SET_TYPE = new FullQualifiedName( "sample.openflightsdata" );
+public static FullQualifiedName ENTITY_SET_KEY = new FullQualifiedName( "aviation.id" );
 ```
 
-And, modify the name of the `ExampleOrg` class and `ExampleOrg.class` as needed.
-
-```java
-// Change ExampleOrg.class if you changed the organization name
-// Logger is used to output useful debugging messages to the console
-public class ExampleOrg {
-  private static final Logger logger = LoggerFactory.getLogger( ExampleOrg.class );
-```
-
-Next, set the values of `ENTITY_SET_NAME`, `ENTITY_SET_TYPE`, and `ENTITY_SET_KEY`.
-```java
-// SET YOUR ENTITY NAME, TYPE, and PRIMARY KEY
-public static String ENTITY_SET_NAME = "crimeindex";
-public static FullQualifiedName ENTITY_SET_TYPE = new FullQualifiedName( "publicsafety.crimeindex" );
-public static FullQualifiedName ENTITY_SET_KEY = new FullQualifiedName( "general.city" ); // or use "general.guid"
-```
-
-Finally, define all your property types.
-
-```java
-// SET YOUR PROPERTY TYPES
-public static FullQualifiedName PT_YEAR = new FullQualifiedName( "general.year" );
-public static FullQualifiedName PT_INDEX = new FullQualifiedName( "publicsafety.crimeindexranking" );
-public static FullQualifiedName PT_CITY = new FullQualifiedName( "general.city" );
-public static FullQualifiedName PT_RATE = new FullQualifiedName( "publicsafety.crimerate" );
-```
-
-### Using the Shuttle API
+### Use Shuttle API
 
 [Loom's Shuttle API](/api/) will complete the mapping and push your data to
 Loom's servers. Your `Flight` code should be started for you, since you already
@@ -187,30 +148,55 @@ Flight flight = Flight.newFlight()
 .done();
 ```
 
-Properties are defined using the following format:
+Properties are constructed using the following format:
 
 ```java
-// Example: PT_YEAR and "Year"
-.addProperty( PT_COLUMN_NAME )
-    .value(row -> row.getAs( "Column Name from CSV" )).ok()
+new FullQualifiedName( "aviation.name" )
 ```
 
-Here is an example of the full `Flight` code for crime index entity set
-and its properties
+Just pass the constructor for each property into `.addProperty()`:
+
+```java
+.addProperty( new FullQualifiedName( "aviation.name" ) )
+    .value( row -> row.getAs( " Name" ) ).ok()
+```
+
+Notice how `row -> row.getAs( " Name" )` has a space before `" Name"`. If your
+CSV has spaces in between the column headers like this:
+
+```text
+Airport ID, Name, City, Country, IATA, ICAO...
+```
+
+You will need to include the spaces in the column header for `row.getAs()` in order for the data to be properly parsed.
+
+## Full Flight Code
+
+Here is an example of the full `Flight` code from the tutorial:
 
 ```java
 Flight flight = Flight.newFlight()
     .addEntity( ENTITY_SET_TYPE )
         .to( ENTITY_SET_NAME )
         .key( ENTITY_SET_KEY )
-        .addProperty( PT_YEAR )
-            .value(row -> row.getAs( "Year" )).ok()
-        .addProperty( PT_INDEX )
-            .value( row -> row.getAs( "Crime Index Ranking" ) ).ok()
-        .addProperty( PT_CITY )
-            .value( row -> row.getAs( "City" ) ).ok()
-        .addProperty( PT_RATE )
-            .value( row -> row.getAs( "Rate" ) ).ok()
+        .addProperty( new FullQualifiedName( "aviation.name" ) )
+            .value( row -> row.getAs( " Name" ) ).ok()
+        .addProperty( new FullQualifiedName( "aviation.id" ) )
+            .value( row -> row.getAs( "Airport ID" ) ).ok()
+        .addProperty( new FullQualifiedName( "aviation.iata" ) )
+            .value( row -> row.getAs( " IATA" ) ).ok()
+        .addProperty( new FullQualifiedName( "location.longitude" ) )
+            .value( row -> row.getAs( " Longitude" ) ).ok()
+        .addProperty( new FullQualifiedName( "location.latitude" ) )
+            .value( row -> row.getAs( " Latitude" ) ).ok()
+        .addProperty( new FullQualifiedName( "general.altitude" ) )
+            .value( row -> row.getAs( " Altitude" ) ).ok()
+        .addProperty( new FullQualifiedName( "general.city" ) )
+            .value( row -> row.getAs( " City" ) ).ok()
+        .addProperty( new FullQualifiedName( "general.country" ) )
+            .value( row -> row.getAs( " Country" ) ).ok()
+        .addProperty( new FullQualifiedName( "aviation.icao" ) )
+            .value( row -> row.getAs( " ICAO" ) ).ok()
     .ok()
 .done();
 ```
