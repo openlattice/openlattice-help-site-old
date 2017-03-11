@@ -11,15 +11,45 @@ menu: true
 
 ## Privacy & Security
 
-### Is Loom HIPAA and CJIS Compliant?
+### Is Loom HIPAA and CJIS compliant?
 
-Loom infrastructure is compliant with the **Health Insurance Portability and Accountability Act (HIPAA)** and Criminal Justice Information Services (CJIS). We are also capable of signing HIPAA **Business Associate Agreements (BAAs)** for storing data. We comply with HIPAA Security Rule by ensuring PHI is encrypted in transit and at rest with industry-standard standard encryption. We also support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
+Loom infrastructure is compliant with the **Health Insurance Portability and
+Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS)** Security Policy.
+We are capable of signing **Business Associate Agreements (BAAs)** and we comply with
+HIPAA Security Rule by ensuring PHI is encrypted
+in transit and at rest with industry-standard encryption. We also
+support disaster recovery by securely storing live snapshots of the database
+system that we can recover quickly from backup.
 
 {% include related.html content="
 * [Loom's HIPAA Compliance Technical Overview](/info/hipaa/)
-* [Data Driven Justice and HIPAA (.pdf)](http://www.naco.org/sites/default/files/documents/DDJ%20HIPPA%20FAQs.pdf)
-* [HHS.gov: Sample Business Associate Agreement ](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)
+* [U.S. Dept. of Health and Human Services: Data Driven Justice and HIPAA FAQ](http://www.naco.org/sites/default/files/documents/DDJ%20HIPPA%20FAQs.pdf)
+* [U.S. Dept. of Health and Human Services: Sample Business Associate Agreement ](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)
 " %}
+
+### What about privacy laws for mental health or substance abuse data?
+
+For information on confidentiality for mental health data, please refer to our
+HIPAA resources above.
+
+For alcohol and substance abuse data, we can sign a joint BAA and
+**Qualified Service Organization Agreement (QSOA)** that includes
+provisions for **42 CFR Part 2**. Loom also gives dataset owners full control
+over the permissions on their dataset and its properties, so they can hide PII
+data that could be used to identify an individual.
+
+{% include related.html content="
+* [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSO Agreement](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
+* [Substance Abuse and Mental Health Services Administration: Confidentiality FAQ](https://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs)
+" %}
+
+### How does Loom comply with additional confidentiality laws at the state level?
+
+Laws vary from state-to-state, but we will do our best to answer questions about
+how the Loom platform can work within your state.
+Please reach out to us at [{{site.email}}](mailto:{{site.email}}).
+
+## Using Loom
 
 ### Who controls the data once it's in Loom?
 
@@ -34,30 +64,28 @@ If you have a team you need to grant permissions to, we recommend creating a use
 * [How to create an organization and User Roles](/guides/organizations/)
 " %}
 
-## Using Loom
-
 ### What data formats can I integrate into Loom?
 
 We support any data format supported by Apache Spark including:
 * CSV
-* Parquet
-* Postgres
-* Any JDBC datasources
+* Apache Parquet
+* PostgreSQL
+* Any Java (JDBC) DataSource
+
+If you need to integrate data from a format that's not on this list, send us an [email]({{site.email}}) and we'll see what we can do to help.
 
 {% include related.html content="
 * [How to integrate your data](/guides/integrations/)
 " %}
 
-> **Contact Us:** If you need to integrate data from a format that's not on this list, [please email us]({{site.email}}) and we'll see what we can do to help.
-
 ### Are there any sample datasets that I can view?
 
-Yes, here are a few of them:
+We created sample datasets to help you explore features of the Loom platform:
 
 {% include sampledata.html %}
 
-To access the sample datasets, visit **Catalog** and search
-"sample" for example datasets you can view and search in our systems. Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties. Feel free to use these datasets as you explore features of the platform.
+To access the sample datasets, visit the **Catalog** and search
+"sample". Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties. Feel free to use these datasets as you explore features of the platform.
 
 {% include related.html
   content="
@@ -74,11 +102,11 @@ All of Loom's core services are **free**. This includes:
 * Unlimited number of data integrations
 * Making datasets available for download
 * Removing PII through de-identification
-* Linking and Merging across multiple datasets
-* Creating Timelines and Visualizations
+* Linking and merging across multiple datasets
+* Graphing and visualizing your data
 
-> **Contact Us:** If you need additional services outside of our core functionality, [please email us](mailto:{{site.email}}) and we'll see what we can do to help.
+If you need additional services outside of our core functionality, please [email](mailto:{{site.email}}) us and we'll see what we can do to help.
 
 ### How can I schedule a demo?
 
-Feel free to [reach out](mailto:{{site.email}}) to our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos available online that you can [view here](/demos/).
+[Email](mailto:{{site.email}}) our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos available online that you can [view here](/demos/).
