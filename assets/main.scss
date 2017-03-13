@@ -147,7 +147,6 @@ hr {
 
 // Tables
 table, th, td {
-  border: 1px solid $grey-color-light;
   border-collapse: collapse;
 }
 
@@ -160,13 +159,15 @@ table {
 
 td, th {
   padding: 10px;
+  width: 25%;
+}
+
+tr {
+  border-bottom: 1px solid $grey-color-light;
 }
 
 th {
   background-color: $grey-color-light;
-}
-
-.api-list {
   text-align: left;
 }
 

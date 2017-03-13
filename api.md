@@ -5,7 +5,7 @@ permalink: /api/
 description: Access Java documentation for data integrations and Loom API.
 menu: true
 ---
-<table class="api-list">
+<table>
   <th>API</th>
   <th>Description</th>
   {% include api.html name="shuttle" description="Docs for Loom's Shuttle API for pushing data integrations" %}
