@@ -233,6 +233,8 @@ input[type="submit"] {
 }
 
 input[type="text"] {
+  width: -webkit-calc(100% - 135px);
+  width: -moz-calc(100% - 135px);
   width: calc(100% - 135px);
   border-radius: 5px;
   border: 1px solid $loom-link-visited;
