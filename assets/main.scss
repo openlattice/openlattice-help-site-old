@@ -177,7 +177,6 @@ h1, h2, h3, h4, h5, h6, .post-title {
   font-weight: bold;
   text-align: center;
   letter-spacing: 1px;
-  padding-top: $spacing-unit;
 }
 
 h2 {
@@ -185,12 +184,14 @@ h2 {
   font-size: $medium-font-size !important;
   color: $loom-link-visited;
   border-bottom: 1px solid $grey-color-light;
+  padding-top: 50px;
 }
 
 h3 {
   text-align: left;
   font-size: $medium-font-size * 0.85 !important;
-  padding-top: 0px;
+  padding-top: 20px;
+  margin-bottom:10px;
   //text-decoration: underline;
 }
 

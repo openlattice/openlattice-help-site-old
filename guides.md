@@ -9,7 +9,7 @@ menu: true
 {% for guide in guides %}
   <div>
     <a href="{{guide.url}}">
-    <h2>{{ guide.title }}</h2>
+    <h3>{{ guide.title }}</h3>
     </a>
     {{ guide.description | strip_html}} <a href="{{ guide.url }}">Learn More »</a>
   </div>
