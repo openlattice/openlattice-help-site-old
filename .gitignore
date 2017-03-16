@@ -2,3 +2,7 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+_emails
+email-footer.html
+email-header.html
+email.html
