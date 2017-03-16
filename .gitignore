@@ -2,7 +2,6 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+_includes/email
+_layouts/email.html
 _emails
-email-footer.html
-email-header.html
-email.html
