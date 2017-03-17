@@ -23,5 +23,5 @@ collections:
     permalink: /info/:path/
     title: :title
   emails:
-    output: false
+    output: true
     permalink: /emails/:path/

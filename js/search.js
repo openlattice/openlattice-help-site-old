@@ -45,7 +45,7 @@
     });
 
     for (var key in window.store) { // Add the data to lunr
-      if (key !== 'assets-main-css') {
+      if (key !== 'assets-main-css' && key !== 'emails') {
         idx.add({
           'id': key,
           'title': window.store[key].title,
