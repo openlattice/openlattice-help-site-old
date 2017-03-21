@@ -13,79 +13,107 @@ menu: true
 
 ### Is Loom HIPAA and CJIS compliant?
 
-Loom infrastructure is compliant with the **Health Insurance Portability and
-Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS)** Security Policy.
-We are capable of signing **Business Associate Agreements (BAAs)** and we comply with
-HIPAA Security Rule by ensuring PHI is encrypted
-in transit and at rest with industry-standard encryption. We also
-support disaster recovery by securely storing live snapshots of the database
-system that we can recover quickly from backup.
+Yes. Loom infrastructure is compliant with the **Health Insurance Portability and Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS) Security Policy**.
+
+In accordance with HIPAA Security Rule, we ensure Protected Health Information (PHI) is encrypted in transit and at rest with industry-standard encryption. We maintain detailed audit logs and support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
 
 {% include related.html content="
 * [Loom's HIPAA Compliance Technical Overview](/info/hipaa/)
 * [U.S. Dept. of Health and Human Services: Data Driven Justice and HIPAA FAQ](http://www.naco.org/sites/default/files/documents/DDJ%20HIPPA%20FAQs.pdf)
-* [U.S. Dept. of Health and Human Services: Sample Business Associate Agreement ](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)
 " %}
 
-### What about privacy laws for mental health or substance abuse data?
+### Can Loom sign a Business Associate Agreement (BAA)?
+
+Yes. We recommend using a BAA, in addition to a **Qualified Service Organization Agreement (QSOA)** if substance use data will be included.
+
+{% include related.html content="
+* [U.S. Dept. of Health and Human Services: Sample BAA ](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html)
+* [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSOA](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
+" %}
+
+### How does Loom comply with laws around mental health and substance use data?
 
 For information on confidentiality for mental health data, please refer to our
 HIPAA resources above.
 
-For alcohol and substance abuse data, we can sign a joint BAA and
-**Qualified Service Organization Agreement (QSOA)** that includes
-provisions for **42 CFR Part 2**. Loom also gives dataset owners full control
-over the permissions on their dataset and its properties, so they can hide PII
-data that could be used to identify an individual.
+For alcohol and substance use data, we can sign a joint BAA and QSOA that includes provisions for **42 CFR Part 2**. Loom also gives dataset owners full control over the permissions on their dataset and its properties, so they can hide PII data that could be used to identify an individual.
 
 {% include related.html content="
-* [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSO Agreement](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
 * [Substance Abuse and Mental Health Services Administration: Confidentiality FAQ](https://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs)
+* [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSOA](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
 " %}
 
-### How does Loom comply with additional confidentiality laws at the state level?
+### How does Loom comply with state-level confidentiality laws?
 
 Laws vary from state-to-state, but we will do our best to answer questions about
 how the Loom platform can work within your state.
 Please reach out to us at [{{site.email}}](mailto:{{site.email}}).
 
-## Using Loom
+### Who owns the data once it has been integrated?
 
-### Who controls the data once it's in Loom?
+**You have full ownership of your data once it's integrated into Loom.**
 
-**You have full ownership over your datasets and full control over the permissions on the dataset and property types.**
-
-No one can read, write, link, or search for your dataset unless if you, the dataset owner, explicitly set the permissions to allow it. If an individual needs access to your data, they must request permission and you are given the control to grant or revoke that permission. You can grant permission to individuals (by email address) or to **User Roles** you define.
-
-If you have a team you need to grant permissions to, we recommend creating a user Role, assigning that role to members of your **organization**, and granting permission to that role. We also support de-identification so you can easily share data with outside stakeholders, such as research organizations and universities.
+Loom provides a secure data sharing platform built on HIPAA security compliant infrastructure with AWS. Amazon AWS also complies with this policy, as stated in their AWS Data Privacy FAQ:
+> "Customers maintain ownership of their customer content and select which AWS services process, store and host their customer content. We do not access or use customer content for any purpose other than as legally required and for maintaining the AWS services and providing them to our customers and their end users. We never use customer content or derive information from it for marketing or advertising."
 
 {% include related.html content="
-* [How to assign and revoke user permissions](/guides/permissions/)
-* [How to create an organization and User Roles](/guides/organizations/)
+* [Visit the AWS Data Privacy FAQ for more details on Amazon's data privacy polices](https://aws.amazon.com/compliance/data-privacy-faq/)
 " %}
 
-### What data formats can I integrate into Loom?
+## Using Loom
+
+### Who controls the data once it has been integrated?
+
+**You have full control over permissions for your dataset and its properties.**
+
+Newly integrated datasets are hidden by default. No one can read, write, link, or search for your dataset unless if you, the dataset owner, explicitly set the permissions to allow it. You can add and delete your datasets from the system at any time.
+
+### How do I give permission to an authorized individual to access the data?
+
+You can grant dataset permissions to an individual the following ways:
+* The individual can send you a **Permission Request** for the properties they need to access.
+* You can manually grant permission to the individual by email address.
+* If you need to grant access to a _team_ of individuals, you can assign each individual in that team a custom **Role** and give permission to the role you assigned them.
+
+Assigning roles requires creating an **Organization** and adding those members to your organization.
+
+{% include related.html content="
+* [How to request, assign, and revoke user permissions](/guides/permissions/)
+* [How to create an Organization and assign user Roles](/guides/organizations/)
+" %}
+
+### Can I de-identify the data before sharing data with researchers?
+
+Yes. We support de-identification so you can easily share data with outside stakeholders, such as research organizations and universities.
+
+### Who performs the data integrations?
+
+You can either have someone
+from your team integrate the data (with our assistance as needed), or we can have someone from our team can do the integration and we can transfer ownership to you.
+
+### What data formats can be integrated into Loom?
 
 We support any data format supported by Apache Spark including:
 * CSV
 * Apache Parquet
 * PostgreSQL
+* MySQL
 * Any Java (JDBC) DataSource
 
-If you need to integrate data from a format that's not on this list, send us an [email]({{site.email}}) and we'll see what we can do to help.
+If you need to integrate data from a format that's not on this list, send us an [email](mailto:{{site.email}}) and we'll see what we can do to help.
 
 {% include related.html content="
 * [How to integrate your data](/guides/integrations/)
 " %}
 
-### Are there any sample datasets that I can view?
+### Are there any sample datasets that I can use to test the platform?
 
-We created sample datasets to help you explore features of the Loom platform:
+Yes. We created sample datasets to help you explore features of the Loom platform:
 
 {% include sampledata.html %}
 
 To access the sample datasets, visit the **Catalog** and search
-"sample". Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties. Feel free to use these datasets as you explore features of the platform.
+"sample". Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties.
 
 {% include related.html
   content="
@@ -97,15 +125,18 @@ To access the sample datasets, visit the **Catalog** and search
 ## General
 
 ### How much does Loom cost?
-All of Loom's core services are **free**. This includes:
+
+In order to help jurisdictions leverage technology to improve human outcomes, **we made all of Loom's core services completely free.**
 
 * Unlimited number of data integrations
 * Making datasets available for download
+* Phonetically searchable datasets
+* Linking and merging data across multiple datasets
 * Removing PII through de-identification
-* Linking and merging across multiple datasets
-* Graphing and visualizing your data
+* Graphing and basic visualizations
+* Retrieving data on top utilizers from a dataset
 
-If you need additional services outside of our core functionality, please [email](mailto:{{site.email}}) us and we'll see what we can do to help.
+This list of core services is continually growing as we work with early adopters to create new features that better serve your needs. Schedule a demo for you and your team to learn more about how we can help you solve your data challenges.
 
 ### How can I schedule a demo?
 
