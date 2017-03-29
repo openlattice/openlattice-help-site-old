@@ -13,10 +13,12 @@ If you are integrating data from a datasource that is _not_ a CSV, add a **Java 
 ```
 dependecies {
   ...
-  compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+  compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
   ...
 }
 ```
+* PostgreSQL: [https://mvnrepository.com/artifact/org.postgresql/postgresql](https://mvnrepository.com/artifact/org.postgresql/postgresql){:target="_blank"}
+* MySQL: [https://mvnrepository.com/artifact/mysql/mysql-connector-java](https://mvnrepository.com/artifact/mysql/mysql-connector-java){:target="_blank"}
 
 ## 2. Configure Apache Spark
 This will be configured in your `DataIntegration.java` file, which can be found in your `src` folder:
@@ -54,6 +56,14 @@ Dataset<Row> payload = sparkSession.read()
 * Set `url` to the url scheme for your database: `jdbc:mysql://[host]:[port]/[database]`
 * Set `dbtable` to the name of the table you'd like to integrate.
 * Set `user` and `password` to the login credentials for your database.
+
+**Parquet**:
+A tutorial for integrating Parquet files is coming soon. Please see to the following reference for more information:
+* http://spark.apache.org/docs/latest/sql-programming-guide.html#parquet-files
+
+**JSON**:
+A tutorial for integrating JSON files is coming soon. Please see to the following reference for more information:
+* http://spark.apache.org/docs/latest/sql-programming-guide.html#json-datasets
 
 
 <hr>
