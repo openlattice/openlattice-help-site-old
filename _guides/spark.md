@@ -61,10 +61,6 @@ Dataset<Row> payload = sparkSession.read()
 A tutorial for integrating Parquet files is coming soon. Please see to the following reference for more information:
 * [http://spark.apache.org/docs/latest/sql-programming-guide.html#parquet-files](http://spark.apache.org/docs/latest/sql-programming-guide.html#parquet-files)
 
-**JSON**:
-A tutorial for integrating JSON files is coming soon. Please see to the following reference for more information:
-* [http://spark.apache.org/docs/latest/sql-programming-guide.html#json-datasets](http://spark.apache.org/docs/latest/sql-programming-guide.html#json-datasets)
-
 
 <hr>
 
