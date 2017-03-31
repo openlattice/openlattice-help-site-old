@@ -1,3 +1,4 @@
+com.dataloom.analysis
 com.dataloom.authorization
 com.dataloom.authorization.paging
 com.dataloom.authorization.securable
@@ -14,10 +15,13 @@ com.dataloom.edm.internal
 com.dataloom.edm.requests
 com.dataloom.edm.set
 com.dataloom.edm.type
+com.dataloom.exceptions
 com.dataloom.graph
 com.dataloom.linking
 com.dataloom.mapstores
+com.dataloom.neuron
 com.dataloom.organization
+com.dataloom.organization.roles
 com.dataloom.requests
 com.dataloom.search
 com.dataloom.search.requests
