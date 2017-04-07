@@ -12,8 +12,7 @@ description: Request, grant, and revoke user permissions to your dataset. Use ro
 Permissions can be set on your dataset and each of its properties. The owner
 of a dataset will be given Write, Read, Link, and Discover permissions.
 
-**New datasets will only grant permissions to the owner by default. All other users
-in Loom must be explicitly granted permissions by the dataset owner.**
+**New datasets will only grant permissions to the owner by default. All other users in Loom must be explicitly granted permissions by the dataset owner.**
 
 {% include image.html
 path="/guides/permissions/permissions.png"
@@ -69,7 +68,7 @@ on a per-dataset or per-property basis.
   id="xcyJFcmDzSc"
 %}
 
-If you've created an organization, you can assign permissions to a **Role** and
+If you've created an organization, dataset owners can assign permissions to a **Role** and
 all the users with that assigned role will be able to access the dataset with
 those permissions.
 
