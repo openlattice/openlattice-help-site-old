@@ -9,4 +9,4 @@ menu: true
 ## Loom: A DDJ Technology Platform
 {% include video.html id="whCMuyC_XoE" %}
 
-{% include guides-table.html %}
+{% include advocate.html %}
