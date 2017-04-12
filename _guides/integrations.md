@@ -247,7 +247,7 @@ public static String getLastName( Object obj ) {
 ```
 
 ### Date Formatting
-Loom stores dates in [JODA datetime](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) formats. To ensure your dates and times are properly formatted, please use the provided `DateTimeFormatter.java` class to parse any dates or times in your data:
+Loom stores dates as [DateTime ISO8601](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html). If your dates are not already in this format, please use the provided `DateTimeFormatter.java` class to help parse any dates or times in your data:
 
 ```java
 FormattedDateTime date = new FormattedDateTime( DATE_AS_STRING , TIME_AS_STRING, "MM/dd/yyyy", "HH:mm:ss")
