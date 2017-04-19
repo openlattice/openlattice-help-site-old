@@ -276,6 +276,14 @@ blockquote {
   font-weight: 700;
 }
 
+.continued {
+  margin-top:50px;
+  text-align:center;
+  font-weight:bold;
+  font-style:italic;
+  font-size: $medium-font-size;
+}
+
 // Table of contents
 
 #markdown-toc > li > a {
