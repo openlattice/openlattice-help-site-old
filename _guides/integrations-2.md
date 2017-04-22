@@ -5,7 +5,7 @@ description: Customize our provided template integration scripts. This guide is 
 weight: 1
 ---
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> with any comments or feedback.</div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> with any comments or feedback.</div><br>
 
 * TOC
 {:toc}
