@@ -65,7 +65,7 @@ A tutorial for integrating Parquet files is coming soon. Please see to the follo
 <hr>
 
 {% include related.html content="
-* [Go back to Loom's Data Integration tutorial](/guides/integrations/#configure-apache-spark-to-read-your-datasource)
+* [Go back to Loom's Data Integration tutorial](/guides/integrations-2/#4-configure-apache-spark)
 "
 %}
 
