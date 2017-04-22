@@ -5,6 +5,8 @@ description: Customize our provided template integration scripts. This guide is 
 weight: 1
 ---
 
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px;">This guide is currently being updated for our new version of Shuttle API. In the meantime, reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for assistance with data integrations.</div><br>
+
 * TOC
 {:toc}
 
@@ -21,12 +23,12 @@ The integration script we provide requries [Java SE Development Kit 8](http://ww
 ## 2. Download template integration script
 
 Feel free to use our template integration script to get started. This integration
-script was used to integrate the [Sample OpenFlights Airport Data](https://thedataloom.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d).
+script was used to integrate the [Sample Jail](https://thedataloom.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d) datasets.
 
 Download and unzip the [template project](/files/tutorial.zip). The folder contents should look like this:
 
 ```text
-airports.csv (Replace with your CSV)
+fake_jail_data.csv (Replace with your CSV)
 build.gradle
 /gradle/wrapper
     gradle-wrapper.jar
@@ -43,34 +45,42 @@ settings.gradle
     rhizome.yaml
 ```
 
-## 3. Configure Gradle
+## 3. Add login credentials and CSV filename to build.gradle
 
-[Gradle](https://gradle.org/) is a build tool for running the integration script. Update the following information in `build.gradle` to match your project:
+[Gradle](https://gradle.org/) is a build tool you will use to run the integration script. `build.gradle` contains important information about project dependencies, API versions, and other details. The piece you will need to update is the CSV filename and login credentials for the individual performing the data integration. Update the following:
 
 **build.gradle**
 ```gradle
-description = "Sample OpenFlights Airport Data"
-run.args = ["airports.csv","test@example.com","examplepassword"]
+run.args = ["fake_jail_data.csv","test@example.com","examplepassword"]
 ```
-* `description` should match the **title** you created for your new dataset.
-* `run.args` should contain the name of your csv file for csv integrations, along with login credentials for an individual with write permissions to the dataset.
+
+The login credentials will be used in `DataIntegration.java` to retrieve your `jwtToken`. This token will then be used to verify whether the login credentials provided have been given write access to the dataset. 
+
+**In: `/src/main/java/com/dataloom/integrations/dataintegration/DataIntegration.java`**
+
+```java
+// Get CSV path, username, and password
+final String path = args[0];
+final String username = args[1];
+final String password = args[2];
+
+// Get jwtToken to verify data integrator has write permissions to dataset
+final String jwtToken = MissionControl.getIdToken( username, password );
+logger.info( "Using the following idToken: Bearer {}", jwtToken );
+```
 
 ## 4. Configure Apache Spark
 
-The main integration script `DataIntegration.java` is located at:
-
-```text
-/src/main/java/com/dataloom/integrations/dataintegration/DataIntegration.java
-```
-
-In this file, there will be some code that tells Apache Spark what format your datasource is in:
+In `DataIntegration.java`, there will be some code that tells Apache Spark what format your datasource is in:
 
 ```java
-// Example Spark Configuration for CSV Data Integrations
-Dataset<Row> payload = sparkSession.read()
-    .format( "com.databricks.spark.csv" )
-    .option( "header", "true" )
-    .load( path );
+// Configure Spark to load and read your datasource
+final SparkSession sparkSession = MissionControl.getSparkSession();
+Dataset<Row> payload = sparkSession
+        .read()
+        .format( "com.databricks.spark.csv" )
+        .option( "header", "true" )
+        .load( path );
 ```
 
 [Apache Spark](http://spark.apache.org/) is the data engine for reading and processing your data. These settings will vary depending on the type of data source you are trying to integrate.
@@ -83,57 +93,52 @@ Dataset<Row> payload = sparkSession.read()
 
 In `DataIntegration.java` you will also need to define the entity types, relationships, and properties for your data.
 
-### Define Entity Types
+### Entity Types, Associations, and Properties
 
-Entity types are a set of properties that describe a particular object or unit. For example, Arrest data might contain 3 different entity types:
+Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Using the data model details provided to you by your Loom Administrator, update the Entity Set Names, Types, Keys, and Aliases defined at the top of your script. 
+
+```java
+// Entity Set (Dataset) and Entity Type Details
+public static String            PEOPLE_ENTITY_SET_NAME = "samplejailsubjects";
+public static FullQualifiedName PEOPLE_ENTITY_SET_TYPE = new FullQualifiedName( "sample.person" );
+public static FullQualifiedName PEOPLE_ENTITY_SET_KEY1  = new FullQualifiedName( "general.firstname" );
+public static FullQualifiedName PEOPLE_ENTITY_SET_KEY2  = new FullQualifiedName( "general.lastname" );
+public static String            PEOPLE_ALIAS           = "people";
+
+public static String            BOOKINGS_ENTITY_SET_NAME = "samplejailbookings";
+public static FullQualifiedName BOOKINGS_ENTITY_SET_TYPE = new FullQualifiedName( "sample.bookings" );
+public static FullQualifiedName BOOKINGS_ENTITY_SET_KEY1  = new FullQualifiedName( "publicsafety.datebooked" );
+public static FullQualifiedName BOOKINGS_ENTITY_SET_KEY2  = new FullQualifiedName( "publicsafety.datereleased" );
+public static String            BOOKINGS_ALIAS           = "bookings";
+
+public static String            WAS_BOOKED_IN_ENTITY_SET_NAME = "samplejailsubjectappearsin";
+public static FullQualifiedName WAS_BOOKED_IN_ENTITY_SET_TYPE = new FullQualifiedName( "sample.subjectappearsin" );
+public static FullQualifiedName WAS_BOOKED_IN_ENTITY_SET_KEY  = new FullQualifiedName( "publicsafety.bookingid" );
+public static String            WAS_BOOKED_IN_ALIAS           = "appearsin";
+```
+
+And define your dataset properties:
+
+```java
+// Properties
+public static FullQualifiedName LAST_NAME_FQN    = new FullQualifiedName( "general.lastname" );
+public static FullQualifiedName FIRST_NAME_FQN   = new FullQualifiedName( "general.firstname" );
+public static FullQualifiedName HOME_ADDRESS_FQN = new FullQualifiedName( "general.homeaddress" );
+public static FullQualifiedName RACE_FQN         = new FullQualifiedName( "general.race" );
+public static FullQualifiedName DOB_FQN          = new FullQualifiedName( "general.dob" );
+
+public static FullQualifiedName DATE_BOOKED_FQN          = new FullQualifiedName( "publicsafety.datebooked" );
+public static FullQualifiedName BOOKING_ID_FQN       = new FullQualifiedName( "publicsafety.bookingid" );
+public static FullQualifiedName DATE_RELEASED_FQN      = new FullQualifiedName( "publicsafety.datereleased" );
+```
+
+Notice that even though you may be integrating only 1 table, you could have multiple entity types that represent your dataset. For example, this example dataset has 2 different entity types and 1 association that relates the entity types together:
 
 | Entity Type | Properties included in this type                                                            |
 |-------------|---------------------------------------------------------------------------------------------|
-| Person      | First name, Last name, Identification Number, Home address, Gender, Race, and Date of Birth |
-| Location    | City, Address, Apartment, PD Zone and Beat                                                  |
-| Case        | UCR & NCIC codes, Case Number, Day of Week                                                  |
-
-Using the information provided by your data model to define your entity types at the top of your script:
-
-```java
-// 3 Tables for 3 Entity Types: People, Cases, and Locations
-public static String            PEOPLE_ENTITY_SET_NAME = "people";
-public static FullQualifiedName PEOPLE_ENTITY_SET_TYPE = new FullQualifiedName( "general.person" );
-public static FullQualifiedName PEOPLE_ENTITY_SET_KEY  = new FullQualifiedName( "general.personid" );
-public static String            PEOPLE_ALIAS           = "people";
-
-public static String            CASE_ENTITY_SET_NAME = "cases";
-public static FullQualifiedName CASE_ENTITY_SET_TYPE = new FullQualifiedName( "general.case" );
-public static FullQualifiedName CASE_ENTITY_SET_KEY  = new FullQualifiedName( "publicsafety.case" );
-public static String            CASE_ALIAS           = "case";
-
-public static String            LOCATION_ENTITY_SET_NAME = "locations";
-public static FullQualifiedName LOCATION_ENTITY_SET_TYPE = new FullQualifiedName( "general.location" );
-public static FullQualifiedName LOCATION_ENTITY_SET_KEY  = new FullQualifiedName( "general.address" );
-public static FullQualifiedName LOCATION_ENTITY_SET_KEY2 = new FullQualifiedName( "general.apartment" );
-public static String            LOCATION_ALIAS           = "location";
-```
-
-### Define Relationships
-
-"What cases did this person appear in? What officers were involved in each case?"
-
-You can answer these types of questions using Loom once you've defined relationships between your entities.
-
-In the template integration, there are two relationships defined `"appearsin"` and `"occurredat"`:
-
-```java
-// RELATIONSHIPS
-public static String            APPEARS_IN_ENTITY_SET_NAME = "appearsin";
-public static FullQualifiedName APPEARS_IN_ENTITY_SET_TYPE = new FullQualifiedName( "general.appearsin" );
-public static FullQualifiedName APPEARS_IN_ENTITY_SET_KEY  = new FullQualifiedName( "publicsafety.occdatetime" );
-public static String            APPEARS_IN_ALIAS           = "appearsin";
-
-public static String            OCCURRED_AT_ENTITY_SET_NAME = "occurredat";
-public static FullQualifiedName OCCURRED_AT_ENTITY_SET_TYPE = new FullQualifiedName( "general.occurredat" );
-public static FullQualifiedName OCCURRED_AT_ENTITY_SET_KEY  = new FullQualifiedName( "publicsafety.occdatetime" );
-public static String            OCCURRED_AT_ALIAS           = "occurredat";
-```
+| Person      | First name, Last name, Address, Race, Date Of Birth |
+| Bookings    | Date Booked, Date Released                                                  |
+| Appears In  | Booking ID                                                |
 
 ### Create Your Flight Path
 
@@ -143,96 +148,62 @@ your data to Loom's servers. Replace the properties and column names with the va
 **Full Flight code:**
 
 ```java
+// Each flight stores data from 1 table or CSV
+// Add each flight to flights to integrate data from multiple CSVs or tables
+Map<Flight, Dataset<Row>> flights = Maps.newHashMap();
 Flight flight = Flight.newFlight()
         .createEntities()
 
         .addEntity( PEOPLE_ALIAS )
         .ofType( PEOPLE_ENTITY_SET_TYPE )
         .to( PEOPLE_ENTITY_SET_NAME )
-        .key( PEOPLE_ENTITY_SET_KEY )
+        .key( PEOPLE_ENTITY_SET_KEY1, PEOPLE_ENTITY_SET_KEY2 )
+        .addProperty( LAST_NAME_FQN )
+        .value( row -> row.getAs( "Last Name" ) ).ok()
+        .addProperty( FIRST_NAME_FQN )
+        .value( row -> row.getAs( "First Name" ) ).ok()
+        .addProperty( HOME_ADDRESS_FQN )
+        .value( row -> row.getAs( "Address" ) ).ok()
+        .addProperty( RACE_FQN )
+        .value( row -> row.getAs( "Race" ) ).ok()
+        .addProperty( DOB_FQN )
+        .value( row -> standardizeDate2( row.getAs( "DOB" ) ) ).ok().ok()
 
-        .addProperty( new FullQualifiedName( "general.lastname" ) )
-        .value( row -> row.getAs( "last name" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.firstname" ) )
-        .value( row -> row.getAs( "first name" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.middlename" ) )
-        .value( row -> row.getAs( "middle" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.personid" ) )
-        .value( row -> row.getAs( "person id no" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.homeaddress" ) )
-        .value( row -> row.getAs( "address" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.gender" ) )
-        .value( row -> row.getAs( "sex" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.race" ) )
-        .value( row -> row.getAs( "race" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.dob" ) )
-        .value( row -> standardizeDate( row.getAs( "dob" ) ).ok().ok()
-
-        .addEntity( CASE_ALIAS )
-        .ofType( CASE_ENTITY_SET_TYPE )
-        .to( CASE_ENTITY_SET_NAME )
-        .key( CASE_ENTITY_SET_KEY )
-
-        .addProperty( new FullQualifiedName( "publicsafety.ucr" ) )
-        .value( row -> row.getAs( "ucr" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.ucrext" ) )
-        .value( row -> row.getAs( "ucr ext" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.ncicdes" ) )
-        .value( row -> row.getAs( "ncic des" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.ncicexpdesc" ) )
-        .value( row -> row.getAs( "ncic exp desc" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.case" ) )
-        .value( row -> row.getAs( "case" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.weekday" ) )
-        .value( row -> row.getAs( "day of week" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.adult3-juv103" ) )
-        .value( row -> row.getAs( "3-adult,103-juv" ) ).ok().ok()
-
-        .addEntity( LOCATION_ALIAS )
-        .ofType( LOCATION_ENTITY_SET_TYPE )
-        .to( LOCATION_ENTITY_SET_NAME )
-        .key( LOCATION_ENTITY_SET_KEY, LOCATION_ENTITY_SET_KEY2 )
-
-        .addProperty( new FullQualifiedName( "general.city" ) )
-        .value( row -> row.getAs( "city" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.address" ) )
-        .value( row -> row.getAs( "location" ) ).ok()
-        .addProperty( new FullQualifiedName( "general.apartment" ) )
-        .value( row -> row.getAs( "apartment" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.pdzonestr" ) )
-        .value( row -> row.getAs( "pd zone" ) ).ok()
-        .addProperty( new FullQualifiedName( "publicsafety.pdbeat" ) )
-        .value( row -> row.getAs( "pd beat" ) ).ok()
+        .addEntity( BOOKINGS_ALIAS )
+        .ofType( BOOKINGS_ENTITY_SET_TYPE )
+        .to( BOOKINGS_ENTITY_SET_NAME )
+        .key( BOOKINGS_ENTITY_SET_KEY1, BOOKINGS_ENTITY_SET_KEY2 )
+        .addProperty( DATE_BOOKED_FQN )
+        .value( row -> standardizeDate( row.getAs( "Date Booked" ) ) ).ok()
+        .addProperty( DATE_RELEASED_FQN )
+        .value( row -> standardizeDate( row.getAs( "Date Released" ) ) ).ok()
 
         .ok().ok()
         .createAssociations()
 
-        .addAssociation( APPEARS_IN_ALIAS )
-        .ofType( APPEARS_IN_ENTITY_SET_TYPE )
-        .to( APPEARS_IN_ENTITY_SET_NAME )
-        .key( APPEARS_IN_ENTITY_SET_KEY )
+        .addAssociation( WAS_BOOKED_IN_ALIAS )
+        .ofType( WAS_BOOKED_IN_ENTITY_SET_TYPE )
+        .to( WAS_BOOKED_IN_ENTITY_SET_NAME )
+        .key( WAS_BOOKED_IN_ENTITY_SET_KEY )
         .fromEntity( PEOPLE_ALIAS )
-        .toEntity( CASE_ALIAS )
-        .addProperty( new FullQualifiedName( "publicsafety.occdatetime" ) )
-        .value( row -> standardizeDateTime( row.getAs( "occ year" ), row.getAs( "time occ" ) ) ).ok().ok()
-
-        .addAssociation( OCCURRED_AT_ALIAS )
-        .ofType( OCCURRED_AT_ENTITY_SET_TYPE )
-        .to( OCCURRED_AT_ENTITY_SET_NAME )
-        .key( OCCURRED_AT_ENTITY_SET_KEY )
-        .fromEntity( CASE_ALIAS )
-        .toEntity( LOCATION_ALIAS )
-        .addProperty( new FullQualifiedName( "publicsafety.occdatetime" ) )
-        .value( row -> standardizeDateTime( row.getAs( "occ year" ), row.getAs( "time occ" ) ) ).ok().ok().ok()
+        .toEntity( BOOKINGS_ALIAS )
+        .addProperty( BOOKING_ID_FQN )
+        .value( row -> row.getAs( "Booking ID" ) ).ok().ok().ok()
         .done();
 ```
 
-**Common Error:** For each `row.getAs("column name")` make sure to match the spacing and capitalization exactly as it is written in your CSV. Apache Spark is case sensitive and will include whitespace in the column header string if it exists.
+Note that the example code corresponds to 1 flight. You could integrate multiple tables (and add multiple flights) in one integration.
 
-```text
-Airport ID, Name, City, Country, IATA, ICAO...
+```java
+// At this point, your flight contains 1 table's worth of data
+// If you want to integrate more tables, create another flight (flight2) and
+// add the flight to flights
+flights.put( flight, payload );
+
+// Send your flight plan to Shuttle and complete your integration!
+Shuttle shuttle = new Shuttle( Environment.PRODUCTION, jwtToken );
+shuttle.launch( flights );
 ```
-The `Name` column in the example above would translate to: `row.getAs( " Name" )`
 
 ## 5. Create custom functions to parse your data
 

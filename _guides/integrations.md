@@ -12,11 +12,13 @@ weight: 1
 
 **Data integrations** take your data and map it to Loom's standardized data model. You will need to submit a request to a Loom administrator to create the data model for your dataset.
 
-> **How do I submit a request?** List your column headers, descriptions, and data types in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). A member of the Loom team will reply within 24 hours with further instructions.
+> **How do I submit a request?** List your column headers, descriptions, and data types in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). Please provide as many details as you can in the spreadsheet. We will contact you if further information is needed and will send you the details for your data model within 24 hours.
 
 ## 2. Create your dataset
 
-Once you receive the the details for your data model, go to the **Datasets** tab and create a new dataset with the information provided.
+**Note: You can skip this step if a member of the Loom team already created the required datasets for you.**
+
+Once you receive the the details for your data model, go to the **Datasets** tab and create the new datasets with the information provided.
 
 {%
   include image.html
@@ -28,7 +30,7 @@ Once you receive the the details for your data model, go to the **Datasets** tab
 
 In order for a data integration to be completed, Loom verifies that the credentials provided correspond to an individual who has been granted write permissions to the dataset. 
 
-**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves, but it is advised to use an account with more _limited_ permissions to perform the data integration.**
+**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they posess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
 
 <span class="bad">Not Recommended:</span> _Dataset owners use their own accounts to perform data integrations_
 

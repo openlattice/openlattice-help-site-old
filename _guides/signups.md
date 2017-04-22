@@ -21,6 +21,6 @@ Once the login window appears on the screen, click **Sign Up**. You can choose w
   path="/guides/signups/auth0-modal.png"
 %}
 
-Once you log in, feel free to explore Loom's features with some of our provided **Sample Datasets**:
+Once you log in, feel free to explore Loom's features with some of our provided sample datasets:
 
 {% include sampledata.html %}
