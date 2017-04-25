@@ -32,7 +32,7 @@ In the dropdown menu, select the two (or more) datasets you want to link and cli
 
 ## Choose property types to link
 
-Select the properties you want to use for the linking. For example, you may want to link two datasets by offense code. Select the property, and then choose at least 2 entity sets you want to link with that property using the dropdown menu. Click "Add Links".
+Select the properties you want to use for the linking. For example, you may want to link two datasets by offense code. Select the property, and then choose at least 2 datasets to link across that contain the offense code property. Click "Add Links".
 
 {%
   include image.html
@@ -40,13 +40,10 @@ Select the properties you want to use for the linking. For example, you may want
   path="/guides/linking/step2.gif"
 %}
 
-> **Note:** If some of your chosen entity sets are not appearing in the list, it means the property does not exist in that entity set.
-
-### How does Loom match related records across the linked datasets?
-
-Loom uses a **probabilistic matching algorithm** that involves phoenetic matching, jaro-winkler, and fuzzy matching to merge similar records together using the properties you specified above.
-
-To help with performance, we define the confidence level by clustering similar records together and tuning the diameter of the cluster. A smaller diameter, means smaller clusters, and higher confidence matching.
+> **How does Loom merge records across datasets?**
+> Loom uses a _probabilistic matching_ algorithm that involves _phoenetic matching_, _jaro-winkler_, and _fuzzy matching_ to merge similar records together using the properties you specified above.
+>
+> To help with performance, we define the confidence level by clustering similar records together and tuning the diameter of the cluster. A smaller diameter, means smaller clusters, and higher confidence matching.
 
 ## Define the linked entity type to create
 
