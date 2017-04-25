@@ -18,9 +18,9 @@ description: Link datasets to find recurring data across separate entities.
 1. TOC
 {:toc}
 
-## Choose entity sets to link
+## Choose datasets to link
 
-In the dropdown menu, select the two (or more) entity sets you want to link and click **Define the links to join the entity sets** to continue to the next step.
+In the dropdown menu, select the two (or more) datasets you want to link and click **Define the links to join the entity sets** to continue to the next step.
 
 {%
   include image.html
@@ -41,6 +41,12 @@ Select the properties you want to use for the linking. For example, you may want
 %}
 
 > **Note:** If some of your chosen entity sets are not appearing in the list, it means the property does not exist in that entity set.
+
+### How does Loom match related records across the linked datasets?
+
+Loom uses a **probabilistic matching algorithm** that involves phoenetic matching, jaro-winkler, and fuzzy matching to merge similar records together using the properties you specified above.
+
+To help with performance, we define the confidence level by clustering similar records together and tuning the diameter of the cluster. A smaller diameter, means smaller clusters, and higher confidence matching.
 
 ## Define the linked entity type to create
 
