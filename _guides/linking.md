@@ -18,7 +18,7 @@ description: Link datasets to find recurring data across separate entities.
 1. TOC
 {:toc}
 
-## Choose datasets to link
+## 1. Choose datasets to link
 
 In the dropdown menu, select the two (or more) datasets you want to link and click **Define the links to join the entity sets** to continue to the next step.
 
@@ -30,7 +30,7 @@ In the dropdown menu, select the two (or more) datasets you want to link and cli
 
 > **Note:** Existing linked datasets can appear in the menu, since once you link a dataset, you can continue to link it with other datasets.
 
-## Choose property types to link
+## 2. Choose property types to link
 
 Select the properties you want to use for the linking. For example, you may want to link two datasets by offense code. Select the property, and then choose at least 2 datasets to link across that contain the offense code property. Click "Add Links".
 
@@ -45,7 +45,7 @@ Select the properties you want to use for the linking. For example, you may want
 >
 > To help with performance, we define the confidence level by clustering similar records together and tuning the diameter of the cluster. A smaller diameter, means smaller clusters, and higher confidence matching.
 
-## Define the linked entity type to create
+## 3. Define the linked entity type to create
 
 If you want to only include de-identified properties in the output, select **Deidentify**. Review the list of property types that will be included in the output before clicking **Create linked entity type**.
 
@@ -68,7 +68,7 @@ Use the following naming conventions when you are defining your new linked entit
   "
 %}
 
-## Define your linked entity set
+## 4. Define your linked entity set
 
 Using the same naming and description from Step 3, fill out the Name, Title, and Description for your new Entity Set and click "Link" to create your Linked Entity Set.
 
