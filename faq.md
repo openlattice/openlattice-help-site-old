@@ -122,8 +122,6 @@ To access the sample datasets, visit the **Catalog** and search
   * [How to visualize your data](/guides/visualizations/)
 "%}
 
-## General
-
 ### How much does Loom cost?
 
 In order to help jurisdictions leverage technology to improve human outcomes, **we made all of Loom's core services completely free.**
@@ -138,6 +136,27 @@ In order to help jurisdictions leverage technology to improve human outcomes, **
 
 This list of core services is continually growing as we work with early adopters to create new features that better serve your needs. Schedule a demo for you and your team to learn more about how we can help you solve your data challenges.
 
-### How can I schedule a demo?
+## Next Steps
+
+### How can I request a demo?
 
 [Email](mailto:{{site.email}}) our Customer Success Manager if you're interested in scheduling a phone call or webinar for your team. We also have some of our demo videos available online that you can [view here](/demos/).
+
+### What datasets should I ask for?
+
+This depends on your needs! But if you're not sure where to begin, we recommend first reaching out to your local police department for datasets on jail booking and calls for service. We generally suggest requesting 5-10 years worth of data, but it may be helpful to begin with a smaller time frame and expanding it at a later date.
+
+EMS data is often managed state-wide. We recommend reaching out to your state EMS or ambulence authority to learn more.
+
+### Do you have any resources or handouts I can share with stakeholders?
+
+Yes! Visit our [Demos](/demos/) page for editable slide decks, printouts, and more. We also take requests if a resource you need is not currently available.
+
+### Do you have any sample BAAs or QSOAs? 
+
+We have sample documents in our [Privacy & Security FAQ](/faq/#privacy--security) you can use as a reference. Please reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for more information.
+
+### I have a dataset ready, can I integrate it now?
+
+Yes! Please refer to our [Integrations guide](/guides/integrations/) and feel free to reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for further assistance.
+
