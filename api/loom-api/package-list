@@ -1,4 +1,5 @@
 com.dataloom.analysis
+com.dataloom.analysis.requests
 com.dataloom.authorization
 com.dataloom.authorization.paging
 com.dataloom.authorization.securable
@@ -25,3 +26,4 @@ com.dataloom.organization.roles
 com.dataloom.requests
 com.dataloom.search
 com.dataloom.search.requests
+com.dataloom.sync
