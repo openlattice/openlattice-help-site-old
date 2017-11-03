@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Integrations Part 2 – Integration Scripts
-description: Customize our provided template integration scripts. This guide is recommended for individuals who are completing data integrations. Reach out to help@thedataOpenLattice.com if you need any assistance with your integration.
+description: Customize our provided template integration scripts. This guide is recommended for individuals who are completing data integrations. Reach out to support@openlattice.com if you need any assistance with your integration.
 weight: 1
 ---
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> with any comments or feedback.</div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a> with any comments or feedback.</div><br>
 
 * TOC
 {:toc}
@@ -13,19 +13,14 @@ weight: 1
 
 ## 1. Set up your programming environment
 
-The integration script we provide requries [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to run. We also recommend that you use a programming text editor to edit the template integration files we provide you:
-
-* [Notepad++](https://notepad-plus-plus.org/)
-* [Atom](https://atom.io/)
-* [Sublime Text 3](https://www.sublimetext.com/)
-
+The integration script we provide requries [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to run. We also highly recommend that you use [intelliJ IDEA](https://www.jetbrains.com/idea/download/#section=mac) to run the programming files. This program highlights errors and makes troubleshooting much easier, when working with the template integration files we provide you. Download the free community version. 
 
 ## 2. Download template integration script
 
 Feel free to use our template integration script to get started. This integration
-script was used to integrate the [Sample Jail](https://thedataOpenLattice.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d) datasets.
+script was used to integrate the [Sample Jail](https://thedataOpenLattice.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d) datasets. 
 
-Download and unzip the [template project](/files/tutorial.zip). The folder contents should look like this:
+Download and unzip the [template project](/files/tutorial_11-2-17.zip). The folder contents should look like this:
 
 ```text
 fake_jail_data.csv (Replace with your CSV)
@@ -36,7 +31,7 @@ build.gradle
 gradlew
 gradlew.bat
 settings.gradle
-/src/main/java/com/openlattice/integrations/dataintegration
+/src/main/java/com/openlattice/integrations
     DataIntegration2017.java
 /src/main/java/resources
     jetty.yaml
@@ -45,18 +40,46 @@ settings.gradle
     rhizome.yaml
 ```
 
-## 3. Add login credentials and CSV filename to build.gradle
+## 3. Set up your project within intelliJ
 
-[Gradle](https://gradle.org/) is a build tool you will use to run the integration script. `build.gradle` contains important information about project dependencies, API versions, and other details. The piece you will need to update is the CSV filename and login credentials for the individual performing the data integration. Update the following:
+Upon opening intelliJ, you will see a window like this:
 
-**build.gradle**
-```gradle
-run.args = ["fake_jail_data.csv","test@example.com","examplepassword"]
-```
+{%
+  include image.html
+  caption="intelliJ opening window."
+  path="guides/integrations/intelliJ_open.png"
+%}
 
-The login credentials will be used in `DataIntegration.java` to retrieve your `jwtToken`. This token will then be used to verify whether the login credentials provided have been given write access to the dataset. 
+Click on "Import Project" and navigate to the tutorial folder. Accept all defaults in the following two windows. Your project will load, and should look like the one below. Here, the DataIntegration2017 java file is open. 
 
-**In: `/src/main/java/com/openlattice/integrations/dataintegration/DataIntegration2017.java`**
+Note that before the project loads, you will see a notification of gradle running, at the bottom of the intelliJ window. This should take only a few minutes. [Gradle](https://gradle.org/) is a build tool you will use to run the integration script. `build.gradle` contains important information about project dependencies, API versions, and other details. For now, leave these files as they are.
+
+{%
+  include image.html
+  path="guides/integrations/intelliJ_2.png"
+%}
+
+## 3. Add login credentials and CSV filename to your project
+
+ The login credentials will be used in `DataIntegration.java` to retrieve your `jwtToken`. This token is used to verify whether the login credentials provided have been given write access to the dataset. 
+
+**In: `/src/main/java/com/openlattice/integrations/DataIntegration2017.java`**  
+
+...right-click on the public class name, here `DataIntegration2017`, near the top of the file, and select `Create...`.  
+
+{%
+  include image.html
+  path="guides/integrations/intelliJ_3.png"
+%}
+
+In the pop-up window under `Program arguments`, input your csv filepath, username and password, separated only by spaces. This creates a Run configuration that stores one's username and password without exposing them in your java code, which is preferable if one shares file with others.
+
+{%
+  include image.html
+  path="guides/integrations/intelliJ_4.png"
+%}
+
+Finally, within the java class file, specify the position of the CSV filepath, username and password in the run configuration with the following statement. (Note in Java the first position in a vector is indexed as '0' rather than '1'. Therefore the first line specifies that the first string input is the csv path, the second (position 1) specifies the username, etc.) 
 
 ```java
 // Get CSV path, username, and password
@@ -91,13 +114,13 @@ Dataset<Row> payload = sparkSession
 
 ## 5. Define your integration
 
-In `DataIntegration2017.java` you will also need to define the entity types, relationships, and properties for your data.                                          |
+In `DataIntegration2017.java` you will also need to define the entity types, relationships, and properties for your data. We do this via a "flight path".                                         |
 
 ### Create Your Flight Path
 
 OpenLattice's [Shuttle API](/api/) maps and uploads your data to OpenLattice's servers. What we call the 'flight' lays out a recipe for translating your data tables, column by column, onto objects in our data model. 
 
-Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Notice that even though you may be integrating only 1 table, you could have multiple entity types that are represented in that table. For example, this example dataset has 3 different entity types and 2 associations that relates the entity types together:
+Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Notice that even though you may be integrating only 1 table, you could have multiple entity types that are represented in that table. For example, the [Sample Jail](https://thedataOpenLattice.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d)  dataset has 3 different entity types and 2 associations that relates the entity types together:
 
 | Entity Type | Properties included in this type                                                            |
 |-------------|---------------------------------------------------------------------------------------------|
@@ -165,11 +188,19 @@ Let's walk through how one would modify the above template for our sample datase
         .addProperty( "nc.PersonSurName", "Last Name" )
         .addProperty( "nc.PersonGivenName", "First Name" )
         .addProperty( "nc.PersonRace", "Race" )
-        .addProperty( "nc.PersonBirthDate") .value( row -> bdHelper.parse( row.getAs( "DOB" ) ) ) .ok()
+        .addProperty( "nc.PersonBirthDate") 
+            .value( row -> bdHelper.parse( row.getAs( "DOB" ) ) ) .ok()
 .endEntity()
 ```
 
 (You may notice that the java code for date of birth is different. We will address that below shortly!)
+
+One can also use OpenLattice's [flight generator](https://staging.openlattice.com/gallery/#/flight) to help fill in the flight details and auto-generate some code for you. For instance, I can search for the `Anytown Court Cases` dataset that I previously created in the Integrations tutorial, part I. The flight generator automatically brings up all properties contained by this dataset. One can simply type in the names of the columns in your dataset and click `Generate Flight` to get usable java code, that can then be pasted into your java class file.  
+
+{%
+  include image.html
+  path="guides/integrations/flight-generator.png"
+%}
 
 Note that the example code corresponds to 1 flight. You could integrate multiple tables (and add multiple flights) in one integration.
 
@@ -186,7 +217,7 @@ shuttle.launch( flights );
 
 ## 6. Create custom functions to parse your data
 
-If any of your columns are not meant to be simple text fields, then the java code above needs just a tad more love.  This is true for instance, for any fields that are numbers or dates or in various other situations, such as if you need to map only part of a column to an OpenLattice Entity or Property. For example, if your data had a `Name` column containing full names like `John Doe`, but you wanted to separate out `firstname` and `lastname` properties, you could write custom functions to parse the data contained in your `Name` column. A few examples of ways to deal with these situations are below. Simply paste the custom functions above or below your flight code in Shuttle (see the sample java file in the tutorial materials for examples).
+If any of your columns are not meant to be simple text fields, then the java code above needs just a tad more love.  This is true for instance, for any fields that are numbers or dates or in various other situations, such as if you need to map only part of a column to an OpenLattice Entity or Property. For example, if your data had a `Name` column containing full names like `John Doe`, but you wanted to separate out `firstname` and `lastname` properties, you could write custom functions to parse the data contained in your `Name` column. A few examples of ways to deal with these situations are below. Simply paste the custom functions above or below your flight code in your java class file (see the sample java file in the tutorial materials for examples).
 
 ### Date Formatting
 OpenLattice stores dates as [DateTime ISO8601](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html). If your dates are not already in this format, please use the provided `DateTimeHelper.java` class to help parse any dates or times in your data. Modify the y/m/d code below to match the format in your own dataset:
@@ -231,9 +262,9 @@ public static String getLastName( Object obj ) {
 .value( row -> getFirstName( row.getAs( "Name" ) ) .ok()
 ```
 
-### Number Parsing
+### Number Conversion
 
-You may have to convert a number, stored as a string in your .csv file, to a number field in the OpenLattice model (i.e., sentence term times). Here is an example of a custom function called `parseNumber` that allows one to do so:
+You may have to convert a number, stored as a string in your .csv file, to a number field in the OpenLattice model (i.e., sentence term times). Here is a custom function called `parseNumber` that allows one to do so:
 
 ```java
 public static Integer parseNumber( String num ) {

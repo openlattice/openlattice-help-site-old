@@ -18,11 +18,30 @@ weight: 1
 
 **Note: You can skip this step if a member of the OpenLattice team already created the required datasets for you.**
 
-Once you receive the the details for your data model, go to the **Datasets** tab and create the new datasets with the information provided.
+OpenLattice's database can be understood as a [graph database](https://en.wikipedia.org/wiki/Graph_database), which stores data as nodes, properties, and edges. All three are objects, or 'entities'. In our model nodes are commonly what one might think of as nouns: people, addresses, arrests, or health records. Edges connect nodes similar to the way that verbs connect nouns in a sentence. 'People' can 'appear in' a police 'incident', or 'live at' an 'address'. 'Appear in' and 'lives at' are both edges, or what we call `associations`. Both nodes and edges have user-defined properties such as dates, IDs, and other details. 
 
 {%
   include image.html
-  caption="Example: Creating a dataset for crime index dataset"
+  caption="Draft of part of OpenLattice's graph database"
+  path="guides/integrations/graph_model_draft.png"
+%}
+
+OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize data from all jurisdictions and counties on our platform, consisting of `entity types` (i.e., nodes), `property types`, and `associations` (i.e. edges). One can think of the EDM as the blueprint of the house you want to build, and your Entity Datasets as the houses you have built using the blueprint.  For each entity type in your dataset, an Entity Dataset must be created. For example, our [Sample Jail](files/tutorial_11-2-17.zip)  dataset is one flat file, but has 3 different entity types and 2 associations that relates the entity types together:
+
+| Entity Type | Properties included in this type                                                            |
+|-------------|---------------------------------------------------------------------------------------------|
+| Person      | First name, Last name, Race, Date Of Birth |
+| Address     | Street Address |
+| Bookings    | Date Booked, Date Released                                                  |
+| Booked In   | Booking ID  |
+| Lives At    | Address |    
+
+
+Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), identify the Entity Sets you need and create them in OpenLattice's gallery dashboard. Go to the **Datasets** tab and create the new datasets with the information provided. 
+
+{%
+  include image.html
+  caption="Example: Creating a dataset of court cases in Anytown, USA"
   path="guides/integrations/create-datasource.png"
 %}
 

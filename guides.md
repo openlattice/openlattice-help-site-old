@@ -2,7 +2,7 @@
 layout: page
 title: Guides
 permalink: /guides/
-description: Reference our step-by-step guides and tutorials on how to use Loom's platform.
+description: Reference our step-by-step guides and tutorials on how to use OpenLattice's platform.
 menu: true
 ---
 {% assign guides = site.guides | sort:"weight" | reverse %}
