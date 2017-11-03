@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Integrations Part 2 – Integration Scripts
-description: Customize our provided template integration scripts. This guide is recommended for individuals who are completing data integrations. Reach out to help@thedataloom.com if you need any assistance with your integration.
+description: Customize our provided template integration scripts. This guide is recommended for individuals who are completing data integrations. Reach out to help@thedataOpenLattice.com if you need any assistance with your integration.
 weight: 1
 ---
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> with any comments or feedback.</div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> with any comments or feedback.</div><br>
 
 * TOC
 {:toc}
@@ -23,7 +23,7 @@ The integration script we provide requries [Java SE Development Kit 8](http://ww
 ## 2. Download template integration script
 
 Feel free to use our template integration script to get started. This integration
-script was used to integrate the [Sample Jail](https://thedataloom.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d) datasets.
+script was used to integrate the [Sample Jail](https://thedataOpenLattice.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d) datasets.
 
 Download and unzip the [template project](/files/tutorial.zip). The folder contents should look like this:
 
@@ -36,8 +36,8 @@ build.gradle
 gradlew
 gradlew.bat
 settings.gradle
-/src/main/java/com/dataloom/integrations/dataintegration
-    DataIntegration.java
+/src/main/java/com/openlattice/integrations/dataintegration
+    DataIntegration2017.java
 /src/main/java/resources
     jetty.yaml
     log4j.properties
@@ -56,7 +56,7 @@ run.args = ["fake_jail_data.csv","test@example.com","examplepassword"]
 
 The login credentials will be used in `DataIntegration.java` to retrieve your `jwtToken`. This token will then be used to verify whether the login credentials provided have been given write access to the dataset. 
 
-**In: `/src/main/java/com/dataloom/integrations/dataintegration/DataIntegration.java`**
+**In: `/src/main/java/com/openlattice/integrations/dataintegration/DataIntegration2017.java`**
 
 ```java
 // Get CSV path, username, and password
@@ -71,7 +71,7 @@ logger.info( "Using the following idToken: Bearer {}", jwtToken );
 
 ## 4. Configure Apache Spark
 
-In `DataIntegration.java`, there will be some code that tells Apache Spark what format your datasource is in:
+In `DataIntegration2017.java`, there will be some code that tells Apache Spark what format your datasource is in:
 
 ```java
 // Configure Spark to load and read your datasource
@@ -91,61 +91,25 @@ Dataset<Row> payload = sparkSession
 
 ## 5. Define your integration
 
-In `DataIntegration.java` you will also need to define the entity types, relationships, and properties for your data.
-
-### Entity Types, Associations, and Properties
-
-Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Using the data model details provided to you by your Loom Administrator, update the Entity Set Names, Types, Keys, and Aliases defined at the top of your script. 
-
-```java
-// Entity Set (Dataset) and Entity Type Details
-public static String            PEOPLE_ENTITY_SET_NAME = "samplejailsubjects";
-public static FullQualifiedName PEOPLE_ENTITY_SET_TYPE = new FullQualifiedName( "sample.person" );
-public static FullQualifiedName PEOPLE_ENTITY_SET_KEY1  = new FullQualifiedName( "general.firstname" );
-public static FullQualifiedName PEOPLE_ENTITY_SET_KEY2  = new FullQualifiedName( "general.lastname" );
-public static String            PEOPLE_ALIAS           = "people";
-
-public static String            BOOKINGS_ENTITY_SET_NAME = "samplejailbookings";
-public static FullQualifiedName BOOKINGS_ENTITY_SET_TYPE = new FullQualifiedName( "sample.bookings" );
-public static FullQualifiedName BOOKINGS_ENTITY_SET_KEY1  = new FullQualifiedName( "publicsafety.datebooked" );
-public static FullQualifiedName BOOKINGS_ENTITY_SET_KEY2  = new FullQualifiedName( "publicsafety.datereleased" );
-public static String            BOOKINGS_ALIAS           = "bookings";
-
-public static String            WAS_BOOKED_IN_ENTITY_SET_NAME = "samplejailsubjectappearsin";
-public static FullQualifiedName WAS_BOOKED_IN_ENTITY_SET_TYPE = new FullQualifiedName( "sample.subjectappearsin" );
-public static FullQualifiedName WAS_BOOKED_IN_ENTITY_SET_KEY  = new FullQualifiedName( "publicsafety.bookingid" );
-public static String            WAS_BOOKED_IN_ALIAS           = "appearsin";
-```
-
-And define your dataset properties:
-
-```java
-// Properties
-public static FullQualifiedName LAST_NAME_FQN    = new FullQualifiedName( "general.lastname" );
-public static FullQualifiedName FIRST_NAME_FQN   = new FullQualifiedName( "general.firstname" );
-public static FullQualifiedName HOME_ADDRESS_FQN = new FullQualifiedName( "general.homeaddress" );
-public static FullQualifiedName RACE_FQN         = new FullQualifiedName( "general.race" );
-public static FullQualifiedName DOB_FQN          = new FullQualifiedName( "general.dob" );
-
-public static FullQualifiedName DATE_BOOKED_FQN          = new FullQualifiedName( "publicsafety.datebooked" );
-public static FullQualifiedName BOOKING_ID_FQN       = new FullQualifiedName( "publicsafety.bookingid" );
-public static FullQualifiedName DATE_RELEASED_FQN      = new FullQualifiedName( "publicsafety.datereleased" );
-```
-
-Notice that even though you may be integrating only 1 table, you could have multiple entity types that represent your dataset. For example, this example dataset has 2 different entity types and 1 association that relates the entity types together:
-
-| Entity Type | Properties included in this type                                                            |
-|-------------|---------------------------------------------------------------------------------------------|
-| Person      | First name, Last name, Address, Race, Date Of Birth |
-| Bookings    | Date Booked, Date Released                                                  |
-| Appears In  | Booking ID                                                |
+In `DataIntegration2017.java` you will also need to define the entity types, relationships, and properties for your data.                                          |
 
 ### Create Your Flight Path
 
-Loom's [Shuttle API](/api/) maps your data to the Loom data model and uploads
-your data to Loom's servers. Replace the properties and column names with the values that correspond with your dataset.
+OpenLattice's [Shuttle API](/api/) maps and uploads your data to OpenLattice's servers. What we call the 'flight' lays out a recipe for translating your data tables, column by column, onto objects in our data model. 
 
-**Full Flight code:**
+Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Notice that even though you may be integrating only 1 table, you could have multiple entity types that are represented in that table. For example, this example dataset has 3 different entity types and 2 associations that relates the entity types together:
+
+| Entity Type | Properties included in this type                                                            |
+|-------------|---------------------------------------------------------------------------------------------|
+| Person      | First name, Last name, Race, Date Of Birth |
+| Address     | Street Address |
+| Bookings    | Date Booked, Date Released                                                  |
+| Booked In   | Booking ID  |
+| Lives At    | Address |    
+
+Before writing your flight, it may be useful to first write out how your data maps on to the various OpenLattice Entity Types and Properties, in a similar table as what we show above. Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), fill in the Entity Set Names and Aliases, and replace the properties and column names with the values that correspond with your dataset.
+
+**Full Flight template code:**
 
 ```java
 // Each flight stores data from 1 table or CSV
@@ -153,44 +117,59 @@ your data to Loom's servers. Replace the properties and column names with the va
 Map<Flight, Dataset<Row>> flights = Maps.newHashMap();
 Flight flight = Flight.newFlight()
         .createEntities()
-
-        .addEntity( PEOPLE_ALIAS )
-        .ofType( PEOPLE_ENTITY_SET_TYPE )
-        .to( PEOPLE_ENTITY_SET_NAME )
-        .key( PEOPLE_ENTITY_SET_KEY1, PEOPLE_ENTITY_SET_KEY2 )
-        .addProperty( LAST_NAME_FQN )
-        .value( row -> row.getAs( "Last Name" ) ).ok()
-        .addProperty( FIRST_NAME_FQN )
-        .value( row -> row.getAs( "First Name" ) ).ok()
-        .addProperty( HOME_ADDRESS_FQN )
-        .value( row -> row.getAs( "Address" ) ).ok()
-        .addProperty( RACE_FQN )
-        .value( row -> row.getAs( "Race" ) ).ok()
-        .addProperty( DOB_FQN )
-        .value( row -> standardizeDate2( row.getAs( "DOB" ) ) ).ok().ok()
-
-        .addEntity( BOOKINGS_ALIAS )
-        .ofType( BOOKINGS_ENTITY_SET_TYPE )
-        .to( BOOKINGS_ENTITY_SET_NAME )
-        .key( BOOKINGS_ENTITY_SET_KEY1, BOOKINGS_ENTITY_SET_KEY2 )
-        .addProperty( DATE_BOOKED_FQN )
-        .value( row -> standardizeDate( row.getAs( "Date Booked" ) ) ).ok()
-        .addProperty( DATE_RELEASED_FQN )
-        .value( row -> standardizeDate( row.getAs( "Date Released" ) ) ).ok()
-
-        .ok().ok()
-        .createAssociations()
-
-        .addAssociation( WAS_BOOKED_IN_ALIAS )
-        .ofType( WAS_BOOKED_IN_ENTITY_SET_TYPE )
-        .to( WAS_BOOKED_IN_ENTITY_SET_NAME )
-        .key( WAS_BOOKED_IN_ENTITY_SET_KEY )
-        .fromEntity( PEOPLE_ALIAS )
-        .toEntity( BOOKINGS_ALIAS )
-        .addProperty( BOOKING_ID_FQN )
-        .value( row -> row.getAs( "Booking ID" ) ).ok().ok().ok()
-        .done();
+                    .addEntity( "PEOPLE_ALIAS" )      //variable name within flight. Doesn't have to match anything anywhere else.
+                        .to( "PEOPLE_ENTITY_SET_NAME" )       //name of entity set created in step 2 of tutorial, 'Integratons Part I'.
+                            .addProperty( "LAST_NAME_FQN", "LAST_NAME_COL" )
+                            .addProperty( "FIRST_NAME_FQN", "FIRST_NAME_COL" )
+                            .addProperty( "RACE_FQN", "RACE_COL" )
+                            .addProperty( "DOB_FQN") 
+                                .value( row -> bdHelper.parse( row.getAs( "DOB" ) ) ) .ok()
+                        .endEntity()
+                    addEntity( "ADDRESS_ALIAS" )
+                            .to( "ADDRESS_ENTITY_SET_NAME" )
+                            .addProperty( "STREET_ADDRESS_FQN", "ADDRESS_COL" )
+                            .endEntity()
+                    .addEntity( "BOOKINGS_ALIAS" )
+                            .to( "BOOKINGS_ENTITY_SET_NAME" )
+                            .addProperty( "DATE_BOOKED_FQN" )
+                                .value( row -> bdHelper.parse( row.getAs( "Date Booked" ) ) ).ok()
+                            .addProperty( DATE_RELEASED_FQN )
+                                .value( row -> bdHelper.parse( row.getAs( "Date Released" ) ) ).ok()
+                            .endEntity()
+                .endEntities()                
+                
+                .createAssociations()
+                    .addAssociation( "LIVES_AT_ALIAS" )
+                        .to( "LIVES_AT_IN_ENTITY_SET_NAME" )
+                        .fromEntity( "PEOPLE_ALIAS" )
+                        .toEntity( "ADDRESS_ALIAS" )
+                        .endAssociation()
+                    .addAssociation( "WAS_BOOKED_IN_ALIAS" )
+                        .to( "WAS_BOOKED_IN_ENTITY_SET_NAME" )
+                        .fromEntity( "PEOPLE_ALIAS" )
+                        .toEntity( "BOOKINGS_ALIAS" )
+                        .addProperty( "BOOKING_ID_FQN", "BOOKING_ID_COL" )
+                        .endAssociation()
+                .endAssociations()
+                
+                    .done();
 ```
+
+**How to customize your flight**
+
+Let's walk through how one would modify the above template for our sample dataset. Within the first `.addEntity` command, one would replace `"PEOPLE_ENTITY_SET_NAME"` with the name of the Entity Dataset that you created in step 2 of the first Integration tutorial ("Create Your Dataset"). Here, I simply call the entity alias `people` and let's assume that we previously created an Entity Dataset called `FakeJailPeople` to house the people in our data. Then, search for the "person" Entity in [OpenLattice's data model](https://staging.openlattice.com/edm/#/entityTypes) and replace `"LAST_NAME_FQN"` with fully qualified name of this Entity Type Property. At present, the FQN would be `nc.PersonSurName`. Finally, replace `"LAST_NAME_COL"` with the name of the column in *your* dataset that contains last names. In our sample jail data, this column is "Last Name". The finished java code for the first entity would thus look like this:
+
+```
+.addEntity( "people" )      
+    .to( "FakeJailPeople" )       
+        .addProperty( "nc.PersonSurName", "Last Name" )
+        .addProperty( "nc.PersonGivenName", "First Name" )
+        .addProperty( "nc.PersonRace", "Race" )
+        .addProperty( "nc.PersonBirthDate") .value( row -> bdHelper.parse( row.getAs( "DOB" ) ) ) .ok()
+.endEntity()
+```
+
+(You may notice that the java code for date of birth is different. We will address that below shortly!)
 
 Note that the example code corresponds to 1 flight. You could integrate multiple tables (and add multiple flights) in one integration.
 
@@ -205,10 +184,26 @@ Shuttle shuttle = new Shuttle( Environment.PRODUCTION, jwtToken );
 shuttle.launch( flights );
 ```
 
-## 5. Create custom functions to parse your data
+## 6. Create custom functions to parse your data
 
-Sometimes, you may need to extract data from a column in your dataset.
-For example, if your data had a `Name` column, but you wanted to use the `firstname` and `lastname` properties, you could write custom functions to parse the data contained in your `Name` column.
+If any of your columns are not meant to be simple text fields, then the java code above needs just a tad more love.  This is true for instance, for any fields that are numbers or dates or in various other situations, such as if you need to map only part of a column to an OpenLattice Entity or Property. For example, if your data had a `Name` column containing full names like `John Doe`, but you wanted to separate out `firstname` and `lastname` properties, you could write custom functions to parse the data contained in your `Name` column. A few examples of ways to deal with these situations are below. Simply paste the custom functions above or below your flight code in Shuttle (see the sample java file in the tutorial materials for examples).
+
+### Date Formatting
+OpenLattice stores dates as [DateTime ISO8601](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html). If your dates are not already in this format, please use the provided `DateTimeHelper.java` class to help parse any dates or times in your data. Modify the y/m/d code below to match the format in your own dataset:
+
+**Example Implementation:**
+```java
+// Custom Functions for Standardizing Dates as JODA format
+//the Offset hours are offset from UTC.
+private static final DateTimeHelper bdHelper = new DateTimeHelper(DateTimeZone
+            .forOffsetHours(-4), "YYYY-MM-dd");
+```
+
+```java
+// Corresponding Flight Code
+.addProperty( "nc.PersonBirthDate") 
+    .value( row -> bdHelper.parse( row.getAs( "DOB" ) ) ) .ok()
+```
 
 ### Name Parsing
 
@@ -236,35 +231,37 @@ public static String getLastName( Object obj ) {
 .value( row -> getFirstName( row.getAs( "Name" ) ) .ok()
 ```
 
-### Date Formatting
-Loom stores dates as [DateTime ISO8601](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html). If your dates are not already in this format, please use the provided `DateTimeFormatter.java` class to help parse any dates or times in your data:
+### Number Parsing
+
+You may have to convert a number, stored as a string in your .csv file, to a number field in the OpenLattice model (i.e., sentence term times). Here is an example of a custom function called `parseNumber` that allows one to do so:
 
 ```java
-FormattedDateTime date = new FormattedDateTime( DATE_AS_STRING , TIME_AS_STRING, "MM/dd/yyyy", "HH:mm:ss")
-```
+public static Integer parseNumber( String num ) {
+        if (num == null) return null;
+        try {
+            Double d = Double.parseDouble( num );
+            return d.intValue();
+        } catch (NumberFormatException e) {}
 
-**Example Implementation:**
-```java
-// Custom Functions for Standardizing Dates as JODA format
-public static String standardizeDate( Object myDate ) {
-    if (myDate != null && !myDate.equals("")) {
-        String d = myDate.toString();
-        String ddate = d.split(" ")[0];
-        String dtime = d.split(" ")[1];
-        FormattedDateTime date = new FormattedDateTime( ddate, dtime, "MM/dd/yyyy", "HH:mm:ss");
-        return date.getDateTime();
+        try {
+            Integer i = Integer.parseInt( num );
+            return i;
+        } catch ( NumberFormatException e) {}
+
+        return null;
     }
-    return null;
-}
 ```
+
+Then for a data column called `sentence term yrs` for instance, one would add this to your flight as a property like so:
 
 ```java
 // Corresponding Flight Code
-.addProperty( new FullQualifiedName( "general.dob" ) )
-.value( row -> standardizeDate( row.getAs( "Birth Date" ) ) .ok()
+.addProperty(  "event.SentenceTermYears" )
+    .value( row -> parseNumber( row.getAs( "sentence term yrs" ) ) .ok()
 ```
 
-## 6. Run your Integration
+
+## 7. Run your Integration
 
 Use the command line to navigate to your integration project directory and use the `gradlew` command to run your integration script:
 
@@ -281,7 +278,7 @@ $ .\gradlew.bat run
 ```
 
 Once the integration completes, you will be able to begin managing your dataset
-on Loom.
+on OpenLattice.
 
 {%
   include related.html

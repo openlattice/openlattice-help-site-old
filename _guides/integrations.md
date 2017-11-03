@@ -10,13 +10,13 @@ weight: 1
 
 ## 1. Create your data model
 
-**Data integrations** take your data and map it to Loom's standardized data model. You will need to submit a request to a Loom administrator to create the data model for your dataset.
+**Data integrations** take your data and map it to OpenLattice's standardized data model. You will need to submit a request to a OpenLattice administrator to create the data model for your dataset.
 
 > **How do I submit a request?** List your column headers, descriptions, and data types in this [this spreadsheet](/files/DatasetColumnHeaderSubmission.xlsx) and email it to us at [{{site.email}}](mailto:{{site.email}}). Please provide as many details as you can in the spreadsheet. We will contact you if further information is needed and will send you the details for your data model within 24 hours.
 
 ## 2. Create your dataset
 
-**Note: You can skip this step if a member of the Loom team already created the required datasets for you.**
+**Note: You can skip this step if a member of the OpenLattice team already created the required datasets for you.**
 
 Once you receive the the details for your data model, go to the **Datasets** tab and create the new datasets with the information provided.
 
@@ -28,7 +28,7 @@ Once you receive the the details for your data model, go to the **Datasets** tab
 
 ## 3. Identify who will perform the data integration
 
-In order for a data integration to be completed, Loom verifies that the credentials provided correspond to an individual who has been granted write permissions to the dataset. 
+In order for a data integration to be completed, OpenLattice verifies that the credentials provided correspond to an individual who has been granted write permissions to the dataset. 
 
 **Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they posess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
 
@@ -38,7 +38,7 @@ In order for a data integration to be completed, Loom verifies that the credenti
 
 <span class="good">Recommended:</span> _Dataset owners use a separate account with limited permissions to perform data integrations_
 
-> Create a separate Loom account with a chosen username and password (not Google Auth) and use those credentials for data integrations. Or, have a member of your team (someone who currently manages your data in your organization) perform the data integration for you using their own account.
+> Create a separate OpenLattice account with a chosen username and password (not Google Auth) and use those credentials for data integrations. Or, have a member of your team (someone who currently manages your data in your organization) perform the data integration for you using their own account.
 
 ## 4. Configure permissions
 
