@@ -1,10 +1,10 @@
 title: OpenLattice Help
 email: support@openlattice.com
-description: > # Welcome to Loom. These are the support resources to help you use the Loom platform.
+description: > # Welcome to OpenLattice. These are the support resources to help you use the OpenLattice platform.
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
 logo: openlattice_logo.png
-loom: https://thedataloom.com/
+loom: https://openlattice.com
 
 # Build settings
 markdown: kramdown
