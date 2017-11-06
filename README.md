@@ -1,13 +1,13 @@
-# dataloom.github.io
+# openlattice.github.io
 
-This site is home to the docs and help pages for Data Loom.
+This site is home to the docs and help pages for OpenLattice.
 
 1. Install Jekyll using Bundler
 2. Run `jekyll serve --watch` and view the site at `http://127.0.0.1:4000/`
 
 ### `/_guides`
 
-Contains markdown files for the guides and tutorials for Data Loom
+Contains markdown files for the guides and tutorials for OpenLattice
 
 ### `/_includes`
 

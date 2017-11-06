@@ -61,7 +61,7 @@ Note that before the project loads, you will see a notification of gradle runnin
 
 ## 3. Add login credentials and CSV filename to your project
 
- The login credentials will be used in `DataIntegration.java` to retrieve your `jwtToken`. This token is used to verify whether the login credentials provided have been given write access to the dataset. 
+ The login credentials will be used in `DataIntegration2017.java` to retrieve your `jwtToken`. This token is used to verify whether the login credentials provided have been given write access to the dataset. 
 
 **In: `/src/main/java/com/openlattice/integrations/DataIntegration2017.java`**  
 

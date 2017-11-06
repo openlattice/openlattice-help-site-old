@@ -1,7 +1,7 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
     <a class="site-title" href="{{ "/" | relative_url}}">
-      <img class="site-logo" src="/assets/{{site.logo}}" alt="loom-logo" />
+      <img class="site-logo" src="/assets/{{site.logo}}" alt="OpenLattice-logo" />
       {{ site.title | escape | upcase }}
     </a>
 
@@ -15,7 +15,7 @@
       </span>
 
       <div class="trigger" onclick="void(0)">
-          <a class="page-link" href="{{site.loom}}" target="_blank">OpenLattice Homepage</a>
+          <a class="page-link" href="{{site.homepage}}" target="_blank">OpenLattice Homepage</a>
         {% for my_page in site.pages %}
           {% if my_page.menu == true %}
           <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
