@@ -18,7 +18,7 @@ weight: 1
 
 **Note: You can skip this step if a member of the OpenLattice team already created the required datasets for you.**
 
-OpenLattice's database can be understood as a [graph database](https://en.wikipedia.org/wiki/Graph_database), which stores data as nodes, properties, and edges. All three are objects, or 'entities'. In our model nodes are commonly what one might think of as nouns: people, addresses, arrests, or health records. Edges connect nodes similar to the way that verbs connect nouns in a sentence. 'People' can 'appear in' a police 'incident', or 'live at' an 'address'. 'Appear in' and 'lives at' are both edges, or what we call `associations`. Both nodes and edges have user-defined properties such as dates, IDs, and other details. 
+OpenLattice's database can be understood as a [graph database](https://en.wikipedia.org/wiki/Graph_database), which stores data as nodes, properties, and edges. All three are objects, or `entities`. In our model nodes are commonly what one might think of as nouns: people, addresses, arrests, or health records. Edges connect nodes similar to the way that verbs connect nouns in a sentence. 'People' can 'appear in' a police 'incident', or 'live at' an 'address'. 'Appear in' and 'lives at' are both edges, or what we call `associations`. Both nodes and edges have user-defined `properties` such as dates, IDs, and other details. 
 
 {%
   include image.html
