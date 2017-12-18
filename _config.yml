@@ -3,7 +3,7 @@ email: support@openlattice.com
 description: > # Welcome to OpenLattice. These are the support resources to help you use the OpenLattice platform.
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-logo: openlattice_logo.png
+logo: openlattice_logo_96x96.png
 homepage: https://openlattice.com
 
 # Build settings
