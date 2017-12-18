@@ -1,7 +1,7 @@
 ---
 layout: page
 title: HIPAA Compliance Technical Details
-description: Loom technical specifications for HIPAA compliance.
+description: OpenLattice technical specifications for HIPAA compliance.
 ---
 
 * TOC
@@ -9,11 +9,11 @@ description: Loom technical specifications for HIPAA compliance.
 
 ## HIPAA Security Rule
 
-Loom complies with [HIPAA Security Rule](https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/techsafeguards.pdf), which establishes technical specifications for applications that work with protected health information online.
+OpenLattice complies with [HIPAA Security Rule](https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/securityrule/techsafeguards.pdf), which establishes technical specifications for applications that work with protected health information online.
 
 ### Access Control and Emergency Access Procedure
 
-Users can control access to Entity Sets they own by assigning and revoking user permissions or by defining a user role. Loom also allows the owner of the dataset to create a de-identified copy by stripping PII fields from the Entity Set before sharing the data with outside stakeholders.
+Users can control access to Entity Sets they own by assigning and revoking user permissions or by defining a user role. OpenLattice also allows the owner of the dataset to create a de-identified copy by stripping PII fields from the Entity Set before sharing the data with outside stakeholders.
 
 {% include related.html content="
 * [Guide: Permissions](/guides/permissions/)
@@ -21,7 +21,7 @@ Users can control access to Entity Sets they own by assigning and revoking user 
 
 ### Encrypted Data and HIPAA Compliant infrastructure
 
-Loom's infrastructure is built on HIPAA and CJIS compliant Amazon services such as Amazon EBS (Elastic Block Storage), which uses virtual hard drives encrypted with Amazon KMS (Key Management System). All data is stored securely at rest encrypted with AES-256.
+OpenLattice's infrastructure is built on HIPAA and CJIS compliant Amazon services such as Amazon EBS (Elastic Block Storage), which uses virtual hard drives encrypted with Amazon KMS (Key Management System). All data is stored securely at rest encrypted with AES-256.
 
 {% include related.html content="
 * [Amazon Web Services (AWS) HIPAA Compliance](https://aws.amazon.com/compliance/hipaa-compliance/)
