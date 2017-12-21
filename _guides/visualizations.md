@@ -1,7 +1,7 @@
 ---
 layout: page
 title: How to visualize your data
-description: Discover patterns in your data through Loom's core graphing and mapping tools.
+description: Discover patterns in your data through OpenLattice's core graphing and mapping tools.
 ---
 
 {% include video.html id="A1y1t8HwGlU" %}
