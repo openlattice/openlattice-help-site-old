@@ -2,7 +2,7 @@
 layout: page
 title: FAQs
 permalink: /faq/
-description: Learn about Loom's HIPAA compliance, permissions, pricing, and more.
+description: Learn about OpenLattice's HIPAA compliance, permissions, pricing, and more.
 menu: true
 ---
 
@@ -11,18 +11,18 @@ menu: true
 
 ## Privacy & Security
 
-### Is Loom HIPAA and CJIS compliant?
+### Is OpenLattice HIPAA and CJIS compliant?
 
-Yes. Loom infrastructure is compliant with the **Health Insurance Portability and Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS) Security Policy**.
+Yes. OpenLattice infrastructure is compliant with the **Health Insurance Portability and Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS) Security Policy**.
 
 In accordance with HIPAA Security Rule, we ensure Protected Health Information (PHI) is encrypted in transit and at rest with industry-standard encryption. We maintain detailed audit logs and support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
 
 {% include related.html content="
-* [Loom's HIPAA Compliance Technical Overview](/info/hipaa/)
+* [OpenLattice's HIPAA Compliance Technical Overview](/info/hipaa/)
 * [U.S. Dept. of Health and Human Services: Data Driven Justice and HIPAA FAQ](http://www.naco.org/sites/default/files/documents/DDJ%20HIPPA%20FAQs.pdf)
 " %}
 
-### Can Loom sign a Business Associate Agreement (BAA)?
+### Can OpenLattice sign a Business Associate Agreement (BAA)?
 
 Yes. We recommend using a BAA, in addition to a **Qualified Service Organization Agreement (QSOA)** if substance use data will be included.
 
@@ -31,36 +31,36 @@ Yes. We recommend using a BAA, in addition to a **Qualified Service Organization
 * [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSOA](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
 " %}
 
-### How does Loom comply with laws around mental health and substance use data?
+### How does OpenLattice comply with laws around mental health and substance use data?
 
 For information on confidentiality for mental health data, please refer to our
 HIPAA resources above.
 
-For alcohol and substance use data, we can sign a joint BAA and QSOA that includes provisions for **42 CFR Part 2**. Loom also gives dataset owners full control over the permissions on their dataset and its properties, so they can hide PII data that could be used to identify an individual.
+For alcohol and substance use data, we can sign a joint BAA and QSOA that includes provisions for **42 CFR Part 2**. OpenLattice also gives dataset owners full control over the permissions on their dataset and its properties, so they can hide PII data that could be used to identify an individual.
 
 {% include related.html content="
 * [Substance Abuse and Mental Health Services Administration: Confidentiality FAQ](https://www.samhsa.gov/about-us/who-we-are/laws/confidentiality-regulations-faqs)
 * [NY Office of Alcoholism & Substance Abuse Services: Sample BAA + QSOA](https://www.oasas.ny.gov/JC/documents/QSOAAgreement.pdf)
 " %}
 
-### How does Loom comply with state-level confidentiality laws?
+### How does OpenLattice comply with state-level confidentiality laws?
 
 Laws vary from state-to-state, but we will do our best to answer questions about
-how the Loom platform can work within your state.
+how the OpenLattice platform can work within your state.
 Please reach out to us at [{{site.email}}](mailto:{{site.email}}).
 
 ### Who owns the data once it has been integrated?
 
-**You have full ownership of your data once it's integrated into Loom.**
+**You have full ownership of your data once it's integrated into OpenLattice.**
 
-Loom provides a secure data sharing platform built on HIPAA security compliant infrastructure with AWS. Amazon AWS also complies with this policy, as stated in their AWS Data Privacy FAQ:
+OpenLattice provides a secure data sharing platform built on HIPAA security compliant infrastructure with AWS. Amazon AWS also complies with this policy, as stated in their AWS Data Privacy FAQ:
 > "Customers maintain ownership of their customer content and select which AWS services process, store and host their customer content. We do not access or use customer content for any purpose other than as legally required and for maintaining the AWS services and providing them to our customers and their end users. We never use customer content or derive information from it for marketing or advertising."
 
 {% include related.html content="
 * [Visit the AWS Data Privacy FAQ for more details on Amazon's data privacy polices](https://aws.amazon.com/compliance/data-privacy-faq/)
 " %}
 
-## Using Loom
+## Using OpenLattice
 
 ### Who controls the data once it has been integrated?
 
@@ -91,7 +91,7 @@ Yes. We support de-identification so you can easily share data with outside stak
 You can either have someone
 from your team integrate the data (with our assistance as needed), or we can have someone from our team can do the integration and we can transfer ownership to you.
 
-### What data formats can be integrated into Loom?
+### What data formats can be integrated into OpenLattice?
 
 We support any data format supported by Apache Spark including:
 * CSV
@@ -108,12 +108,12 @@ If you need to integrate data from a format that's not on this list, send us an 
 
 ### Are there any sample datasets that I can use to test the platform?
 
-Yes. We created sample datasets to help you explore features of the Loom platform:
+Yes. We created sample datasets to help you explore features of the OpenLattice platform:
 
 {% include sampledata.html %}
 
 To access the sample datasets, visit the **Catalog** and search
-"sample". Everyone with a Loom account can **Read** and **Link** the sample datasets and their properties.
+"sample". Everyone with a OpenLattice account can **Read** and **Link** the sample datasets and their properties.
 
 {% include related.html
   content="
@@ -122,9 +122,9 @@ To access the sample datasets, visit the **Catalog** and search
   * [How to visualize your data](/guides/visualizations/)
 "%}
 
-### How much does Loom cost?
+### How much does OpenLattice cost?
 
-In order to help jurisdictions leverage technology to improve human outcomes, **we made all of Loom's core services completely free.**
+In order to help jurisdictions leverage technology to improve human outcomes, **we made all of OpenLattice's core services completely free.**
 
 * Unlimited number of data integrations
 * Making datasets available for download
@@ -154,9 +154,9 @@ Yes! Visit our [Demos](/demos/) page for editable slide decks, printouts, and mo
 
 ### Do you have any sample BAAs or QSOAs? 
 
-We have sample documents in our [Privacy & Security FAQ](/faq/#privacy--security) you can use as a reference. Please reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for more information.
+We have sample documents in our [Privacy & Security FAQ](/faq/#privacy--security) you can use as a reference. Please reach out to <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> for more information.
 
 ### I have a dataset ready, can I integrate it now?
 
-Yes! Please refer to our [Integrations guide](/guides/integrations/) and feel free to reach out to <a href="mailto:help@thedataloom.com">help@thedataloom.com</a> for further assistance.
+Yes! Please refer to our [Integrations guide](/guides/integrations/) and feel free to reach out to <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> for further assistance.
 

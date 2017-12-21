@@ -34,4 +34,4 @@ We have tamper resistant audit logs that record every time someone reads or acce
 
 ### Disaster Recovery
 
-We store periodic snapshots of the state of the Cassandra database clusters, so the information can be used to recover the system in the event of a system failure.
+We store periodic snapshots of the state of the Postgres database clusters, so the information can be used to recover the system in the event of a system failure.
