@@ -154,9 +154,9 @@ Yes! Visit our [Demos](/demos/) page for editable slide decks, printouts, and mo
 
 ### Do you have any sample BAAs or QSOAs? 
 
-We have sample documents in our [Privacy & Security FAQ](/faq/#privacy--security) you can use as a reference. Please reach out to <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> for more information.
+We have sample documents in our [Privacy & Security FAQ](/faq/#privacy--security) you can use as a reference. Please reach out to <a href="mailto:help@OpenLattice.com">help@OpenLattice.com</a> for more information.
 
 ### I have a dataset ready, can I integrate it now?
 
-Yes! Please refer to our [Integrations guide](/guides/integrations/) and feel free to reach out to <a href="mailto:help@thedataOpenLattice.com">help@thedataOpenLattice.com</a> for further assistance.
+Yes! Please refer to our [Integrations guide](/guides/integrations/) and feel free to reach out to <a href="mailto:help@OpenLattice.com">help@OpenLattice.com</a> for further assistance.
 
