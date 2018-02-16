@@ -8,6 +8,9 @@ weight: 1
 * TOC
 {:toc}
 
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Resources used in this tutorial: 
+<a href="files/tutorial_11-2-17.zip">Sample Jail Dataset</a></div>
+
 ## 1. Create your data model
 
 **Data integrations** take your data and map it to OpenLattice's standardized data model. You will need to submit a request to a OpenLattice administrator to create the data model for your dataset.
@@ -22,8 +25,8 @@ OpenLattice's database can be understood as a [graph database](https://en.wikipe
 
 {%
   include image.html
-  caption="Draft of part of OpenLattice's graph database"
-  path="guides/integrations/graph_model_draft.png"
+  caption="Draft of part of OpenLattice's graph database, as applied to a healthcare patient screening assessment. . Entities are represented as boxes and associations as diamonds. The figure illustrates how representations of a single individual can be separated based on the associated properties (e.g., person vs. patient) to enable selective, restricted viewing of specific properties once records are linked."
+  path="guides/integrations/graph_database2.jpg"
 %}
 
 OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize data from all jurisdictions and counties on our platform, consisting of `entity types` (i.e., nodes), `property types`, and `associations` (i.e. edges). One can think of the EDM as the blueprint of the house you want to build, and your Entity Datasets as the houses you have built using the blueprint.  For each entity type in your dataset, an Entity Dataset must be created. For example, our [Sample Jail](files/tutorial_11-2-17.zip)  dataset is one flat file, but has 3 different entity types and 2 associations that relates the entity types together:
@@ -32,7 +35,7 @@ OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize da
 |-------------|---------------------------------------------------------------------------------------------|
 | Person      | First name, Last name, Race, Date Of Birth |
 | Address     | Street Address |
-| Bookings    | Date Booked, Date Released                                                  |
+| Jail Stay   | Date Booked, Date Released                                                  |
 | Booked In   | Booking ID  |
 | Lives At    | Address |    
 
