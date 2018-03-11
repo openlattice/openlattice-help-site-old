@@ -1,0 +1,33 @@
+name: "Name of integration for humans."
+description: "Description for humans."
+integrations:
+  - name: demo_justice
+    source:
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      sql: "n/a"
+      user: "example_user"
+      password: "examplepassword"
+      driver: org.postgresql.Driver
+      fetchSize: 20000
+    destination:
+      writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      writeDriver: org.postgresql.Driver
+      writeTable: demo_justice_OLcopy
+      hikari: 
+        user: "oluser"
+        password: "r3sonance!117"
+  - name: demo_health
+    source:
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      sql: "select * from demo_health where first_name ='Jennifer'"
+      user: "example_user"
+      password: "examplepassword"
+      driver: org.postgresql.Driver
+      fetchSize: 20000
+    destination:
+      writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      writeDriver: org.postgresql.Driver
+      writeTable: demo_health_subset
+      hikari: 
+        user: "oluser"
+        password: "r3sonance!117"

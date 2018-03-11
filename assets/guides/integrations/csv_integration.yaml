@@ -1,0 +1,29 @@
+olUsername: oluser
+olPassword: r3sonance!117
+integrations:
+  - name: demo_justice
+    url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
+    sql: "n/a"
+    user: "n/a"
+    password: "n/a"
+    driver: com.openlattice.launchpad.Csv
+    fetchSize: 20000
+    writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+    writeDriver: org.postgresql.Driver
+    writeTable: demo_justice
+    hikari: 
+      user: "oluser"
+      password: "r3sonance!117"
+  - name: demo_health
+    url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
+    sql: "n/a"
+    user: "n/a"
+    password: "n/a"
+    driver: com.openlattice.launchpad.Csv
+    fetchSize: 20000
+    writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+    writeDriver: org.postgresql.Driver
+    writeTable: demo_health
+    hikari: 
+      user: "oluser"
+      password: "r3sonance!117"

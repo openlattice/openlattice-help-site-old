@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Integrations Part 2 – Integration Scripts
+title: Integrations Part 2 – Integration Scripts & Reading Data from .csv files
 description: Customize our provided template integration scripts. This guide is recommended for individuals who are completing data integrations. Reach out to support@openlattice.com if you need any assistance with your integration.
-weight: 1
+weight: 2
 ---
 
 <div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">This guide is currently being updated for our new version of Shuttle API. Please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a> with any comments or feedback.</div><br>
@@ -118,7 +118,7 @@ In `DataIntegration2018.java`, there will be some code that initializes an OpenL
         SimplePayload payload  = new SimplePayload( csvpath);
 ```
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: lightgrey; border-radius:5px; text-align: center;">Please note, if one has data from a SQL server that one would like to connect directly to, there is additional code that can read data from your server directly to OpenLattice's databases, sidestepping the need for data transfer using .csv or other files, once the proper data sharing agreements and permissions are in place. A guide for this specific situation is being written. At present, please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a>  for a meeting to discuss this possibility.</div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Please note, if one has data from a SQL server that one would like to connect directly to, there is additional code that can read data from your server directly to OpenLattice's databases, sidestepping the need for data transfer using .csv or other files, once the proper data sharing agreements and permissions are in place. A guide for this specific situation is being written. At present, please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a>  for a meeting to discuss this possibility.</div><br>
 
 ## 5. Define your integration
 
@@ -126,7 +126,7 @@ In `DataIntegration2018.java` you will also need to define the entity types, rel
 
 ### Create Your Flight Path
 
-OpenLattice's [Shuttle API](/api/) maps and uploads your data to OpenLattice's servers. What we call the 'flight' lays out a recipe for translating your data tables, column by column, onto objects in our data model. 
+OpenLattice's [**Shuttle API**](/api/) maps and uploads your data to OpenLattice's servers. What we call the 'flight' lays out a recipe for translating your data tables, column by column, onto objects in our data model. 
 
 Entity Types are like schemas for your datasets. They represent how your data will be formatted and what fields they will have. Notice that even though you may be integrating only 1 table, you could have multiple entity types that are represented in that table. For example, the [Sample Jail](https://thedataOpenLattice.com/gallery/#/entitysets/514e6a5f-2bcd-4206-bb1c-448a9dbcf06d)  dataset has 3 different entity types and 2 associations that relates the entity types together:
 
@@ -138,7 +138,7 @@ Entity Types are like schemas for your datasets. They represent how your data wi
 | Booked In   | Booking ID  |
 | Lives At    | Address |    
 
-Before writing your flight, it may be useful to first write out how your data maps on to the various OpenLattice Entity Types and Properties, in a similar table as what we show above. Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://openlattice.com/edm/#/entityTypes), fill in the Entity Set Names and Aliases, and replace the properties and column names with the values that correspond with your dataset.
+Before writing your flight, it may be useful to first write out how your data maps on to the various OpenLattice Entity Types and Properties, in a similar table as what we show above. Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [**here**](https://openlattice.com/edm/#/entityTypes), fill in the Entity Set Names and Aliases, and replace the properties and column names with the values that correspond with your dataset.
 
 **Full Flight template code:**
 
