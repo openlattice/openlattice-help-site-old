@@ -11,7 +11,7 @@ weight: 1
 ## 1. Overview 
 The previous tutorial, [Integrations Part 2 – Integration Scripts & Reading Data from .csv files](/guides/integrations-2/), walked one through how to run integrations from one's own computer from individual .csv files, one by one, into the OpenLattice platform. However, it may often be more desirable to transfer data, via either whole tables or subsets of tables, directly from your computer or SQL server and onto an OpenLattice server for later integration. 
 
-Your data would be stored in a private database accessible only to you - please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for arrangements. Later, one can still write your own integration script if desired and also put it onto OpenLattice servers to run automatically. A tutorial for this final step is being developed. 
+Your data would be stored in a private database accessible only to you - **please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for arrangements.** Later, one can still write your own integration script if desired and also put it onto OpenLattice servers to run automatically. A tutorial for this final step is being developed. 
 
 Some advantages of this workflow include:
 * Speeding up integrations by transferring the computing power needed away from client-side computer servers over to OpenLattice servers.
@@ -26,7 +26,7 @@ To copy over a table from your server onto Athena, the first step is to create a
 
 To create your .yaml file, use a text editor such as NotePad, TextEdit, or [**Sublime**](https://www.sublimetext.com/). 
 
-<span class="bad">NOTE:</span> _A.yaml file must be formatted very exactly, down to the number of spaces there are away from the left margin in each line. Please follow the instructions below exactly._
+<span class="bad">NOTE:</span> _A.yaml file must be formatted very exactly, down to the number of spaces there are away from the left margin in each line. Please follow the instructions below exactly. We recommend downloading the sample, formatted yaml file below, and replacing the parameters as needed._
 
 One can either (1) connect to your servers and copy over various tables, or (2) copy over .csv files.  
 
@@ -42,7 +42,7 @@ integrations:
     source:
       url: "<the url to the client-side server>"
       sql: "<SQL query that defines the data subset>"
-      user: "<username for entry to client-side server>"
+      username: "<username for entry to client-side server>"
       password: "<password to client-side server>"
       driver: org.postgresql.Driver
       fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
@@ -50,8 +50,8 @@ integrations:
       writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
       writeDriver: org.postgresql.Driver
       writeTable: <name of table copy that will be put on OpenLattice server>
-      hikari: 
-        user: "<your_username to your OpenLattice database>"
+      properties: 
+        username: "<your_username to your OpenLattice database>"
         password: "<your_password to your OpenLattice database>"
 ```
 
@@ -67,7 +67,7 @@ integrations:
     source:
       url: jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       sql: "select * from demo_health where 'FirstName' ='Jennifer'"
-      user: "example_user"
+      username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
@@ -75,14 +75,14 @@ integrations:
       writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       writeDriver: org.postgresql.Driver
       writeTable: demo_health_subset_OLcopy
-      hikari: 
-        user: "example_user"
+      properties: 
+        username: "example_user"
         password: "examplepassword"
 ```  
 
 
 ### Connecting to & uploading .csv files
-To connect to one or more .csv files on your computer, the YAML file paramters differ only slightly. One can simply put n/a in for the `sql:`, source server `user` and `password` lines since one is not connecting to a server. In the line specifying `url:`, type in the pathway on your computer to the files to be uploaded. Under `driver:`, type in `com.openlattice.launchpad.Csv`. Below illustrates what YAML parameters would be for uploading a sample dataset.  
+To connect to one or more .csv files on your computer, the YAML file paramters differ only slightly. One can simply omit the `sql:`, source server `user` and `password` lines found above since one is not connecting to a server. In the line specifying `url:`, type in the pathway on your computer to the files to be uploaded. Under `driver:`, type in `com.openlattice.launchpad.Csv`. Below illustrates what YAML parameters would be for uploading a sample dataset.  
 
 ```yaml
 name: "csv_tutorialtransfer"
@@ -91,9 +91,6 @@ integrations:
   - name: demo_justice
     source:
       url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
-      sql: "n/a"
-      user: "n/a"
-      password: "n/a"
       driver: com.openlattice.launchpad.Csv
       fetchSize: 20000
     destination:
@@ -101,13 +98,13 @@ integrations:
       writeDriver: org.postgresql.Driver
       writeTable: demo_justice
       hikari: 
-        user: "example_user"
+        username: "example_user"
         password: "examplepassword"
 ```
 
 
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Once your YAML file is created, one simply needs to run it against OpenLattice's <a href="https://github.com/openlattice/launchpad">launchpad</a> java script to read in the desired files to the OpenLattice platform. Please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps. </div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Once your YAML file is created, one simply needs to run it against OpenLattice's <a href="https://github.com/openlattice/launchpad">launchpad</a> java script to read in the desired files to the OpenLattice platform. Clone the repo and open it in a Java IDE such as IntelliJ, or please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps. </div><br>
 
 
 
