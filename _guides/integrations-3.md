@@ -26,7 +26,7 @@ To copy over a table from your server onto Athena, the first step is to create a
 
 To create your .yaml file, use a text editor such as NotePad, TextEdit, or [**Sublime**](https://www.sublimetext.com/). 
 
-<span class="bad">NOTE:</span> _A.yaml file must be formatted very exactly, down to the number of spaces there are away from the left margin in each line. Please follow the instructions below exactly. We recommend downloading the sample, formatted yaml file below, and replacing the parameters as needed._
+<span class="bad">NOTE:</span> _A.yaml file must be formatted very exactly, down to the number of spaces there are away from the left margin in each line. Please follow the instructions below exactly. We recommend downloading the sample, formatted yaml file [**HERE**](/assets/guides/integrations/integration_tutorial.yaml), and replacing the parameters as needed._
 
 One can either (1) connect to your servers and copy over various tables, or (2) copy over .csv files.  
 
@@ -41,7 +41,7 @@ integrations:
   - name: <The name of the table that is to be copied to OpenLattice>
     source:
       url: "<the url to the client-side server>"
-      sql: "<SQL query that defines the data subset>"
+      sql: "<SQL query that defines the data subset - must be a table or a subquery>"
       username: "<username for entry to client-side server>"
       password: "<password to client-side server>"
       driver: org.postgresql.Driver
@@ -55,7 +55,9 @@ integrations:
         password: "<your_password to your OpenLattice database>"
 ```
 
-Below is an example of how parameters would be filled out to transfer a file onto the OpenLattice platform. As an example we use our sample healthcare demo data, which is synthetic and does not contain any real people. If one wanted to copy over the entire table, in the `sql:` line one would say `SELECT * FROM demo_health`. Here we show a simple subset of data being pulled out, if for instance one wanted to copy over only records for people named "Jennifer". We are copying it into a training database on the OpenLattice server calld "example_integration". 
+Below are two examples of how parameters would be filled out to transfer a file onto the OpenLattice platform. We use our sample healthcare and criminal justice demo datasets, which are available to view on the [**OpenLattice gallery**](https://openlattice.com); these data are synthetic and do not contain any real people. We are copying these into a training database on the OpenLattice server calld "example_integration". The `sql:` lines must specify either an entire table, or a subquery. 
+* If one wanted to copy over an entire table, in the `sql:` line one would simply specify the table name, such as `"demo_justice"` in the first example below. 
+* If one wanted to query a subset of data, one needs to make it a subquery as is shown in the second example below, for a hypothetical situation where one wanted to copy over only records for people named "Jennifer". Note the `\"` needed surrounding a column name if it contains capital letters.  
 
 NOTE in this example the table is being read from and copied to the same database. In a real situation, the `source` and `destination` URLs will differ.
 
@@ -63,21 +65,34 @@ NOTE in this example the table is being read from and copied to the same databas
 name: "example_filetransfer"
 description: "Copying over data from demo health table into OpenLattice server"
 integrations:
-  - name: demo_health
+  - name: demo_justice
     source:
-      url: jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      sql: "select * from demo_health where 'FirstName' ='Jennifer'"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      sql: "demo_justice"
       username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
     destination:
-      writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      writeDriver: org.postgresql.Driver
-      writeTable: demo_health_subset_OLcopy
-      properties: 
-        username: "example_user"
-        password: "examplepassword"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      driver: org.postgresql.Driver
+      table: demo_justice_OLcopy
+      username: "example_user"
+      password: "examplepassword"
+  - name: demo_health
+    source:
+      url: jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      sql: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh" 
+      username: "example_user"
+      password: "examplepassword"
+      driver: org.postgresql.Driver
+      fetchSize: 20000
+    destination:
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      driver: org.postgresql.Driver
+      table: demo_health_subset_OLcopy
+      username: "example_user"
+      password: "examplepassword"
 ```  
 
 
@@ -94,12 +109,11 @@ integrations:
       driver: com.openlattice.launchpad.Csv
       fetchSize: 20000
     destination:
-      writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      writeDriver: org.postgresql.Driver
-      writeTable: demo_justice
-      hikari: 
-        username: "example_user"
-        password: "examplepassword"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      driver: org.postgresql.Driver
+      table: demo_justice 
+      username: "example_user"
+      password: "examplepassword"
 ```
 
 
