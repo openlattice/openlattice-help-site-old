@@ -2,7 +2,7 @@
 layout: page
 title: Integrations Part 1 – Data Model & Permissions
 description: Create a new dataset and configure permissions for your data integration. This guide is recommended for dataset owners who are preparing datasets for new integrations.
-weight: 1
+weight: 3
 ---
 
 * TOC
