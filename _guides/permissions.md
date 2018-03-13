@@ -12,11 +12,11 @@ description: Request, grant, and revoke user permissions to your dataset. Use ro
 Permissions can be set on your dataset and each of its properties. The owner
 of a dataset will be given Write, Read, Link, and Discover permissions.
 
-**New datasets will only grant permissions to the owner by default. All other users in Loom must be explicitly granted permissions by the dataset owner.**
+**New datasets will only grant permissions to the owner by default. All other users in OpenLattice must be explicitly granted permissions by the dataset owner.**
 
 {% include image.html
 path="/guides/permissions/permissions.png"
-caption="Current permission types in Loom: Owner, Write, Read, Link.<br> (Discover permissions are still under development, and do not grant any additional permissions at this time.)"
+caption="Current permission types in OpenLattice: Owner, Write, Read, Link.<br> (Discover permissions are still under development, and do not grant any additional permissions at this time.)"
 %}
 
 {% include permission-types.html %}
