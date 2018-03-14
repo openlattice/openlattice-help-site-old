@@ -47,12 +47,11 @@ integrations:
       driver: org.postgresql.Driver
       fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
     destination:
-      writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
-      writeDriver: org.postgresql.Driver
-      writeTable: <name of table copy that will be put on OpenLattice server>
-      properties: 
-        username: "<your_username to your OpenLattice database>"
-        password: "<your_password to your OpenLattice database>"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
+      driver: org.postgresql.Driver
+      table: <name of table copy that will be put on OpenLattice server>
+      username: "<your_username to your OpenLattice database>"
+      password: "<your_password to your OpenLattice database>"
 ```
 
 Below are two examples of how parameters would be filled out to transfer a file onto the OpenLattice platform. We use our sample healthcare and criminal justice demo datasets, which are available to view on the [**OpenLattice gallery**](https://openlattice.com); these data are synthetic and do not contain any real people. We are copying these into a training database on the OpenLattice server calld "example_integration". The `sql:` lines must specify either an entire table, or a subquery. 
@@ -118,7 +117,7 @@ integrations:
 
 
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Once your YAML file is created, one simply needs to run it against OpenLattice's <a href="https://github.com/openlattice/launchpad">launchpad</a> java script to read in the desired files to the OpenLattice platform. Clone the repo and open it in a Java IDE such as IntelliJ, or please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps. </div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Once your YAML file is created, one simply needs to run it against OpenLattice's <a href="https://github.com/openlattice/launchpad">launchpad</a> java script to read in the desired files to the OpenLattice platform. Clone the repo, or click <a href="https://openlattice.com/launchpad/launchpad-1.0.0.zip">here</a> (<a href="https://openlattice.com/launchpad/launchpad-1.0.0.tar">or here</a> for Linux users) and open the launchpad folder in a Java IDE such as IntelliJ. Please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps. </div><br>
 
 
 
