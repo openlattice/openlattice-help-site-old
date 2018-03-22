@@ -18,9 +18,9 @@ The integration script we provide requries [Java SE Development Kit 8](http://ww
 ## 2. Download template integration script
 
 Feel free to use our template integration script to get started. This integration
-script is written for the [**Sample Jail**](/files/tutorial_2-16-18.zip) dataset. 
+script is written for the [**Sample Jail**](../../files/tutorial_2-16-18.zip) dataset. 
 
-Download and unzip the [template project](/files/tutorial_2-16-18.zip). The folder contents should look like this:
+Download and unzip the [template project](../../files/tutorial_2-16-18.zip). The folder contents should look like this:
 
 ```text
 fake_jail_data.csv (Replace with your CSV)
