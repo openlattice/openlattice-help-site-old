@@ -40,7 +40,7 @@ OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize da
 | Lives At    | Address |    
 
 
-Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), identify the Entity Sets you need and create them in OpenLattice's gallery dashboard. Go to the **Datasets** tab and create the new datasets with the information provided. 
+Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), identify the Entity Sets you need and create them in OpenLattice's gallery dashboard. Go to the **Datasets** tab and create the new datasets with the information provided.  To follow this tutorial, create a dataset of entity type `Person`.
 
 {%
   include image.html
