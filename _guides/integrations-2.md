@@ -98,17 +98,6 @@ You will see your jwtToken under "account details" (not shown for privacy). Clic
 
 Then go back to the java class file in intelliJ and copy this into the `Program arguments` box as specified above. 
 
-Next, within the java class file, specify the location of the CSV filepath, and your account authorization information in the run configuration with the following statement. (Note in Java the first position in a vector is indexed as '0' rather than '1'. Therefore the first line specifies that the first string input is the csv path, and the second (position 1) specifies the jwtToken).  
-
-```java
-// Get CSV path - we can name it anything we want, here it is named "csvpath"
-final String csvpath = args[0];
-
-// Get jwtToken to verify data integrator has write permissions to dataset
-final String jwtToken = args[1];
-logger.info( "Using the following idToken: Bearer {}", jwtToken );
-```
-
 ## 4. Read your data into java with OpenLattice's "Payload" object
 
 In `DataIntegration2018.java`, there will be some code that initializes an OpenLattice "Payload" java object to load and read your datasource from a csv.
