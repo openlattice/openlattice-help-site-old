@@ -98,15 +98,6 @@ You will see your jwtToken under "account details" (not shown for privacy). Clic
 
 Then go back to the java class file in intelliJ and copy this into the `Program arguments` box as specified above. 
 
-## 4. Read your data into java with OpenLattice's "Payload" object
-
-In `DataIntegration2018.java`, there will be some code that initializes an OpenLattice "Payload" java object to load and read your datasource from a csv.
-
-```java
-// Configure OpenLattice's Payload function to load and read your datasource
-        SimplePayload payload  = new SimplePayload( csvpath);
-```
-
 <div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Please note, if one has data from a SQL server that one would like to connect directly to, there is additional code that can read data from your server directly to OpenLattice's databases, sidestepping the need for data transfer using .csv or other files, once the proper data sharing agreements and permissions are in place. A guide for this specific situation is being written. At present, please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a>  for a meeting to discuss this possibility.</div><br>
 
 ## 5. Define your integration
