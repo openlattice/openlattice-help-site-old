@@ -285,6 +285,11 @@ Then for a data column called `sentence term yrs` for instance, one would add th
 
 ## 7. Run your Integration
 
+#### Using intelliJ
+
+To run the integration from intelliJ, click the `Run` dropdown menu and select `Run DataIntegrations2018`.
+
+#### Command line
 Use the command line to navigate to your integration project directory and use the `gradlew` command to run your integration script:
 
 **Mac/Linux:**
