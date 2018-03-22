@@ -52,7 +52,7 @@ Using either the data model details provided to you by your OpenLattice Administ
 
 In order for a data integration to be completed, OpenLattice verifies that the credentials provided correspond to an individual who has been granted write permissions to the dataset. 
 
-**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they posess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
+**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they possess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
 
 <span class="bad">Not Recommended:</span> _Dataset owners use their own accounts to perform data integrations_
 
