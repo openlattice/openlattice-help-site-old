@@ -185,7 +185,7 @@ Let's walk through how one would modify the above template for our sample datase
 
 (You may notice that the java code for date of birth is different. We will address that below shortly!)
 
-One can also use OpenLattice's [**flight generator**](https://staging.openlattice.com/gallery/#/flight) to help fill in the flight details and auto-generate some code for you. For instance, I can search for the `Anytown Court Cases` dataset that I previously created in the Integrations tutorial, part I. The flight generator automatically brings up all properties contained by this dataset. One can simply type in the names of the columns in your dataset and click `Generate Flight` to get usable java code, that can then be pasted into your java class file.  
+One can also use OpenLattice's [**flight generator**](https://openlattice.com/gallery/#/flight) to help fill in the flight details and auto-generate some code for you. For instance, I can search for the `Anytown Court Cases` dataset that I previously created in the Integrations tutorial, part I. The flight generator automatically brings up all properties contained by this dataset. One can simply type in the names of the columns in your dataset and click `Generate Flight` to get usable java code, that can then be pasted into your java class file.  
 
 {%
   include image.html
