@@ -4,10 +4,6 @@ title: How to search for data in your datasets
 description: Find datasets through the Catalog and search for data in your datasets.
 ---
 
-{% include video.html id="Zot_hiKe_gM" %}
-
-<hr>
-
 * TOC
 {:toc}
 
