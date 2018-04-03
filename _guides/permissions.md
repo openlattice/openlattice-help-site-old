@@ -21,34 +21,6 @@ caption="Current permission types in OpenLattice: Owner, Write, Read, Link.<br> 
 
 {% include permission-types.html %}
 
-## Requesting permissions
-
-All permission requests are sent to the dataset owner to approve or reject. Granting
-a permission request will grant **read** permissions to a user.
-
-Properties will be marked with a lock icon until the dataset owner approves
-your request. The owner can modify your request by removing properties you have
-requested access to, and also revoke access at any time.
-
-{%
-  include image.html
-  caption="Requesting permission to view properties"
-  path="guides/permissions/request.gif"
-%}
-
-## Granting permissions
-
-When a user requests **read** permission on a dataset you own, a **Permission
-Request** will appear at the top of the **Details** page for your Entity Set. Accepting
-the permissions request will give read access to that user.
-You can also review and modify the properties they requested before deciding to
-allow permission.
-
-{%
-  include image.html
-  caption="Granting permission to a user"
-  path="guides/permissions/allow-deny.gif"
-%}
 
 ## Revoking permissions
 
@@ -63,10 +35,6 @@ on a per-dataset or per-property basis.
 %}
 
 ## Using Roles
-
-{% include video.html
-  id="xcyJFcmDzSc"
-%}
 
 If you've created an organization, dataset owners can assign permissions to a **Role** and
 all the users with that assigned role will be able to access the dataset with
