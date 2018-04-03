@@ -9,7 +9,7 @@ weight: 3
 {:toc}
 
 <div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Resources used in this tutorial: 
-<a href="files/tutorial_11-2-17.zip">Sample Jail Dataset</a></div>
+<a href="../../files/tutorial_2-16-18.zip">Sample Jail Dataset</a></div>
 
 ## 1. Create your data model
 
@@ -29,7 +29,7 @@ OpenLattice's database can be understood as a [graph database](https://en.wikipe
   path="guides/integrations/graph_database2.jpg"
 %}
 
-OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize data from all jurisdictions and counties on our platform, consisting of `entity types` (i.e., nodes), `property types`, and `associations` (i.e. edges). One can think of the EDM as the blueprint of the house you want to build, and your Entity Datasets as the houses you have built using the blueprint.  For each entity type in your dataset, an Entity Dataset must be created. For example, our [Sample Jail](files/tutorial_11-2-17.zip)  dataset is one flat file, but has 3 different entity types and 2 associations that relates the entity types together:
+OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize data from all jurisdictions and counties on our platform, consisting of `entity types` (i.e., nodes), `property types`, and `associations` (i.e. edges). One can think of the EDM as the blueprint of the house you want to build, and your Entity Datasets as the houses you have built using the blueprint.  For each entity type in your dataset, an Entity Dataset must be created. For example, our [Sample Jail](../../files/tutorial_2-16-18.zip)  dataset is one flat file, but has 3 different entity types and 2 associations that relates the entity types together:
 
 | Entity Type | Properties included in this type                                                            |
 |-------------|---------------------------------------------------------------------------------------------|
@@ -40,7 +40,7 @@ OpenLattice's __Entity Data Model (EDM)__ is a blueprint meant to standardize da
 | Lives At    | Address |    
 
 
-Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), identify the Entity Sets you need and create them in OpenLattice's gallery dashboard. Go to the **Datasets** tab and create the new datasets with the information provided. 
+Using either the data model details provided to you by your OpenLattice Administrator or your own interpretation of your dataset and the Entity Types that it maps to in the OpenLattice data model, found [here](https://staging.openlattice.com/edm/#/entityTypes), identify the Entity Sets you need and create them in OpenLattice's gallery dashboard. Go to the **Datasets** tab and create the new datasets with the information provided.  To follow this tutorial, create a dataset for each of the Entity Types in the above table, starting with a dataset of entity type 'Person'.
 
 {%
   include image.html
@@ -52,7 +52,7 @@ Using either the data model details provided to you by your OpenLattice Administ
 
 In order for a data integration to be completed, OpenLattice verifies that the credentials provided correspond to an individual who has been granted write permissions to the dataset. 
 
-**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they posess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
+**Identify a trusted member of your team (most likely the individual who is currently managing your data) and grant them write permissions to your new dataset. Dataset owners can also perform data integrations themselves (as long as they possess the username and password for the account), but it is advised to use an account with _limited_ permissions to perform the data integration.**
 
 <span class="bad">Not Recommended:</span> _Dataset owners use their own accounts to perform data integrations_
 

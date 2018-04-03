@@ -4,17 +4,6 @@ title: How to link your datasets and discover trends in your data
 description: Link datasets to find recurring data across separate entities.
 ---
 
-{% include video.html id="lF_YOXu4ivg" %}
-
-{%
-  include caption.html
-  content="Loom's linking feature is currently located
-  [here](https://thedataloom.com/gallery/#/link). Please
-  reach out to us with any feedback or questions."
-%}
-
-<hr>
-
 1. TOC
 {:toc}
 

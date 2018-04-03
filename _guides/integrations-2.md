@@ -18,9 +18,9 @@ The integration script we provide requries [Java SE Development Kit 8](http://ww
 ## 2. Download template integration script
 
 Feel free to use our template integration script to get started. This integration
-script is written for the [**Sample Jail**](/files/tutorial_2-16-18.zip) dataset. 
+script is written for the [**Sample Jail**](../../files/tutorial_2-16-18.zip) dataset. 
 
-Download and unzip the [template project](/files/tutorial_2-16-18.zip). The folder contents should look like this:
+Download and unzip the [template project](../../files/tutorial_2-16-18.zip). The folder contents should look like this:
 
 ```text
 fake_jail_data.csv (Replace with your CSV)
@@ -98,27 +98,7 @@ You will see your jwtToken under "account details" (not shown for privacy). Clic
 
 Then go back to the java class file in intelliJ and copy this into the `Program arguments` box as specified above. 
 
-Next, within the java class file, specify the location of the CSV filepath, and your account authorization information in the run configuration with the following statement. (Note in Java the first position in a vector is indexed as '0' rather than '1'. Therefore the first line specifies that the first string input is the csv path, and the second (position 1) specifies the jwtToken).  
-
-```java
-// Get CSV path - we can name it anything we want, here it is named "csvpath"
-final String csvpath = args[0];
-
-// Get jwtToken to verify data integrator has write permissions to dataset
-final String jwtToken = args[1];
-logger.info( "Using the following idToken: Bearer {}", jwtToken );
-```
-
-## 4. Read your data into java with OpenLattice's "Payload" object
-
-In `DataIntegration2018.java`, there will be some code that initializes an OpenLattice "Payload" java object to load and read your datasource from a csv.
-
-```java
-// Configure OpenLattice's Payload function to load and read your datasource
-        SimplePayload payload  = new SimplePayload( csvpath);
-```
-
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Please note, if one has data from a SQL server that one would like to connect directly to, there is additional code that can read data from your server directly to OpenLattice's databases, sidestepping the need for data transfer using .csv or other files, once the proper data sharing agreements and permissions are in place. A guide for this specific situation is being written. At present, please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a>  for a meeting to discuss this possibility.</div><br>
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Please note, if one has data from a SQL server that one would like to connect directly to, there is additional code that can read data from your server directly to OpenLattice's databases, sidestepping the need for data transfer using .csv or other files, once the proper data sharing agreements and permissions are in place. The guide for this specific situation can be found in the following tutorial, 'Integrations Part 3'. At present, please email <a href="mailto:support@topenlattice.com">support@openlattice.com</a>  for a meeting to discuss this possibility.</div><br>
 
 ## 5. Define your integration
 
@@ -190,7 +170,7 @@ Flight csvflight = Flight.newFlight()
 
 **How to customize your flight**
 
-Let's walk through how one would modify the above template for our sample dataset. Within the first `.addEntity` command, one would replace `"PEOPLE_ENTITY_SET_NAME"` with the name of the Entity Dataset that you created in step 2 of the first Integration tutorial ("Create Your Dataset"). Here, I simply call the entity alias `people` and let's assume that we previously created an Entity Dataset called `FakeJailPeople` to house the people in our data. Then, search for the "person" Entity in [**OpenLattice's data model**](https://staging.openlattice.com/edm/#/entityTypes) and replace `"LAST_NAME_FQN"` with fully qualified name of this Entity Type Property. At present, the FQN would be `nc.PersonSurName`. Finally, replace `"LAST_NAME_COL"` with the name of the column in *your* dataset that contains last names. In our sample jail data, this column is "Last Name". The finished java code for the first entity would thus look like this:
+Let's walk through how one would modify the above template for our sample dataset. Within the first `.addEntity` command, one would replace `"PEOPLE_ENTITY_SET_NAME"` with the name of the Entity Dataset that you created in step 2 of the first Integration tutorial ("Create Your Dataset"). Here, I simply call the entity alias `people` and let's assume that we previously created an Entity Dataset called `FakeJailPeople` to house the people in our data. Then, search for the "person" Entity in [**OpenLattice's data model**](https://openlattice.com/edm/#/entityTypes) and replace `"LAST_NAME_FQN"` with fully qualified name of this Entity Type Property. At present, the FQN would be `nc.PersonSurName`. You can also see the FQN's in your dataset when you go to your newly created dataset in the OpenLattice platform, and you click on *View integration Details*.  Finally, replace `"LAST_NAME_COL"` with the name of the column in *your* dataset that contains last names. In our sample jail data, this column is "Last Name". The finished java code for the first entity would thus look like this:
 
 ```
 .addEntity( "people" )      
@@ -205,7 +185,7 @@ Let's walk through how one would modify the above template for our sample datase
 
 (You may notice that the java code for date of birth is different. We will address that below shortly!)
 
-One can also use OpenLattice's [**flight generator**](https://staging.openlattice.com/gallery/#/flight) to help fill in the flight details and auto-generate some code for you. For instance, I can search for the `Anytown Court Cases` dataset that I previously created in the Integrations tutorial, part I. The flight generator automatically brings up all properties contained by this dataset. One can simply type in the names of the columns in your dataset and click `Generate Flight` to get usable java code, that can then be pasted into your java class file.  
+One can also use OpenLattice's [**flight generator**](https://openlattice.com/gallery/#/flight) to help fill in the flight details and auto-generate some code for you. For instance, I can search for the `Anytown Court Cases` dataset that I previously created in the Integrations tutorial, part I. The flight generator automatically brings up all properties contained by this dataset. One can simply type in the names of the columns in your dataset and click `Generate Flight` to get usable java code, that can then be pasted into your java class file.  
 
 {%
   include image.html
@@ -305,6 +285,11 @@ Then for a data column called `sentence term yrs` for instance, one would add th
 
 ## 7. Run your Integration
 
+#### Using intelliJ
+
+To run the integration from intelliJ, click the `Run` dropdown menu and select `Run DataIntegrations2018`.
+
+#### Command line
 Use the command line to navigate to your integration project directory and use the `gradlew` command to run your integration script:
 
 **Mac/Linux:**
