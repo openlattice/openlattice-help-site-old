@@ -19,10 +19,10 @@ Some advantages of this workflow include:
 * One maintains full control over the data to be integrated from your server into the OpenLattice platform, including any changes over time.
 * Eliminating the need for client-side creation and storage of extra .csv files to send to OpenLattice.
 
-To give an overview of the process, a temporary table is copied over from a client-side server into OpenLattice's "Athena" production server. This is done through a one-time vpn into a client-side computer by OpenLattice to set up the process, with your IT team's presence and support. OpenLattice then runs all data integrations on our side, on these temporary tables. For those that want continuous integrations (for instance, to add to and update CAD police data or behavioral health reports as they come in), a task can be set up on the client-side computer that runs at a set time period and over-writes the table that exists on	 the OpenLattice server, which is then integrated in parallel. These overwrites also ensure that the tables copied onto the OpenLattice side are temporary.
+To give an overview of the process, a temporary table is copied over from a client-side server into OpenLattice's "Atlas" production server, which is set up on [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html). This is done through a one-time vpn into a client-side computer by OpenLattice to set up the process, with your IT team's presence and support. OpenLattice then runs all data integrations on our side, on these temporary tables. For those that want continuous integrations (for instance, to add to and update CAD police data or behavioral health reports as they come in), a task can be set up on the client-side computer that runs at a set time period and over-writes the table that exists on	 the OpenLattice server, which is then integrated in parallel. These overwrites also ensure that the tables copied onto the OpenLattice side are temporary.
 
 ## 2. Setting up your data transfer 
-To copy over a table from your server onto Athena, the first step is to create a configuration file using [YAML](https://en.wikipedia.org/wiki/YAML). This configuration file will reside on your computer. It tells your server which table(s) to collect, where to put it on OpenLattice's platform (inside a specific database that will be set up for your jurisdiction), and what to name the table on OpenLattice's side. All of these factors are under your control. 
+To copy over a table from your server onto Atlas, the first step is to create a configuration file using [YAML](https://en.wikipedia.org/wiki/YAML). This configuration file will reside on your computer. It tells your server which table(s) to collect, where to put it on OpenLattice's platform (inside a specific database that will be set up for your jurisdiction), and what to name the table on OpenLattice's side. All of these factors are under your control. 
 
 To create your .yaml file, use a text editor such as NotePad, TextEdit, or [**Sublime**](https://www.sublimetext.com/). 
 
@@ -47,7 +47,7 @@ integrations:
       driver: org.postgresql.Driver
       fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
     destination:
-      url: "jdbc:postgresql://athena.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: <name of table copy that will be put on OpenLattice server>
       username: "<your_username to your OpenLattice database>"
@@ -66,28 +66,28 @@ description: "Copying over data from demo health table into OpenLattice server"
 integrations:
   - name: demo_justice
     source:
-      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       sql: "demo_justice"
       username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_justice_OLcopy
       username: "example_user"
       password: "examplepassword"
   - name: demo_health
     source:
-      url: jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       sql: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh" 
       username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_health_subset_OLcopy
       username: "example_user"
@@ -108,7 +108,7 @@ integrations:
       driver: com.openlattice.launchpad.Csv
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_justice 
       username: "example_user"
@@ -116,8 +116,18 @@ integrations:
 ```
 
 
+## 3. Running your configuration file
+Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.zip) (or [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.tar) for Linux users).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
 
-<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Once your YAML file is created, one simply needs to run it against OpenLattice's <a href="https://github.com/openlattice/launchpad">launchpad</a> java script to read in the desired files to the OpenLattice platform. Clone the repo, or click <a href="https://openlattice.com/launchpad/launchpad-1.0.0.zip">here</a> (<a href="https://openlattice.com/launchpad/launchpad-1.0.0.tar">or here</a> for Linux users) and open the launchpad folder in a Java IDE such as IntelliJ. Please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps. </div><br>
+### 3a. Unzip the launchpad files into a clean folder. 
+Create a new folder anywhere on your computer, and NOT in your downloads folder. Unzip the launchpad files inside.
+### 3b. Use launchpad to run your YAML configuration file.
+* On a Mac: Go to Terminal, and navigate to the "bin" folder in the launchpad files. Then type: `./launchpad -file <path_to_yamlfile>`. Replace the text between the `<>` characters with the filepath to the .YAML file that you created above, being sure to also remove the `<>` characters. 
+* On a PC: Open a command line, navigate to the "bin" folder in the launchpad files. Then type: `./launchpad.bat -file <path_to_yamlfile>`. Replace the text between the `<>` characters with the filepath to the .YAML file that you created above, being sure to also remove the `<>` characters. 
+
+
+
+<div style="color:black; border: 1px solid black; padding: 10px; background-color: yellow; border-radius:5px; text-align: center;">Congratulations! You have successfully set up secure data transfers to OpenLattice's servers. It is now a straightforward pathway to setting up recurring, real-time data integrations of any data onto the OpenLattice platform, and for use in OpenLattice's products. Please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for custom help with these next steps, and any questions. </div><br>
 
 
 
