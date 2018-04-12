@@ -8,7 +8,7 @@ integrations:
     password: "n/a"
     driver: com.openlattice.launchpad.Csv
     fetchSize: 20000
-    writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+    writeUrl: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
     writeDriver: org.postgresql.Driver
     writeTable: demo_justice
     hikari: 
@@ -21,7 +21,7 @@ integrations:
     password: "n/a"
     driver: com.openlattice.launchpad.Csv
     fetchSize: 20000
-    writeUrl: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+    writeUrl: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
     writeDriver: org.postgresql.Driver
     writeTable: demo_health
     hikari: 
