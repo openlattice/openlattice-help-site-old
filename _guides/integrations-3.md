@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Integration Pipeline: Secure Data Transfers & Speed
-description: Maximize both security and performance by using our **Launchpad** application to transfer data from your database directly and securely into OpenLattice. This is the recommended data pipeline for using the OpenLattice platform. Reach out to support@openlattice.com if you need any assistance with your integration.
+title: Integration Pipeline - Secure Data Transfers & Speed
+description: Maximize both security and performance by using our Launchpad application to transfer data from your database directly and securely into OpenLattice. This is the recommended data pipeline for using the OpenLattice platform. Reach out to support@openlattice.com if you need any assistance with your integration.
 weight: 1
 ---
 
