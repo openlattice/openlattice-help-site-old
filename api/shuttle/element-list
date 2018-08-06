@@ -1,0 +1,12 @@
+com.openlattice.shuttle
+com.openlattice.shuttle.adapter
+com.openlattice.shuttle.conditions
+com.openlattice.shuttle.config
+com.openlattice.shuttle.dates
+com.openlattice.shuttle.edm
+com.openlattice.shuttle.payload
+com.openlattice.shuttle.serialization
+com.openlattice.shuttle.transformations
+com.openlattice.shuttle.util
+conditions
+transforms
