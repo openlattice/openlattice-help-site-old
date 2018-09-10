@@ -8,12 +8,7 @@ weight: 1
 * TOC
 {:toc}
 
-## 1. Balancing security & performance 
-The desire to maximize security and maintain control over one's data should not prevent one from taking full advantage of OpenLattice's ability to perform fast and accurate data integrations for you.
-* Writing and running integrations on your own server (integration tutorials 1 and 2) eliminates the need for any data transfers, but may impact your computer system's performance and memory depending on your processing power, especially for large files or real-time, recurring integrations.
-* Running integrations on OpenLattice servers can be faster by orders of magnitude.
-
-## 2. Launchpad
+## 1. Balancing security & performance: Launchpad 
 Data transfers are obviously integral to using the OpenLattice platform, and we take very seriously the need to provide the highest level of security and transparency. For these reasons we have developed a secure and completely open access solution.
 
 Our [Launchpad](https://github.com/openlattice/launchpad) application eliminates the need for and insecurity of email file transfers by allowing you to transfer whole tables or subsets of tables, from your computer or SQL server directly to an OpenLattice server for later integration. Some advantages of this workflow include:
@@ -22,11 +17,11 @@ Our [Launchpad](https://github.com/openlattice/launchpad) application eliminates
 * One maintains full control over the data to be integrated from your server into the OpenLattice platform, including any changes over time.
 * Eliminating the need for client-side creation and storage of extra .csv files to send to OpenLattice.
 
-To give an overview of the process, a temporary table is copied over from a client-side server into OpenLattice's "Atlas" production server, which is set up on [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html).  OpenLattice then runs all data integrations on our side, on these temporary tables. For those that want continuous integrations (for instance, to add to and update CAD police data or behavioral health reports as they come in), the data transfer can be set up as a recurring task on the client-side computer to run at a set time period and over-write the table that exists on the OpenLattice server, which is then integrated in parallel. These overwrites also ensure that the tables copied onto the OpenLattice side are temporary.
+To give an overview of the process, a temporary table is copied over from a client-side server into OpenLattice's "Athena" production server, which is set up on [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/whatis.html).  OpenLattice then runs all data integrations on our side, on these temporary tables. For those that want continuous integrations (for instance, to add to and update CAD police data or behavioral health reports as they come in), the data transfer can be set up as a recurring task on the client-side computer to run at a set time period and over-write the table that exists on the OpenLattice server, which is then integrated in parallel. These overwrites also ensure that the tables copied onto the OpenLattice side are temporary.
 
 Your data would be stored in a private database accessible only to you - **please contact <a href="mailto:support@topenlattice.com">support@openlattice.com</a> for arrangements.** Later, you can still write your own integration script if desired and also put it onto OpenLattice servers to run automatically. A tutorial for this final step is being developed. 
 
-## 3. Setting up your data transfer 
+## 2. Setting up your data transfer 
 First, one creates a short configuration file using [YAML](https://en.wikipedia.org/wiki/YAML). This configuration file will reside on your computer. It tells your server which table(s) to collect, where to put it on OpenLattice's platform (inside a specific database that will be set up for your jurisdiction), and what to name the table on OpenLattice's side. All of these factors are under your control. 
 
 To create your .yaml file, use a text editor such as NotePad, TextEdit, [**Sublime**](https://www.sublimetext.com/) or [**Atom**](https://atom.io/). 
@@ -52,7 +47,7 @@ integrations:
       driver: org.postgresql.Driver
       fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
     destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: <name of table copy that will be put on OpenLattice server>
       username: "<your_username to your OpenLattice database>"
@@ -71,28 +66,28 @@ description: "Copying over data from demo health table into OpenLattice server"
 integrations:
   - name: demo_justice
     source:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       sql: "demo_justice"
       username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_justice_OLcopy
       username: "example_user"
       password: "examplepassword"
   - name: demo_health
     source:
-      url: jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       sql: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh" 
       username: "example_user"
       password: "examplepassword"
       driver: org.postgresql.Driver
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_health_subset_OLcopy
       username: "example_user"
@@ -101,7 +96,10 @@ integrations:
 
 
 ### Connecting to & uploading .csv files
-To connect to one or more .csv files on your computer, the YAML file paramters differ only slightly. One can simply omit the `sql:`, source server `user` and `password` lines found above since one is not connecting to a server. In the line specifying `url:`, type in the pathway on your computer to the files to be uploaded. Under `driver:`, type in `com.openlattice.launchpad.Csv`. Below illustrates what YAML parameters would be for uploading a sample dataset.  
+To connect to one or more .csv files on your computer, the YAML file paramters differ only slightly. 
+* Under the `source` section, one can simply omit the `sql:`, `user` and `password` lines found above since one is not connecting to a server. In the line specifying `url:`, type in the pathway on your computer to the files to be uploaded. Under `driver:`, type in `com.openlattice.launchpad.Csv`. 
+* Under the `destination` section, remember to replace the text `<example_integration>` with the name of your own database. 
+Below illustrates what YAML parameters would be for uploading a sample dataset.  
 
 ```yaml
 name: "csv_tutorialtransfer"
@@ -113,7 +111,7 @@ integrations:
       driver: com.openlattice.launchpad.Csv
       fetchSize: 20000
     destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+      url: "jdbc:postgresql://athena.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
       driver: org.postgresql.Driver
       table: demo_justice 
       username: "example_user"
@@ -121,14 +119,14 @@ integrations:
 ```
 
 
-## 4. Running your configuration file
+## 3. Running your configuration file
 Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.zip) (or [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.tar) for Linux users).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
 
-### 4a. Unzip the launchpad files into a clean folder. 
+### 3a. Unzip the launchpad files into a clean folder. 
 Create a new folder anywhere on your computer, and NOT in your downloads folder. Unzip the launchpad files inside.
-### 4b. Use launchpad to run your YAML configuration file.
+### 3b. Use launchpad to run your YAML configuration file.
 * On a Mac: Go to Terminal, and navigate to the "bin" folder in the launchpad files. Then type: `./launchpad -file <path_to_yamlfile>`. Replace the text between the `<>` characters with the filepath to the .YAML file that you created above, being sure to also remove the `<>` characters. 
-* On a PC: Open a command line, navigate to the "bin" folder in the launchpad files. Then type: `./launchpad.bat -file <path_to_yamlfile>`. Replace the text between the `<>` characters with the filepath to the .YAML file that you created above, being sure to also remove the `<>` characters. 
+* On a PC: Open a command line, navigate to the "bin" folder in the launchpad files. Then type: `launchpad.bat -file <path_to_yamlfile>`. Replace the text between the `<>` characters with the filepath to the .YAML file that you created above, being sure to also remove the `<>` characters. 
 
 
 
