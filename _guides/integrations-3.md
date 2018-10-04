@@ -100,23 +100,26 @@ To connect to one or more .csv files on your computer, the YAML file paramters d
 ```yaml
 name: "csv_tutorialtransfer"
 description: "transferring csv files to OL servers"
+datasources:
+- name: demo_justice_csv
+  url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
+  driver: com.openlattice.launchpad.Csv
+destinations:
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "example_user"
+  password: "examplepassword"
 integrations:
-  - name: demo_justice
-    source:
-      url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
-      driver: com.openlattice.launchpad.Csv
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_justice 
-      username: "example_user"
-      password: "examplepassword"
+  demo_justice_csv:
+    example_integration:
+      - source: ""
+        destination: demo_justice
 ```
 
 
 ## 4. Running your configuration file
-Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.zip) (or [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.tar) for Linux users).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
+Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://s3.amazonaws.com/openlattice.com/launchpad/launchpad-1.1.0-SNAPSHOT.zip).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
 
 ### 4a. Unzip the launchpad files into a clean folder. 
 Create a new folder anywhere on your computer, and NOT in your downloads folder. Unzip the launchpad files inside.
