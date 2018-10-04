@@ -79,11 +79,11 @@ datasources:
   driver: org.postgresql.Driver
   fetchSize: 20000
 destinations:
- - name: example_integration
-   url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-   driver: org.postgresql.Driver
-   username: "example_user"
-   password: "examplepassword"
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "example_user"
+  password: "examplepassword"
 integrations:
   example_integration:
     example_integration:
