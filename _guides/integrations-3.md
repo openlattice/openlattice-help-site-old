@@ -42,21 +42,24 @@ To connect your server, download the YAML file example [**HERE**](/assets/guides
 ```yaml
 name: "<Name of integration for recordkeeping only (not stored anywhere in tables).>"
 description: "<Description for recordkeeping (not stored anywhere in tables).>"
+datasources:
+- name: <the name of the remote database>
+  url: "<the url to the client-side server>"
+  username: "<username for entry to client-side server>"
+  password: "<password to client-side server>"
+  driver: org.postgresql.Driver
+  fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a time>
+destinations:
+- name: <the name of the local database>
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "<your_username to your OpenLattice database>"
+  password: "<your_password to your OpenLattice database>"
 integrations:
-  - name: <The name of the table that is to be copied to OpenLattice>
-    source:
-      url: "<the url to the client-side server>"
-      sql: "<SQL query that defines the data subset - must be a table or a subquery>"
-      username: "<username for entry to client-side server>"
-      password: "<password to client-side server>"
-      driver: org.postgresql.Driver
-      fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: <name of table copy that will be put on OpenLattice server>
-      username: "<your_username to your OpenLattice database>"
-      password: "<your_password to your OpenLattice database>"
+  <The name of the remote database>:
+    <The name of the local database>:
+      - source: "<SQL query that defines the data subset - must be a table or a subquery>"
+        destination: <name of table copy that will be put on OpenLattice server>
 ```
 
 Below are two examples of how parameters would be filled out to transfer a file onto the OpenLattice platform. We use our sample healthcare and criminal justice demo datasets, which are available to view on the [**OpenLattice gallery**](https://openlattice.com); these data are synthetic and do not contain any real people. In this example we are copying these into a training database on the OpenLattice server calld "example_integration". The `sql:` lines must specify either an entire table, or a subquery. 
@@ -68,35 +71,26 @@ NOTE in this example the table is being read from and copied to the same databas
 ```yaml
 name: "example_filetransfer"
 description: "Copying over data from demo health table into OpenLattice server"
+datasources:
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  username: "example_user"
+  password: "examplepassword"
+  driver: org.postgresql.Driver
+  fetchSize: 20000
+destinations:
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "example_user"
+  password: "examplepassword"
 integrations:
-  - name: demo_justice
-    source:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      sql: "demo_justice"
-      username: "example_user"
-      password: "examplepassword"
-      driver: org.postgresql.Driver
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_justice_OLcopy
-      username: "example_user"
-      password: "examplepassword"
-  - name: demo_health
-    source:
-      url: jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      sql: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh" 
-      username: "example_user"
-      password: "examplepassword"
-      driver: org.postgresql.Driver
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_health_subset_OLcopy
-      username: "example_user"
-      password: "examplepassword"
+  example_integration:
+    example_integration:
+      - source: "demo_justice"
+        destination: demo_justice_OLcopy
+      - source: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh"
+        destination: demo_health_subset_OLcopy
 ```  
 
 
@@ -106,23 +100,26 @@ To connect to one or more .csv files on your computer, the YAML file paramters d
 ```yaml
 name: "csv_tutorialtransfer"
 description: "transferring csv files to OL servers"
+datasources:
+- name: demo_justice_csv
+  url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
+  driver: com.openlattice.launchpad.Csv
+destinations:
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "example_user"
+  password: "examplepassword"
 integrations:
-  - name: demo_justice
-    source:
-      url: "/Users/kimengie/Dev/loomhelp/assets/guides/integrations/demo_justice.csv"
-      driver: com.openlattice.launchpad.Csv
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_justice 
-      username: "example_user"
-      password: "examplepassword"
+  demo_justice_csv:
+    example_integration:
+      - source: ""
+        destination: demo_justice
 ```
 
 
 ## 4. Running your configuration file
-Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.zip) (or [**here**](https://openlattice.com/launchpad/launchpad-1.0.0.tar) for Linux users).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
+Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://s3.amazonaws.com/openlattice.com/launchpad/launchpad-1.1.0-SNAPSHOT.zip).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
 
 ### 4a. Unzip the launchpad files into a clean folder. 
 Create a new folder anywhere on your computer, and NOT in your downloads folder. Unzip the launchpad files inside.
