@@ -42,21 +42,24 @@ To connect your server, download the YAML file example [**HERE**](/assets/guides
 ```yaml
 name: "<Name of integration for recordkeeping only (not stored anywhere in tables).>"
 description: "<Description for recordkeeping (not stored anywhere in tables).>"
+datasources:
+- name: <The name of the remote database>
+  url: "<the url to the client-side server>"
+  username: "<username for entry to client-side server>"
+  password: "<password to client-side server>"
+  driver: org.postgresql.Driver
+  fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a time>
+destinations:
+- name: <The name of the local database>
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
+  driver: org.postgresql.Driver
+  username: "<your_username to your OpenLattice database>"
+  password: "<your_password to your OpenLattice database>"
 integrations:
-  - name: <The name of the table that is to be copied to OpenLattice>
-    source:
-      url: "<the url to the client-side server>"
-      sql: "<SQL query that defines the data subset - must be a table or a subquery>"
-      username: "<username for entry to client-side server>"
-      password: "<password to client-side server>"
-      driver: org.postgresql.Driver
-      fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a times>
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: <name of table copy that will be put on OpenLattice server>
-      username: "<your_username to your OpenLattice database>"
-      password: "<your_password to your OpenLattice database>"
+  <The name of the remote database>:
+    <The name of the local database>:
+      - source: "<SQL query that defines the data subset - must be a table or a subquery>"
+        destination: <name of table copy that will be put on OpenLattice server>
 ```
 
 Below are two examples of how parameters would be filled out to transfer a file onto the OpenLattice platform. We use our sample healthcare and criminal justice demo datasets, which are available to view on the [**OpenLattice gallery**](https://openlattice.com); these data are synthetic and do not contain any real people. In this example we are copying these into a training database on the OpenLattice server calld "example_integration". The `sql:` lines must specify either an entire table, or a subquery. 
