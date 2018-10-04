@@ -119,7 +119,7 @@ integrations:
 
 
 ## 4. Running your configuration file
-Once your YAML file is created, one simply needs to run it against OpenLattice's **"Launchpad"** configuration package to read in the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://s3.amazonaws.com/openlattice.com/launchpad/launchpad-1.1.0-SNAPSHOT.zip).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
+Once your YAML file is created, run OpenLattice's **"Launchpad"** with your YAML as input to transfer the desired files to the OpenLattice platform. To download Launchpad, click [**here**](https://s3.amazonaws.com/openlattice.com/launchpad/launchpad-1.1.0-SNAPSHOT.zip).  FYI, if you would like to view the source code, one can access our github repo [**here**](https://github.com/openlattice/launchpad). Then follow these steps:
 
 ### 4a. Unzip the launchpad files into a clean folder. 
 Create a new folder anywhere on your computer, and NOT in your downloads folder. Unzip the launchpad files inside.
