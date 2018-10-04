@@ -43,14 +43,14 @@ To connect your server, download the YAML file example [**HERE**](/assets/guides
 name: "<Name of integration for recordkeeping only (not stored anywhere in tables).>"
 description: "<Description for recordkeeping (not stored anywhere in tables).>"
 datasources:
-- name: <The name of the remote database>
+- name: <the name of the remote database>
   url: "<the url to the client-side server>"
   username: "<username for entry to client-side server>"
   password: "<password to client-side server>"
   driver: org.postgresql.Driver
   fetchSize: <a parameter that dictates how many rows are written in to OpenLattice at a time>
 destinations:
-- name: <The name of the local database>
+- name: <the name of the local database>
   url: "jdbc:postgresql://atlas.openlattice.com:30001/YOUR_DATABASE_NAME_HERE?ssl=true&sslmode=require"
   driver: org.postgresql.Driver
   username: "<your_username to your OpenLattice database>"
@@ -71,35 +71,26 @@ NOTE in this example the table is being read from and copied to the same databas
 ```yaml
 name: "example_filetransfer"
 description: "Copying over data from demo health table into OpenLattice server"
+datasources:
+- name: example_integration
+  url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+  username: "example_user"
+  password: "examplepassword"
+  driver: org.postgresql.Driver
+  fetchSize: 20000
+destinations:
+ - name: example_integration
+   url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
+   driver: org.postgresql.Driver
+   username: "example_user"
+   password: "examplepassword"
 integrations:
-  - name: demo_justice
-    source:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      sql: "demo_justice"
-      username: "example_user"
-      password: "examplepassword"
-      driver: org.postgresql.Driver
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_justice_OLcopy
-      username: "example_user"
-      password: "examplepassword"
-  - name: demo_health
-    source:
-      url: jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      sql: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh" 
-      username: "example_user"
-      password: "examplepassword"
-      driver: org.postgresql.Driver
-      fetchSize: 20000
-    destination:
-      url: "jdbc:postgresql://atlas.openlattice.com:30001/example_integration?ssl=true&sslmode=require"
-      driver: org.postgresql.Driver
-      table: demo_health_subset_OLcopy
-      username: "example_user"
-      password: "examplepassword"
+  example_integration:
+    example_integration:
+      - source: "demo_justice"
+        destination: demo_justice_OLcopy
+      - source: "( select * from demo_health where \"FirstName\" = 'Jennifer') dh"
+        destination: demo_health_subset_OLcopy
 ```  
 
 
