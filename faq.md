@@ -15,7 +15,7 @@ menu: true
 
 Yes. OpenLattice infrastructure is compliant with the **Health Insurance Portability and Accountability Act (HIPAA)** and **Criminal Justice Information Services (CJIS) Security Policy**.
 
-In accordance with HIPAA Security Rule, we ensure Protected Health Information (PHI) is encrypted in transit (TLS 1.2+)and at rest using an industry-standard AES encryption. We maintain detailed audit logs and support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
+In accordance with HIPAA Security Rule, we ensure Protected Health Information (PHI) is encrypted in transit (TLS 1.2+) and at rest using industry-standard AES encryption. We maintain detailed audit logs and support disaster recovery by securely storing live snapshots of the database system that we can recover quickly from backup.
 
 {% include related.html content="
 * [OpenLattice's HIPAA Compliance Technical Overview](/info/hipaa/)
